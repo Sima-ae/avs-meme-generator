@@ -32,7 +32,7 @@ export const quizAnswers: QuizAnswer[] = [
     question_id: 1,
     answer_text: "Betere speelplaatsen",
     meme_template_slug: "speeltuin-template",
-    result_text: "Kiest voor meer plezier voor de jeugd"
+    result_text: "Kiest voor meer activiteiten voor de jeugd"
   },
   {
     id: 3,
