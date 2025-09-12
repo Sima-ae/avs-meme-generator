@@ -118,7 +118,7 @@ export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
         <div className="text-sm text-avs-black/70 font-medium">
           Meme Generator 2025
         </div>
-        <div className="bg-avs-black text-avs-white px-3 py-1 rounded-lg font-bold text-sm">
+        <div className="text-avs-black font-bold text-sm">
           #AllesVoorSchiedam
         </div>
       </div>

@@ -1170,7 +1170,7 @@ function MemeCanvas(param) {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "bg-avs-black text-avs-white px-3 py-1 rounded-lg font-bold text-sm",
+                        className: "text-avs-black font-bold text-sm",
                         children: "#AllesVoorSchiedam"
                     }, void 0, false, {
                         fileName: "[project]/src/components/meme-canvas.tsx",
@@ -1516,9 +1516,9 @@ function MemeResultDialog(param) {
                                 children: [
                                     "Gebruik de hashtag ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "font-mono text-white px-3 py-1 rounded-lg font-bold",
+                                        className: "font-mono font-bold",
                                         style: {
-                                            backgroundColor: '#30302e'
+                                            color: '#30302e'
                                         },
                                         children: "#AllesVoorSchiedam"
                                     }, void 0, false, {
@@ -1526,7 +1526,7 @@ function MemeResultDialog(param) {
                                         lineNumber: 154,
                                         columnNumber: 34
                                     }, this),
-                                    "en tag @AllesVoorSchiedam voor meer bereik!"
+                                    " en tag @AllesVoorSchiedam voor meer bereik!"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
@@ -1538,10 +1538,10 @@ function MemeResultDialog(param) {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "💡 Tip: Deel op Instagram, Twitter, Facebook of LinkedIn"
+                                children: "💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok of X"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 157,
+                                lineNumber: 156,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -1762,7 +1762,7 @@ function Home() {
                                         style: {
                                             color: '#30302e'
                                         },
-                                        children: "⚡ 2 minuten klaar"
+                                        children: "⚡ #AllesVoorSchiedam"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
                                         lineNumber: 103,
@@ -1795,7 +1795,7 @@ function Home() {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "De slimste meme-generator voor Schiedam"
+                                children: "#AllesVoorSchiedam"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
                                 lineNumber: 108,
@@ -1818,7 +1818,7 @@ function Home() {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "Persoonlijk, snel en klaar voor sociale media. Beantwoord drie vragen en krijg je eigen gepersonaliseerde meme over jouw visie voor Schiedam."
+                                children: "Beantwoord de vragen en maak een gepersonaliseerde meme over Schiedam."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
                                 lineNumber: 118,

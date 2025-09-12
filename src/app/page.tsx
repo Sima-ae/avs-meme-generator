@@ -100,7 +100,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg">
-                <span className="text-sm font-medium" style={{ color: '#30302e' }}>⚡ 2 minuten klaar</span>
+                <span className="text-sm font-medium" style={{ color: '#30302e' }}>⚡ #AllesVoorSchiedam</span>
               </div>
               
             </motion.div>
@@ -112,7 +112,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               style={{ color: '#30302e' }}
             >
-              De slimste meme-generator voor Schiedam
+              #AllesVoorSchiedam
             </motion.h2>
             
             <motion.p 
@@ -122,7 +122,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
               style={{ color: '#30302e' }}
             >
-              Persoonlijk, snel en klaar voor sociale media. Beantwoord drie vragen en krijg je eigen gepersonaliseerde meme over jouw visie voor Schiedam.
+              Beantwoord de vragen en maak een gepersonaliseerde meme over Schiedam.
             </motion.p>
 
             {!showNameInput ? (

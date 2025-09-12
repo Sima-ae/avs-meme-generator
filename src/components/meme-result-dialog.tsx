@@ -151,11 +151,10 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
           <CardContent className="p-6">
             <h3 className="font-bold mb-3 text-xl" style={{ color: '#30302e' }}>Deel jouw visie!</h3>
             <p className="mb-4 text-lg" style={{ color: '#30302e' }}>
-              Gebruik de hashtag <span className="font-mono text-white px-3 py-1 rounded-lg font-bold" style={{ backgroundColor: '#30302e' }}>#AllesVoorSchiedam</span> 
-              en tag @AllesVoorSchiedam voor meer bereik!
+              Gebruik de hashtag <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span> en tag @AllesVoorSchiedam voor meer bereik!
             </p>
             <p className="text-sm" style={{ color: '#30302e' }}>
-              💡 Tip: Deel op Instagram, Twitter, Facebook of LinkedIn
+              💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok of X
             </p>
           </CardContent>
         </Card>
