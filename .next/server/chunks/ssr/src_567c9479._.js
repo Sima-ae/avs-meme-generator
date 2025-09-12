@@ -1361,7 +1361,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     lineNumber: 146,
                                     columnNumber: 13
                                 }, this),
-                                "Nieuwe Quiz Maken"
+                                "Opnieuw"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",

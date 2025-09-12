@@ -144,7 +144,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
             whileTap={{ scale: 0.98 }}
           >
             <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-            Nieuwe Quiz Maken
+            Opnieuw
           </motion.button>
         </div>
 
