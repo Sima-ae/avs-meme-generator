@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.625rem;
+  --background: #fdee34;
+  --foreground: #30302e;
+  --card: #ffffff;
+  --card-foreground: #30302e;
+  --popover: #ffffff;
+  --popover-foreground: #30302e;
+  --primary: #30302e;
+  --primary-foreground: #fdee34;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #30302e;
+  --muted: #e5e5e5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #30302e;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #d4d4d4;
+  --input: #d4d4d4;
+  --ring: #a3a3a3;
+  --chart-1: #fdee34;
+  --chart-2: #30302e;
+  --chart-3: #ffffff;
+  --chart-4: #a3a3a3;
+  --chart-5: #737373;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #30302e;
+  --sidebar-primary: #30302e;
+  --sidebar-primary-foreground: #fdee34;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #30302e;
+  --sidebar-border: #d4d4d4;
+  --sidebar-ring: #a3a3a3;
+}
+
+.dark {
+  --background: #30302e;
+  --foreground: #fdee34;
+  --card: #404040;
+  --card-foreground: #fdee34;
+  --popover: #404040;
+  --popover-foreground: #fdee34;
+  --primary: #fdee34;
+  --primary-foreground: #30302e;
+  --secondary: #262626;
+  --secondary-foreground: #fdee34;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #262626;
+  --accent-foreground: #fdee34;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #525252;
+  --input: #525252;
+  --ring: #737373;
+  --chart-1: #fdee34;
+  --chart-2: #30302e;
+  --chart-3: #ffffff;
+  --chart-4: #a3a3a3;
+  --chart-5: #737373;
+  --sidebar: #404040;
+  --sidebar-foreground: #fdee34;
+  --sidebar-primary: #fdee34;
+  --sidebar-primary-foreground: #30302e;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fdee34;
+  --sidebar-border: #525252;
+  --sidebar-ring: #737373;
+}
+
+@layer base {
+  * {
+    @apply border-black/20;
+  }
+  body {
+    background-color: #fdee34;
+    color: #30302e;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #fdee34;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #30302e;
+    border-radius: 9999px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #1a1a18;
+  }
+}
