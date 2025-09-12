@@ -1069,6 +1069,11 @@ body {
   padding-bottom: 1.5rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .pb-6 {
   padding-bottom: 1.5rem;
 }

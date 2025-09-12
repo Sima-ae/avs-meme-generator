@@ -100,20 +100,12 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg">
-                <span className="text-sm font-medium" style={{ color: '#30302e' }}>⚡ #AllesVoorSchiedam</span>
+                <span className="text-sm font-medium" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span>
               </div>
               
             </motion.div>
             
-            <motion.h2 
-              className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8 max-w-5xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              style={{ color: '#30302e' }}
-            >
-              #AllesVoorSchiedam
-            </motion.h2>
+            
             
             <motion.p 
               className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed"
@@ -195,26 +187,10 @@ export default function Home() {
       </main>
 
       {/* Features Section */}
-      <section className="py-32 relative" style={{ backgroundColor: '#fdee34' }}>
+      <section className="py-12 relative" style={{ backgroundColor: '#fdee34' }}>
         <div className="absolute inset-0" style={{ backgroundColor: '#fdee34' }}></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <motion.div 
-            className="text-center mb-11"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-5xl md:text-7xl font-black mb-8" style={{ color: '#30302e' }}>
-              Jouw persoonlijke
-              <br />
-              Schiedam meme
-            </h2>
-            <p className="text-2xl md:text-3xl max-w-4xl mx-auto leading-relaxed" style={{ color: '#30302e' }}>
-              Uniek, professioneel en klaar voor sociale media
-            </p>
-            
-          </motion.div>
+          
 
           <motion.div 
               className="flex flex-wrap justify-center gap-4 mb-8"
@@ -223,7 +199,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg">
-                <span className="text-sm font-medium" style={{ color: '#30302e' }}>✨ Aangedreven door TripleZero AI</span>
+                <span className="text-sm font-medium" style={{ color: '#30302e' }}>⚡ Aangedreven door TripleZero AI</span>
               </div>
               
             </motion.div>

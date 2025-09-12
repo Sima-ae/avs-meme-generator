@@ -26,7 +26,7 @@ export default function Header() {
           </motion.div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            {['Over', 'Hoe werkt het', 'Voorbeelden'].map((item, index) => (
+            {['Informatie', 'Hoe werkt het?'].map((item, index) => (
               <motion.a
                 key={item}
                 href="#"
@@ -39,7 +39,7 @@ export default function Header() {
               </motion.a>
             ))}
             <motion.a
-              href="#"
+              href="/contact"
               className="text-white px-6 py-3 rounded-2xl font-bold shadow-lg transition-all duration-300 hover:scale-105"
               style={{ backgroundColor: '#30302e' }}
               whileHover={{ scale: 1.05 }}

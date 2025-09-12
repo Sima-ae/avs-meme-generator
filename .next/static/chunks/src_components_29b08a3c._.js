@@ -78,9 +78,8 @@ function Header() {
                         className: "hidden md:flex items-center space-x-8",
                         children: [
                             [
-                                'Over',
-                                'Hoe werkt het',
-                                'Voorbeelden'
+                                'Informatie',
+                                'Hoe werkt het?'
                             ].map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].a, {
                                     href: "#",
                                     className: "text-lg font-medium transition-colors duration-300 hover:scale-105",
@@ -100,7 +99,7 @@ function Header() {
                                     columnNumber: 15
                                 }, this)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].a, {
-                                href: "#",
+                                href: "/contact",
                                 className: "text-white px-6 py-3 rounded-2xl font-bold shadow-lg transition-all duration-300 hover:scale-105",
                                 style: {
                                     backgroundColor: '#30302e'
@@ -202,7 +201,7 @@ function Footer() {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "Jouw persoonlijke meme-generator voor Schiedam"
+                                children: "..."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/footer.tsx",
                                 lineNumber: 18,
@@ -215,31 +214,11 @@ function Footer() {
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "max-w-4xl mx-auto mb-16",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-xl leading-relaxed mb-8",
-                            style: {
-                                color: '#30302e'
-                            },
-                            children: "Gratis, snel en klaar voor sociale media. Beantwoord drie vragen en krijg je eigen gepersonaliseerde meme over jouw visie voor Schiedam."
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/footer.tsx",
-                            lineNumber: 25,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/footer.tsx",
-                        lineNumber: 24,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex flex-wrap justify-center gap-8 mb-12",
                         children: [
-                            'Privacy',
-                            'Gebruiksvoorwaarden',
-                            'Cookies',
-                            'Contact',
-                            'Over ons'
+                            'Algemene voorwaarden',
+                            'Cookiebeleid',
+                            'Privacybeleid'
                         ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                 href: "#",
                                 className: "text-lg font-medium transition-all duration-300 hover:scale-105 px-4 py-2 rounded-xl hover:bg-gray-100",
@@ -249,12 +228,12 @@ function Footer() {
                                 children: item
                             }, item, false, {
                                 fileName: "[project]/src/components/footer.tsx",
-                                lineNumber: 35,
+                                lineNumber: 30,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/footer.tsx",
-                        lineNumber: 33,
+                        lineNumber: 28,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -265,10 +244,13 @@ function Footer() {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "© 2025 Alles voor Schiedam. Alle rechten voorbehouden."
-                            }, void 0, false, {
+                                children: [
+                                    "Alles voor Schiedam © ",
+                                    new Date().getFullYear()
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/src/components/footer.tsx",
-                                lineNumber: 48,
+                                lineNumber: 43,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -276,16 +258,16 @@ function Footer() {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "Ontwikkeling & Beveiliging door TripleZero iT"
+                                children: "Beveiligd en ontwikkeld door: TripleZero iT"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/footer.tsx",
-                                lineNumber: 51,
+                                lineNumber: 46,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/footer.tsx",
-                        lineNumber: 47,
+                        lineNumber: 42,
                         columnNumber: 11
                     }, this)
                 ]
