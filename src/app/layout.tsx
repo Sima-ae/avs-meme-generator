@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="nl">
       <body className={`${inter.variable} font-sans antialiased`}>
         <Header />
-        <main className="pt-20">
+        <main className="pt-20 pb-0">
           {children}
         </main>
         <Footer />

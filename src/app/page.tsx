@@ -63,19 +63,29 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#fdee34' }}>
+    <div style={{ backgroundColor: '#fdee34' }}>
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundColor: '#fdee34' }}></div>
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse" style={{ backgroundColor: '#fdee34' }}></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000" style={{ backgroundColor: '#fdee34' }}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl animate-pulse delay-500" style={{ backgroundColor: '#fdee34' }}></div>
+        
+        {/* Background Image Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          style={{ 
+            backgroundImage: 'url(/images/Achtergrond.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        ></div>
       </div>
 
 
       {/* Hero Section */}
-      <main className="relative z-10">
-        <div className="max-w-7xl mx-auto px-6 py-32">
+      <div className="relative z-10">
+        <div className="max-w-7xl mx-auto px-6 pt-16 pb-32">
           <div className="text-center">
             
 
@@ -184,30 +194,25 @@ export default function Home() {
             )}
           </div>
         </div>
-      </main>
+      </div>
 
-      {/* Features Section */}
-      <section className="py-12 relative" style={{ backgroundColor: '#fdee34' }}>
-        <div className="absolute inset-0" style={{ backgroundColor: '#fdee34' }}></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          
+      {/* TripleZero AI Button */}
+      <div className="flex justify-center items-end" style={{ backgroundColor: '#fdee34', height: '40px' }}>
+        <motion.div 
+          className="flex flex-wrap justify-center gap-4 mb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          <a href="https://000-it.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg hover:scale-105 transition-all duration-300 m-0">
+            <span className="text-sm font-medium" style={{ color: '#30302e' }}>⚡ Aangedreven door TripleZero AI</span>
+          </a>
+        </motion.div>
+      </div>
 
-          <motion.div 
-              className="flex flex-wrap justify-center gap-4 mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <div className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg">
-                <span className="text-sm font-medium" style={{ color: '#30302e' }}>⚡ Aangedreven door TripleZero AI</span>
-              </div>
-              
-            </motion.div>
-          
-          
-        </div>
-      </section>
-
+      
+      
+     
 
       <MemeResultDialog
         isOpen={showMemeDialog}

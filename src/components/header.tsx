@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Header() {
   return (
@@ -13,16 +14,17 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <motion.div 
-            className="flex items-center space-x-4"
+            className="flex items-center"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-2xl" style={{ backgroundColor: '#30302e' }}>
-              <span className="text-white font-bold text-xl">AvS</span>
-            </div>
-            <span className="text-3xl font-black" style={{ color: '#30302e' }}>
-              Alles voor Schiedam
-            </span>
+            <Image 
+              src="/images/Weblogo-AvS.png" 
+              alt="Alles voor Schiedam Logo" 
+              width={204} 
+              height={60} 
+              className="object-contain"
+            />
           </motion.div>
           
           <nav className="hidden md:flex items-center space-x-8">
