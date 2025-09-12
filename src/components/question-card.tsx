@@ -28,7 +28,7 @@ export function QuestionCard({
           {question.question_text}
         </CardTitle>
         <CardDescription className="text-xl leading-relaxed" style={{ color: '#30302e' }}>
-          Kies het antwoord dat het beste past bij jouw visie voor Schiedam
+          Kies een antwoord dat het beste past bij jouw visie voor Schiedam
         </CardDescription>
       </CardHeader>
       
@@ -79,7 +79,7 @@ export function QuestionCard({
       
       <div className="px-6 pb-6">
         <p className="text-sm text-center font-medium" style={{ color: '#30302e' }}>
-          Jouw antwoord wordt gebruikt om een gepersonaliseerde meme te maken
+          Jouw antwoorden worden gebruikt om een gepersonaliseerde meme te maken
         </p>
       </div>
     </Card>

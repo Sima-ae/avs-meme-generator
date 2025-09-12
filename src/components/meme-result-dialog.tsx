@@ -60,7 +60,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       
       if (navigator.share && navigator.canShare({ files: [file] })) {
         await navigator.share({
-          title: 'Mijn AllesVoorSchiedam Meme',
+          title: 'Mijn Alles voor Schiedam Meme',
           text: 'Bekijk mijn gepersonaliseerde meme! #AllesVoorSchiedam',
           files: [file]
         });
@@ -83,12 +83,13 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               <Sparkles className="w-8 h-8 text-white" />
             </div>
             <div>
-              <DialogTitle className="text-4xl font-black" style={{ color: '#30302e' }}>
-                Jouw Meme is Klaar!
-              </DialogTitle>
-              <DialogDescription className="text-xl" style={{ color: '#30302e' }}>
+            <DialogDescription className="text-xl" style={{ color: '#30302e' }}>
                 Gefeliciteerd, {quizState.userName}!
               </DialogDescription>
+              <DialogTitle className="text-4xl font-black" style={{ color: '#30302e' }}>
+                Jouw Meme is klaar!
+              </DialogTitle>
+              
             </div>
           </div>
         </DialogHeader>
@@ -119,7 +120,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               whileTap={{ scale: isGenerating ? 1 : 0.98 }}
             >
               <Download className="w-5 h-5 mr-2" />
-              {isGenerating ? 'Genereren...' : 'Download PNG'}
+              {isGenerating ? 'Genereren...' : 'Download'}
             </motion.button>
             
             <motion.button
@@ -130,7 +131,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               whileTap={{ scale: 0.98 }}
             >
               {copied ? <Check className="w-5 h-5 mr-2" /> : <Share2 className="w-5 h-5 mr-2" />}
-              {copied ? 'Gekopieerd!' : 'Deel op Sociale Media'}
+              {copied ? 'Gekopieerd!' : 'Delen op Social Media'}
             </motion.button>
           </div>
 
@@ -151,7 +152,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
           <CardContent className="p-6">
             <h3 className="font-bold mb-3 text-xl" style={{ color: '#30302e' }}>Deel jouw visie!</h3>
             <p className="mb-4 text-lg" style={{ color: '#30302e' }}>
-              Gebruik de hashtag <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span> en tag @AllesVoorSchiedam voor meer bereik!
+              <i>Gebruik <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span></i>
             </p>
             <p className="text-sm" style={{ color: '#30302e' }}>
               💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok of X

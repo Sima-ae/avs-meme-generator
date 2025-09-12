@@ -94,7 +94,7 @@ export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
       {/* Header */}
       <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
         <div className="bg-avs-black text-avs-white px-3 py-1 rounded-lg font-bold text-sm">
-          AllesVoorSchiedam
+          Alles voor Schiedam
         </div>
         <div className="w-8 h-8 bg-avs-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center text-lg">
           {template.icon}
@@ -116,7 +116,7 @@ export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
       {/* Footer */}
       <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
         <div className="text-sm text-avs-black/70 font-medium">
-          Meme Generator 2025
+          www.allesvoorschiedam.nl
         </div>
         <div className="text-avs-black font-bold text-sm">
           #AllesVoorSchiedam
