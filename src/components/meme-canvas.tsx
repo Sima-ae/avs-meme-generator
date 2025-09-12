@@ -90,14 +90,19 @@ export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
       }}
     >
       {/* Background Image Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
-        style={{ 
-          backgroundImage: 'url(/images/Achtergrond.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      ></div>
+      <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
+        <img 
+          src="/images/Achtergrond.png"
+          alt="Background"
+          className="w-full h-full object-cover"
+          style={{ 
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center'
+          }}
+        />
+      </div>
       {/* Header */}
       <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-10">
         <div className="bg-avs-black text-avs-white px-2 sm:px-3 py-1 rounded-lg font-bold text-xs sm:text-sm">

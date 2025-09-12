@@ -27,10 +27,20 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
     setIsGenerating(true);
     try {
+      // Preload the background image to ensure it's available
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = '/images/Achtergrond.png';
+      });
+
       const dataUrl = await toPng(memeElement, {
         quality: 1.0,
         pixelRatio: 2,
-        backgroundColor: '#fdee34'
+        backgroundColor: '#fdee34',
+        includeQueryParams: true
       });
       
       const link = document.createElement('a');
@@ -49,10 +59,20 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
     if (!memeElement) return;
 
     try {
+      // Preload the background image to ensure it's available
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = '/images/Achtergrond.png';
+      });
+
       const dataUrl = await toPng(memeElement, {
         quality: 1.0,
         pixelRatio: 2,
-        backgroundColor: '#fdee34'
+        backgroundColor: '#fdee34',
+        includeQueryParams: true
       });
       
       const blob = await fetch(dataUrl).then(r => r.blob());
