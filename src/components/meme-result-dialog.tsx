@@ -27,11 +27,19 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
     setIsGenerating(true);
     try {
-      // Preload the background image to ensure it's available
+      // Convert background image to data URL
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
       const img = new Image();
       img.crossOrigin = 'anonymous';
+      
       await new Promise((resolve, reject) => {
-        img.onload = resolve;
+        img.onload = () => {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx?.drawImage(img, 0, 0);
+          resolve(canvas.toDataURL('image/png'));
+        };
         img.onerror = reject;
         img.src = '/images/Achtergrond.png';
       });
@@ -40,7 +48,9 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         quality: 1.0,
         pixelRatio: 2,
         backgroundColor: '#fdee34',
-        includeQueryParams: true
+        includeQueryParams: true,
+        skipFonts: false,
+        preferredFontFormat: 'woff2'
       });
       
       const link = document.createElement('a');
@@ -59,11 +69,19 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
     if (!memeElement) return;
 
     try {
-      // Preload the background image to ensure it's available
+      // Convert background image to data URL
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
       const img = new Image();
       img.crossOrigin = 'anonymous';
+      
       await new Promise((resolve, reject) => {
-        img.onload = resolve;
+        img.onload = () => {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx?.drawImage(img, 0, 0);
+          resolve(canvas.toDataURL('image/png'));
+        };
         img.onerror = reject;
         img.src = '/images/Achtergrond.png';
       });
@@ -72,7 +90,9 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         quality: 1.0,
         pixelRatio: 2,
         backgroundColor: '#fdee34',
-        includeQueryParams: true
+        includeQueryParams: true,
+        skipFonts: false,
+        preferredFontFormat: 'woff2'
       });
       
       const blob = await fetch(dataUrl).then(r => r.blob());

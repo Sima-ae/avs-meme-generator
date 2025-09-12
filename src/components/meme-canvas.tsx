@@ -2,6 +2,7 @@
 
 import { QuizState } from '@/types/quiz';
 import { quizAnswers } from '@/data/quizData';
+import { useEffect, useState } from 'react';
 
 interface MemeCanvasProps {
   quizState: QuizState;
@@ -10,6 +11,8 @@ interface MemeCanvasProps {
 }
 
 export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   // Get the selected answers
   const selectedAnswers = Object.entries(quizState.answers).map(([, answerId]) => {
     const answer = quizAnswers.find(a => a.id === answerId);
@@ -22,6 +25,13 @@ export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
   if (!primaryAnswer) {
     return null;
   }
+
+  // Preload the background image
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = '/images/Achtergrond.png';
+  }, []);
 
   const getTemplateStyles = (templateSlug: string) => {
     switch (templateSlug) {
@@ -90,19 +100,22 @@ export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
       }}
     >
       {/* Background Image Overlay */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
-        <img 
-          src="/images/Achtergrond.png"
-          alt="Background"
-          className="w-full h-full object-cover"
-          style={{ 
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center'
-          }}
-        />
-      </div>
+      {imageLoaded && (
+        <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
+          <img 
+            src="/images/Achtergrond.png"
+            alt="Background"
+            className="w-full h-full object-cover"
+            style={{ 
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center'
+            }}
+            crossOrigin="anonymous"
+          />
+        </div>
+      )}
       {/* Header */}
       <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-10">
         <div className="bg-avs-black text-avs-white px-2 sm:px-3 py-1 rounded-lg font-bold text-xs sm:text-sm">
