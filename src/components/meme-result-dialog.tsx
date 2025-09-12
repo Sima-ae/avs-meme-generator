@@ -76,85 +76,84 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl">
-        <DialogHeader>
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-3xl flex items-center justify-center shadow-2xl" style={{ backgroundColor: '#30302e' }}>
-              <Sparkles className="w-8 h-8 text-white" />
+      <DialogContent className="max-w-4xl w-full mx-4 sm:mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl">
+        <DialogHeader className="px-4 sm:px-6">
+          <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-3xl flex items-center justify-center shadow-2xl" style={{ backgroundColor: '#30302e' }}>
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
             </div>
             <div>
-            <DialogDescription className="text-xl" style={{ color: '#30302e' }}>
+              <DialogDescription className="text-lg sm:text-xl" style={{ color: '#30302e' }}>
                 Gefeliciteerd, {quizState.userName}!
               </DialogDescription>
-              <DialogTitle className="text-4xl font-black" style={{ color: '#30302e' }}>
+              <DialogTitle className="text-2xl sm:text-3xl lg:text-4xl font-black" style={{ color: '#30302e' }}>
                 Jouw Meme is klaar!
               </DialogTitle>
-              
             </div>
           </div>
         </DialogHeader>
 
         {/* Meme Preview */}
         <motion.div 
-          className="flex justify-center my-8"
+          className="flex justify-center my-6 sm:my-8 px-4"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
           <MemeCanvas 
             quizState={quizState} 
-            className="shadow-2xl border-4 border-black/20 rounded-3xl"
+            className="shadow-2xl border-2 sm:border-4 border-black/20 rounded-2xl sm:rounded-3xl max-w-full"
             id="meme-canvas"
           />
         </motion.div>
 
         {/* Action Buttons */}
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-4 sm:space-y-6 px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <motion.button
               onClick={handleDownload}
               disabled={isGenerating}
-              className="text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-2xl disabled:cursor-not-allowed"
+              className="text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-2xl disabled:cursor-not-allowed text-sm sm:text-base"
               style={{ backgroundColor: '#30302e' }}
               whileHover={{ scale: isGenerating ? 1 : 1.02 }}
               whileTap={{ scale: isGenerating ? 1 : 0.98 }}
             >
-              <Download className="w-5 h-5 mr-2" />
+              <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
               {isGenerating ? 'Genereren...' : 'Download'}
             </motion.button>
             
             <motion.button
               onClick={handleShare}
-              className="bg-white/90 backdrop-blur-xl border border-black/20 font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg"
+              className="bg-white/90 backdrop-blur-xl border border-black/20 font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg text-sm sm:text-base"
               style={{ color: '#30302e' }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {copied ? <Check className="w-5 h-5 mr-2" /> : <Share2 className="w-5 h-5 mr-2" />}
+              {copied ? <Check className="w-4 h-4 sm:w-5 sm:h-5 mr-2" /> : <Share2 className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />}
               {copied ? 'Gekopieerd!' : 'Delen op Social Media'}
             </motion.button>
           </div>
 
           <motion.button
             onClick={onReset}
-            className="w-full bg-white/90 backdrop-blur-xl border border-black/20 font-medium py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg"
+            className="w-full bg-white/90 backdrop-blur-xl border border-black/20 font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg text-sm sm:text-base"
             style={{ color: '#30302e' }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <RotateCcw className="w-5 h-5 mr-2" />
+            <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Nieuwe Quiz Maken
           </motion.button>
         </div>
 
         {/* Social Media Instructions */}
-        <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-8 shadow-lg">
-          <CardContent className="p-6">
-            <h3 className="font-bold mb-3 text-xl" style={{ color: '#30302e' }}>Deel jouw visie!</h3>
-            <p className="mb-4 text-lg" style={{ color: '#30302e' }}>
+        <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-6 sm:mt-8 shadow-lg mx-4 sm:mx-6">
+          <CardContent className="p-4 sm:p-6">
+            <h3 className="font-bold mb-3 text-lg sm:text-xl" style={{ color: '#30302e' }}>Deel jouw visie!</h3>
+            <p className="mb-4 text-base sm:text-lg" style={{ color: '#30302e' }}>
               <i>Gebruik <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span></i>
             </p>
-            <p className="text-sm" style={{ color: '#30302e' }}>
+            <p className="text-xs sm:text-sm" style={{ color: '#30302e' }}>
               💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok of X
             </p>
           </CardContent>

@@ -13,9 +13,10 @@ interface QuizFlowProps {
   quizState: QuizState;
   setQuizState: (state: QuizState) => void;
   onComplete: () => void;
+  onBack?: () => void;
 }
 
-export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps) {
+export function QuizFlow({ quizState, setQuizState, onComplete, onBack }: QuizFlowProps) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   
@@ -60,12 +61,12 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: '#fdee34' }}>
+    <div className="min-h-screen w-full relative overflow-hidden" style={{ backgroundColor: '#fdee34' }}>
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundColor: '#fdee34' }}></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse" style={{ backgroundColor: '#fdee34' }}></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000" style={{ backgroundColor: '#fdee34' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl animate-pulse" style={{ backgroundColor: '#fdee34' }}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl animate-pulse delay-1000" style={{ backgroundColor: '#fdee34' }}></div>
       </div>
 
       {/* Progress Header */}
@@ -76,16 +77,16 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
         transition={{ duration: 0.5 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-4">
-              <div className="text-sm font-medium" style={{ color: '#30302e' }}>
+          <div className="flex justify-between items-center h-16 sm:h-20">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <div className="text-xs sm:text-sm font-medium" style={{ color: '#30302e' }}>
                 Vraag {quizState.currentQuestionIndex + 1} van {quizQuestions.length}
               </div>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <button
-                onClick={() => window.history.back()}
-                className="bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl transition-all duration-300 hover:bg-white shadow-lg px-4 py-2"
+                onClick={() => onBack ? onBack() : window.history.back()}
+                className="bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl transition-all duration-300 hover:bg-white shadow-lg px-3 py-2 sm:px-4 text-xs sm:text-sm"
                 style={{ color: '#30302e' }}
               >
                 Terug
@@ -102,20 +103,20 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
         animate={{ opacity: 1, scaleX: 1 }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium" style={{ color: '#30302e' }}>Voortgang</span>
-            <span className="text-sm font-medium" style={{ color: '#30302e' }}>{Math.round(progress)}%</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <span className="text-xs sm:text-sm font-medium" style={{ color: '#30302e' }}>Voortgang</span>
+            <span className="text-xs sm:text-sm font-medium" style={{ color: '#30302e' }}>{Math.round(progress)}%</span>
           </div>
           <Progress 
             value={progress}
-            className="h-3 bg-black/10"
+            className="h-2 sm:h-3 bg-black/10"
           />
         </div>
       </motion.div>
 
       {/* Main Content */}
-      <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
         <motion.div
           key={quizState.currentQuestionIndex}
           initial={{ opacity: 0, y: 20 }}
@@ -134,7 +135,7 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
 
         {/* Navigation */}
         <motion.div 
-          className="flex justify-between items-center mt-12"
+          className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 mt-8 sm:mt-12"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -145,7 +146,7 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
                 ...quizState,
                 currentQuestionIndex: quizState.currentQuestionIndex - 1
               })}
-              className="flex items-center gap-2 px-6 py-3 bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl transition-all duration-300 hover:bg-white shadow-lg"
+              className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl transition-all duration-300 hover:bg-white shadow-lg text-sm sm:text-base"
               style={{ color: '#30302e' }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -157,7 +158,7 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
             <div></div>
           )}
           
-          <div className="text-sm font-medium" style={{ color: '#30302e' }}>
+          <div className="text-xs sm:text-sm font-medium text-center" style={{ color: '#30302e' }}>
             {isLastQuestion ? 'Laatste vraag!' : `${quizQuestions.length - quizState.currentQuestionIndex - 1} vragen over`}
           </div>
         </motion.div>

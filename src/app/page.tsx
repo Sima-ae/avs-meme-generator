@@ -44,6 +44,10 @@ export default function Home() {
     setUserName('');
   };
 
+  const handleBackToHome = () => {
+    resetQuiz();
+  };
+
   const handleStartClick = () => {
     if (userName.trim()) {
       startQuiz(userName);
@@ -58,39 +62,31 @@ export default function Home() {
         quizState={quizState}
         setQuizState={setQuizState}
         onComplete={completeQuiz}
+        onBack={handleBackToHome}
       />
     );
   }
 
   return (
-    <div style={{ backgroundColor: '#fdee34' }}>
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundColor: '#fdee34' }}></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse" style={{ backgroundColor: '#fdee34' }}></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000" style={{ backgroundColor: '#fdee34' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl animate-pulse delay-500" style={{ backgroundColor: '#fdee34' }}></div>
-        
-        {/* Background Image Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{ 
-            backgroundImage: 'url(/images/Achtergrond.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        ></div>
-      </div>
-
+    <div className="w-full" style={{ backgroundColor: '#fdee34' }}>
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+        style={{ 
+          backgroundImage: 'url(/images/Achtergrond.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      ></div>
 
       {/* Hero Section */}
-      <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-6 pt-16 pb-32">
+      <div className="relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-4">
           <div className="text-center">
             
 
             <motion.h1 
-              className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-tight"
+              className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -101,10 +97,8 @@ export default function Home() {
               Generator
             </motion.h1>
 
-            
-
             <motion.div 
-              className="flex flex-wrap justify-center gap-4 mb-8"
+              className="flex flex-wrap justify-center gap-4 mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -112,19 +106,16 @@ export default function Home() {
               <div className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg">
                 <span className="text-sm font-medium" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span>
               </div>
-              
             </motion.div>
             
-            
-            
             <motion.p 
-              className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               style={{ color: '#30302e' }}
             >
-              Beantwoord de vragen en maak een gepersonaliseerde meme over Schiedam.
+              Beantwoord de vragen en maak een persoonlijke meme over Schiedam.
             </motion.p>
 
             {!showNameInput ? (
@@ -148,71 +139,85 @@ export default function Home() {
               </motion.div>
             ) : (
               <motion.div 
-                className="max-w-lg mx-auto"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
+                className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
               >
-                <div className="bg-white/90 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-black/20">
-                  <h3 className="text-3xl font-bold mb-8 text-center" style={{ color: '#30302e' }}>Wat is je naam?</h3>
-                  <div className="space-y-6">
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="Typ je naam hier..."
-                        value={userName}
-                        onChange={(e) => setUserName(e.target.value)}
-                        className="w-full px-6 py-4 bg-white border border-black/20 rounded-2xl focus:outline-none focus:ring-4 focus:ring-black/20 focus:border-black text-lg font-medium transition-all duration-300"
-                        style={{ color: '#30302e' }}
-                        autoFocus
-                      />
-                    </div>
-                    <div className="flex gap-4">
-                      <motion.button
-                        onClick={() => setShowNameInput(false)}
-                        className="flex-1 bg-white border border-black/20 font-bold py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gray-50"
-                        style={{ color: '#30302e' }}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        Terug
-                      </motion.button>
-                      <motion.button
-                        onClick={handleStartClick}
-                        disabled={!userName.trim()}
-                        className="flex-1 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 disabled:cursor-not-allowed"
-                        style={{ backgroundColor: '#30302e' }}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        Start
-                      </motion.button>
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setShowNameInput(false)}></div>
+                <motion.div 
+                  className="relative w-full max-w-md mx-auto"
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="bg-white/95 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-black/20">
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center" style={{ color: '#30302e' }}>Wat is je naam?</h3>
+                    <div className="space-y-4 sm:space-y-6">
+                      <div>
+                        <input
+                          type="text"
+                          placeholder="Typ je naam hier..."
+                          value={userName}
+                          onChange={(e) => setUserName(e.target.value)}
+                          className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white border border-black/20 rounded-2xl focus:outline-none focus:ring-4 focus:ring-black/20 focus:border-black text-base sm:text-lg font-medium transition-all duration-300"
+                          style={{ color: '#30302e' }}
+                          autoFocus
+                        />
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <motion.button
+                          onClick={() => setShowNameInput(false)}
+                          className="flex-1 bg-white border border-black/20 font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 hover:bg-gray-50"
+                          style={{ color: '#30302e' }}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          Terug
+                        </motion.button>
+                        <motion.button
+                          onClick={handleStartClick}
+                          disabled={!userName.trim()}
+                          className="flex-1 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50"
+                          style={{ backgroundColor: '#30302e' }}
+                          whileHover={{ scale: userName.trim() ? 1.02 : 1 }}
+                          whileTap={{ scale: userName.trim() ? 0.98 : 1 }}
+                        >
+                          Start
+                        </motion.button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             )}
           </div>
         </div>
       </div>
 
+      <br />
+      <br />
+      <br />
+
       {/* TripleZero AI Button */}
-      <div className="flex justify-center items-end" style={{ backgroundColor: '#fdee34', height: '40px' }}>
+      <div className="flex justify-center items-center relative z-10">
         <motion.div 
-          className="flex flex-wrap justify-center gap-4 mb-16"
+          className="flex flex-wrap justify-center gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <a href="https://000-it.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg hover:scale-105 transition-all duration-300 m-0">
+          <a href="https://000-it.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg hover:scale-105 transition-all duration-300">
             <span className="text-sm font-medium" style={{ color: '#30302e' }}>⚡ Aangedreven door TripleZero AI</span>
           </a>
         </motion.div>
       </div>
 
+      <br />
+      <br />
+      <br />
       
-      
-     
+
 
       <MemeResultDialog
         isOpen={showMemeDialog}

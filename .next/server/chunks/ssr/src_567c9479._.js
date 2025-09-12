@@ -158,10 +158,10 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
         className: "bg-white/90 backdrop-blur-2xl border border-black/20 shadow-2xl",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
-                className: "text-center pb-8",
+                className: "text-center pb-6 sm:pb-8 px-4 sm:px-6",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
-                        className: "text-4xl font-black mb-6 leading-tight",
+                        className: "text-2xl sm:text-3xl lg:text-4xl font-black mb-4 sm:mb-6 leading-tight",
                         style: {
                             color: '#30302e'
                         },
@@ -172,7 +172,7 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
-                        className: "text-xl leading-relaxed",
+                        className: "text-base sm:text-lg lg:text-xl leading-relaxed",
                         style: {
                             color: '#30302e'
                         },
@@ -189,7 +189,7 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
-                className: "space-y-3",
+                className: "space-y-2 sm:space-y-3 px-4 sm:px-6",
                 children: answers.map((answer, index)=>{
                     const isSelected = selectedAnswer === answer.id;
                     const isDisabled = isTransitioning && !isSelected;
@@ -209,7 +209,7 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
                             onClick: ()=>onAnswerSelect(answer.id),
                             disabled: isDisabled,
-                            className: `w-full justify-between p-6 h-auto text-left rounded-2xl transition-all duration-300 ${isSelected ? 'text-white border-2 border-transparent shadow-2xl' : 'bg-white/90 backdrop-blur-xl border-2 border-black/20 hover:border-black/40 hover:bg-white'} ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`,
+                            className: `w-full justify-between p-4 sm:p-6 h-auto text-left rounded-2xl transition-all duration-300 ${isSelected ? 'text-white border-2 border-transparent shadow-2xl' : 'bg-white/90 backdrop-blur-xl border-2 border-black/20 hover:border-black/40 hover:bg-white'} ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`,
                             style: isSelected ? {
                                 backgroundColor: '#30302e'
                             } : {
@@ -223,7 +223,7 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
                             },
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-lg font-bold",
+                                    className: "text-base sm:text-lg font-bold",
                                     children: answer.answer_text
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/question-card.tsx",
@@ -241,7 +241,7 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
                                         duration: 0.2
                                     },
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__["Check"], {
-                                        className: "w-6 h-6"
+                                        className: "w-5 h-5 sm:w-6 sm:h-6"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/question-card.tsx",
                                         lineNumber: 71,
@@ -270,9 +270,9 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "px-6 pb-6",
+                className: "px-4 sm:px-6 pb-4 sm:pb-6",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    className: "text-sm text-center font-medium",
+                    className: "text-xs sm:text-sm text-center font-medium",
                     style: {
                         color: '#30302e'
                     },
@@ -412,7 +412,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$quizData$2e$t
 ;
 ;
 ;
-function QuizFlow({ quizState, setQuizState, onComplete }) {
+function QuizFlow({ quizState, setQuizState, onComplete, onBack }) {
     const [isTransitioning, setIsTransitioning] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [selectedAnswer, setSelectedAnswer] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const currentQuestion = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$quizData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["quizQuestions"][quizState.currentQuestionIndex];
@@ -451,7 +451,7 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
         }, 300);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen relative overflow-hidden",
+        className: "min-h-screen w-full relative overflow-hidden",
         style: {
             backgroundColor: '#fdee34'
         },
@@ -466,21 +466,11 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/components/quiz-flow.tsx",
-                        lineNumber: 66,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse",
-                        style: {
-                            backgroundColor: '#fdee34'
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/quiz-flow.tsx",
                         lineNumber: 67,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000",
+                        className: "absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl animate-pulse",
                         style: {
                             backgroundColor: '#fdee34'
                         }
@@ -488,11 +478,21 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                         fileName: "[project]/src/components/quiz-flow.tsx",
                         lineNumber: 68,
                         columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 rounded-full blur-3xl animate-pulse delay-1000",
+                        style: {
+                            backgroundColor: '#fdee34'
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/quiz-flow.tsx",
+                        lineNumber: 69,
+                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/quiz-flow.tsx",
-                lineNumber: 65,
+                lineNumber: 66,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -511,12 +511,12 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex justify-between items-center h-20",
+                        className: "flex justify-between items-center h-16 sm:h-20",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center space-x-4",
+                                className: "flex items-center space-x-2 sm:space-x-4",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "text-sm font-medium",
+                                    className: "text-xs sm:text-sm font-medium",
                                     style: {
                                         color: '#30302e'
                                     },
@@ -528,47 +528,47 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/quiz-flow.tsx",
-                                    lineNumber: 81,
+                                    lineNumber: 82,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/quiz-flow.tsx",
-                                lineNumber: 80,
+                                lineNumber: 81,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center space-x-4",
+                                className: "flex items-center space-x-2 sm:space-x-4",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: ()=>window.history.back(),
-                                    className: "bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl transition-all duration-300 hover:bg-white shadow-lg px-4 py-2",
+                                    onClick: ()=>onBack ? onBack() : window.history.back(),
+                                    className: "bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl transition-all duration-300 hover:bg-white shadow-lg px-3 py-2 sm:px-4 text-xs sm:text-sm",
                                     style: {
                                         color: '#30302e'
                                     },
                                     children: "Terug"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/quiz-flow.tsx",
-                                    lineNumber: 86,
+                                    lineNumber: 87,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/quiz-flow.tsx",
-                                lineNumber: 85,
+                                lineNumber: 86,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/quiz-flow.tsx",
-                        lineNumber: 79,
+                        lineNumber: 80,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/quiz-flow.tsx",
-                    lineNumber: 78,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/quiz-flow.tsx",
-                lineNumber: 72,
+                lineNumber: 73,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -586,24 +586,24 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                     delay: 0.1
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6",
+                    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center justify-between mb-3",
+                            className: "flex items-center justify-between mb-2 sm:mb-3",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-sm font-medium",
+                                    className: "text-xs sm:text-sm font-medium",
                                     style: {
                                         color: '#30302e'
                                     },
                                     children: "Voortgang"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/quiz-flow.tsx",
-                                    lineNumber: 107,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-sm font-medium",
+                                    className: "text-xs sm:text-sm font-medium",
                                     style: {
                                         color: '#30302e'
                                     },
@@ -613,36 +613,36 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/quiz-flow.tsx",
-                                    lineNumber: 108,
+                                    lineNumber: 109,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/quiz-flow.tsx",
-                            lineNumber: 106,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$progress$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Progress"], {
                             value: progress,
-                            className: "h-3 bg-black/10"
+                            className: "h-2 sm:h-3 bg-black/10"
                         }, void 0, false, {
                             fileName: "[project]/src/components/quiz-flow.tsx",
-                            lineNumber: 110,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/quiz-flow.tsx",
-                    lineNumber: 105,
+                    lineNumber: 106,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/quiz-flow.tsx",
-                lineNumber: 99,
+                lineNumber: 100,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-                className: "relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16",
+                className: "relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
                         initial: {
@@ -668,16 +668,16 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                             isTransitioning: isTransitioning
                         }, void 0, false, {
                             fileName: "[project]/src/components/quiz-flow.tsx",
-                            lineNumber: 126,
+                            lineNumber: 127,
                             columnNumber: 11
                         }, this)
                     }, quizState.currentQuestionIndex, false, {
                         fileName: "[project]/src/components/quiz-flow.tsx",
-                        lineNumber: 119,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
-                        className: "flex justify-between items-center mt-12",
+                        className: "flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 mt-8 sm:mt-12",
                         initial: {
                             opacity: 0,
                             y: 10
@@ -696,7 +696,7 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                                         ...quizState,
                                         currentQuestionIndex: quizState.currentQuestionIndex - 1
                                     }),
-                                className: "flex items-center gap-2 px-6 py-3 bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl transition-all duration-300 hover:bg-white shadow-lg",
+                                className: "flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl transition-all duration-300 hover:bg-white shadow-lg text-sm sm:text-base",
                                 style: {
                                     color: '#30302e'
                                 },
@@ -711,47 +711,47 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/quiz-flow.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 154,
                                         columnNumber: 15
                                     }, this),
                                     "Vorige"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/quiz-flow.tsx",
-                                lineNumber: 143,
+                                lineNumber: 144,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {}, void 0, false, {
                                 fileName: "[project]/src/components/quiz-flow.tsx",
-                                lineNumber: 157,
+                                lineNumber: 158,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "text-sm font-medium",
+                                className: "text-xs sm:text-sm font-medium text-center",
                                 style: {
                                     color: '#30302e'
                                 },
                                 children: isLastQuestion ? 'Laatste vraag!' : `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$quizData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["quizQuestions"].length - quizState.currentQuestionIndex - 1} vragen over`
                             }, void 0, false, {
                                 fileName: "[project]/src/components/quiz-flow.tsx",
-                                lineNumber: 160,
+                                lineNumber: 161,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/quiz-flow.tsx",
-                        lineNumber: 136,
+                        lineNumber: 137,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/quiz-flow.tsx",
-                lineNumber: 118,
+                lineNumber: 119,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/quiz-flow.tsx",
-        lineNumber: 63,
+        lineNumber: 64,
         columnNumber: 5
     }, this);
 }
@@ -1165,19 +1165,20 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
         open: isOpen,
         onOpenChange: onClose,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogContent"], {
-            className: "max-w-4xl bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl",
+            className: "max-w-4xl w-full mx-4 sm:mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogHeader"], {
+                    className: "px-4 sm:px-6",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-center gap-4",
+                        className: "flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "w-16 h-16 rounded-3xl flex items-center justify-center shadow-2xl",
+                                className: "w-12 h-12 sm:w-16 sm:h-16 rounded-3xl flex items-center justify-center shadow-2xl",
                                 style: {
                                     backgroundColor: '#30302e'
                                 },
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
-                                    className: "w-8 h-8 text-white"
+                                    className: "w-6 h-6 sm:w-8 sm:h-8 text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
                                     lineNumber: 83,
@@ -1191,7 +1192,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogDescription"], {
-                                        className: "text-xl",
+                                        className: "text-lg sm:text-xl",
                                         style: {
                                             color: '#30302e'
                                         },
@@ -1203,10 +1204,10 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/meme-result-dialog.tsx",
                                         lineNumber: 86,
-                                        columnNumber: 13
+                                        columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogTitle"], {
-                                        className: "text-4xl font-black",
+                                        className: "text-2xl sm:text-3xl lg:text-4xl font-black",
                                         style: {
                                             color: '#30302e'
                                         },
@@ -1234,7 +1235,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
-                    className: "flex justify-center my-8",
+                    className: "flex justify-center my-6 sm:my-8 px-4",
                     initial: {
                         opacity: 0,
                         scale: 0.9
@@ -1248,28 +1249,28 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                     },
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$meme$2d$canvas$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MemeCanvas"], {
                         quizState: quizState,
-                        className: "shadow-2xl border-4 border-black/20 rounded-3xl",
+                        className: "shadow-2xl border-2 sm:border-4 border-black/20 rounded-2xl sm:rounded-3xl max-w-full",
                         id: "meme-canvas"
                     }, void 0, false, {
                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                        lineNumber: 104,
+                        lineNumber: 103,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 98,
+                    lineNumber: 97,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "space-y-6",
+                    className: "space-y-4 sm:space-y-6 px-4 sm:px-6",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid grid-cols-1 md:grid-cols-2 gap-4",
+                            className: "grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
                                     onClick: handleDownload,
                                     disabled: isGenerating,
-                                    className: "text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-2xl disabled:cursor-not-allowed",
+                                    className: "text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-2xl disabled:cursor-not-allowed text-sm sm:text-base",
                                     style: {
                                         backgroundColor: '#30302e'
                                     },
@@ -1281,22 +1282,22 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     },
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__["Download"], {
-                                            className: "w-5 h-5 mr-2"
+                                            className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 122,
+                                            lineNumber: 121,
                                             columnNumber: 15
                                         }, this),
                                         isGenerating ? 'Genereren...' : 'Download'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 114,
+                                    lineNumber: 113,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
                                     onClick: handleShare,
-                                    className: "bg-white/90 backdrop-blur-xl border border-black/20 font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg",
+                                    className: "bg-white/90 backdrop-blur-xl border border-black/20 font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg text-sm sm:text-base",
                                     style: {
                                         color: '#30302e'
                                     },
@@ -1308,34 +1309,34 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     },
                                     children: [
                                         copied ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__["Check"], {
-                                            className: "w-5 h-5 mr-2"
+                                            className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 133,
+                                            lineNumber: 132,
                                             columnNumber: 25
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$share$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Share2$3e$__["Share2"], {
-                                            className: "w-5 h-5 mr-2"
+                                            className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 133,
-                                            columnNumber: 62
+                                            lineNumber: 132,
+                                            columnNumber: 76
                                         }, this),
                                         copied ? 'Gekopieerd!' : 'Delen op Social Media'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 126,
+                                    lineNumber: 125,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                            lineNumber: 113,
+                            lineNumber: 112,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
                             onClick: onReset,
-                            className: "w-full bg-white/90 backdrop-blur-xl border border-black/20 font-medium py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg",
+                            className: "w-full bg-white/90 backdrop-blur-xl border border-black/20 font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg text-sm sm:text-base",
                             style: {
                                 color: '#30302e'
                             },
@@ -1347,43 +1348,43 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                             },
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$rotate$2d$ccw$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__RotateCcw$3e$__["RotateCcw"], {
-                                    className: "w-5 h-5 mr-2"
+                                    className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 145,
+                                    lineNumber: 144,
                                     columnNumber: 13
                                 }, this),
                                 "Nieuwe Quiz Maken"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                            lineNumber: 138,
+                            lineNumber: 137,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 112,
+                    lineNumber: 111,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
-                    className: "bg-white/90 backdrop-blur-xl border border-black/20 mt-8 shadow-lg",
+                    className: "bg-white/90 backdrop-blur-xl border border-black/20 mt-6 sm:mt-8 shadow-lg mx-4 sm:mx-6",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
-                        className: "p-6",
+                        className: "p-4 sm:p-6",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                className: "font-bold mb-3 text-xl",
+                                className: "font-bold mb-3 text-lg sm:text-xl",
                                 style: {
                                     color: '#30302e'
                                 },
                                 children: "Deel jouw visie!"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 153,
+                                lineNumber: 152,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "mb-4 text-lg",
+                                className: "mb-4 text-base sm:text-lg",
                                 style: {
                                     color: '#30302e'
                                 },
@@ -1398,40 +1399,40 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             children: "#AllesVoorSchiedam"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 155,
+                                            lineNumber: 154,
                                             columnNumber: 26
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 155,
+                                    lineNumber: 154,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 154,
+                                lineNumber: 153,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-sm",
+                                className: "text-xs sm:text-sm",
                                 style: {
                                     color: '#30302e'
                                 },
                                 children: "💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok of X"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 157,
+                                lineNumber: 156,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                        lineNumber: 152,
+                        lineNumber: 151,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 151,
+                    lineNumber: 150,
                     columnNumber: 9
                 }, this)
             ]
@@ -1502,6 +1503,9 @@ function Home() {
         setShowNameInput(false);
         setUserName('');
     };
+    const handleBackToHome = ()=>{
+        resetQuiz();
+    };
     const handleStartClick = ()=>{
         if (userName.trim()) {
             startQuiz(userName);
@@ -1513,88 +1517,41 @@ function Home() {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$quiz$2d$flow$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["QuizFlow"], {
             quizState: quizState,
             setQuizState: setQuizState,
-            onComplete: completeQuiz
+            onComplete: completeQuiz,
+            onBack: handleBackToHome
         }, void 0, false, {
             fileName: "[project]/src/app/page.tsx",
-            lineNumber: 57,
+            lineNumber: 61,
             columnNumber: 7
         }, this);
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "w-full",
         style: {
             backgroundColor: '#fdee34'
         },
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute inset-0",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute top-0 left-0 w-full h-full",
-                        style: {
-                            backgroundColor: '#fdee34'
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 69,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse",
-                        style: {
-                            backgroundColor: '#fdee34'
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 70,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000",
-                        style: {
-                            backgroundColor: '#fdee34'
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 71,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl animate-pulse delay-500",
-                        style: {
-                            backgroundColor: '#fdee34'
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 72,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30",
-                        style: {
-                            backgroundImage: 'url(/images/Achtergrond.png)',
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center'
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 75,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
+                className: "absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30",
+                style: {
+                    backgroundImage: 'url(/images/Achtergrond.png)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                }
+            }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 68,
+                lineNumber: 73,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "relative z-10",
+                className: "relative z-10 w-full",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-7xl mx-auto px-6 pt-16 pb-32",
+                    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-4",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-center",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].h1, {
-                                className: "text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-tight",
+                                className: "text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-tight",
                                 initial: {
                                     opacity: 0,
                                     y: 30
@@ -1614,18 +1571,18 @@ function Home() {
                                     "Meme",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 100,
+                                        lineNumber: 96,
                                         columnNumber: 15
                                     }, this),
                                     "Generator"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 88,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
-                                className: "flex flex-wrap justify-center gap-4 mb-8",
+                                className: "flex flex-wrap justify-center gap-4 mb-6",
                                 initial: {
                                     opacity: 0
                                 },
@@ -1646,21 +1603,21 @@ function Home() {
                                         children: "#AllesVoorSchiedam"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 113,
+                                        lineNumber: 107,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
-                                    lineNumber: 112,
+                                    lineNumber: 106,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 106,
+                                lineNumber: 100,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].p, {
-                                className: "text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed",
+                                className: "text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed",
                                 initial: {
                                     opacity: 0,
                                     y: 20
@@ -1676,10 +1633,10 @@ function Home() {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "Beantwoord de vragen en maak een gepersonaliseerde meme over Schiedam."
+                                children: "Beantwoord de vragen en maak een persoonlijke meme over Schiedam."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 120,
+                                lineNumber: 111,
                                 columnNumber: 13
                             }, this),
                             !showNameInput ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1713,156 +1670,195 @@ function Home() {
                                         children: "Start nu"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 144,
+                                        lineNumber: 135,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
-                                    lineNumber: 137,
+                                    lineNumber: 128,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 131,
+                                lineNumber: 122,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
-                                className: "max-w-lg mx-auto",
+                                className: "fixed inset-0 z-50 flex items-center justify-center p-4",
                                 initial: {
-                                    opacity: 0,
-                                    scale: 0.9
+                                    opacity: 0
                                 },
                                 animate: {
-                                    opacity: 1,
-                                    scale: 1
+                                    opacity: 1
                                 },
                                 transition: {
-                                    duration: 0.5
+                                    duration: 0.3
                                 },
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-white/90 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-black/20",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "text-3xl font-bold mb-8 text-center",
-                                            style: {
-                                                color: '#30302e'
-                                            },
-                                            children: "Wat is je naam?"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/page.tsx",
-                                            lineNumber: 157,
-                                            columnNumber: 19
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "space-y-6",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute inset-0 bg-black/20 backdrop-blur-sm",
+                                        onClick: ()=>setShowNameInput(false)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/page.tsx",
+                                        lineNumber: 147,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        className: "relative w-full max-w-md mx-auto",
+                                        initial: {
+                                            opacity: 0,
+                                            scale: 0.9,
+                                            y: 20
+                                        },
+                                        animate: {
+                                            opacity: 1,
+                                            scale: 1,
+                                            y: 0
+                                        },
+                                        transition: {
+                                            duration: 0.3
+                                        },
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "bg-white/95 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-black/20",
                                             children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "text",
-                                                        placeholder: "Typ je naam hier...",
-                                                        value: userName,
-                                                        onChange: (e)=>setUserName(e.target.value),
-                                                        className: "w-full px-6 py-4 bg-white border border-black/20 rounded-2xl focus:outline-none focus:ring-4 focus:ring-black/20 focus:border-black text-lg font-medium transition-all duration-300",
-                                                        style: {
-                                                            color: '#30302e'
-                                                        },
-                                                        autoFocus: true
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/page.tsx",
-                                                        lineNumber: 160,
-                                                        columnNumber: 23
-                                                    }, this)
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                    className: "text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center",
+                                                    style: {
+                                                        color: '#30302e'
+                                                    },
+                                                    children: "Wat is je naam?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.tsx",
-                                                    lineNumber: 159,
+                                                    lineNumber: 155,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex gap-4",
+                                                    className: "space-y-4 sm:space-y-6",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
-                                                            onClick: ()=>setShowNameInput(false),
-                                                            className: "flex-1 bg-white border border-black/20 font-bold py-4 px-6 rounded-2xl transition-all duration-300 hover:bg-gray-50",
-                                                            style: {
-                                                                color: '#30302e'
-                                                            },
-                                                            whileHover: {
-                                                                scale: 1.02
-                                                            },
-                                                            whileTap: {
-                                                                scale: 0.98
-                                                            },
-                                                            children: "Terug"
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                type: "text",
+                                                                placeholder: "Typ je naam hier...",
+                                                                value: userName,
+                                                                onChange: (e)=>setUserName(e.target.value),
+                                                                className: "w-full px-4 sm:px-6 py-3 sm:py-4 bg-white border border-black/20 rounded-2xl focus:outline-none focus:ring-4 focus:ring-black/20 focus:border-black text-base sm:text-lg font-medium transition-all duration-300",
+                                                                style: {
+                                                                    color: '#30302e'
+                                                                },
+                                                                autoFocus: true
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/app/page.tsx",
+                                                                lineNumber: 158,
+                                                                columnNumber: 25
+                                                            }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.tsx",
-                                                            lineNumber: 171,
+                                                            lineNumber: 157,
                                                             columnNumber: 23
                                                         }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
-                                                            onClick: handleStartClick,
-                                                            disabled: !userName.trim(),
-                                                            className: "flex-1 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 disabled:cursor-not-allowed",
-                                                            style: {
-                                                                backgroundColor: '#30302e'
-                                                            },
-                                                            whileHover: {
-                                                                scale: 1.02
-                                                            },
-                                                            whileTap: {
-                                                                scale: 0.98
-                                                            },
-                                                            children: "Begin Quiz"
-                                                        }, void 0, false, {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "flex flex-col sm:flex-row gap-3 sm:gap-4",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
+                                                                    onClick: ()=>setShowNameInput(false),
+                                                                    className: "flex-1 bg-white border border-black/20 font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 hover:bg-gray-50",
+                                                                    style: {
+                                                                        color: '#30302e'
+                                                                    },
+                                                                    whileHover: {
+                                                                        scale: 1.02
+                                                                    },
+                                                                    whileTap: {
+                                                                        scale: 0.98
+                                                                    },
+                                                                    children: "Terug"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/app/page.tsx",
+                                                                    lineNumber: 169,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
+                                                                    onClick: handleStartClick,
+                                                                    disabled: !userName.trim(),
+                                                                    className: "flex-1 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50",
+                                                                    style: {
+                                                                        backgroundColor: '#30302e'
+                                                                    },
+                                                                    whileHover: {
+                                                                        scale: userName.trim() ? 1.02 : 1
+                                                                    },
+                                                                    whileTap: {
+                                                                        scale: userName.trim() ? 0.98 : 1
+                                                                    },
+                                                                    children: "Start"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/app/page.tsx",
+                                                                    lineNumber: 178,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
                                                             fileName: "[project]/src/app/page.tsx",
-                                                            lineNumber: 180,
+                                                            lineNumber: 168,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/page.tsx",
-                                                    lineNumber: 170,
+                                                    lineNumber: 156,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/page.tsx",
-                                            lineNumber: 158,
+                                            lineNumber: 154,
                                             columnNumber: 19
                                         }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/app/page.tsx",
-                                    lineNumber: 156,
-                                    columnNumber: 17
-                                }, this)
-                            }, void 0, false, {
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/page.tsx",
+                                        lineNumber: 148,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 150,
+                                lineNumber: 141,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 89,
+                        lineNumber: 85,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 88,
+                    lineNumber: 84,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 87,
+                lineNumber: 83,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 198,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 199,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 200,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex justify-center items-end",
-                style: {
-                    backgroundColor: '#fdee34',
-                    height: '40px'
-                },
+                className: "flex justify-center items-center relative z-10",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
-                    className: "flex flex-wrap justify-center gap-4 mb-16",
+                    className: "flex flex-wrap justify-center gap-4",
                     initial: {
                         opacity: 0
                     },
@@ -1877,7 +1873,7 @@ function Home() {
                         href: "https://000-it.com",
                         target: "_blank",
                         rel: "noopener noreferrer",
-                        className: "flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg hover:scale-105 transition-all duration-300 m-0",
+                        className: "flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg hover:scale-105 transition-all duration-300",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             className: "text-sm font-medium",
                             style: {
@@ -1886,22 +1882,37 @@ function Home() {
                             children: "⚡ Aangedreven door TripleZero AI"
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.tsx",
-                            lineNumber: 208,
+                            lineNumber: 211,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 207,
+                        lineNumber: 210,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/page.tsx",
-                    lineNumber: 201,
+                    lineNumber: 204,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 200,
+                lineNumber: 203,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 216,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 217,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 218,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$meme$2d$result$2d$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MemeResultDialog"], {
@@ -1911,13 +1922,13 @@ function Home() {
                 onReset: resetQuiz
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 217,
+                lineNumber: 222,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/page.tsx",
-        lineNumber: 66,
+        lineNumber: 71,
         columnNumber: 5
     }, this);
 }

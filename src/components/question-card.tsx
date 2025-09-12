@@ -23,16 +23,16 @@ export function QuestionCard({
 }: QuestionCardProps) {
   return (
     <Card className="bg-white/90 backdrop-blur-2xl border border-black/20 shadow-2xl">
-      <CardHeader className="text-center pb-8">
-        <CardTitle className="text-4xl font-black mb-6 leading-tight" style={{ color: '#30302e' }}>
+      <CardHeader className="text-center pb-6 sm:pb-8 px-4 sm:px-6">
+        <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 sm:mb-6 leading-tight" style={{ color: '#30302e' }}>
           {question.question_text}
         </CardTitle>
-        <CardDescription className="text-xl leading-relaxed" style={{ color: '#30302e' }}>
+        <CardDescription className="text-base sm:text-lg lg:text-xl leading-relaxed" style={{ color: '#30302e' }}>
           Kies een antwoord dat het beste past bij jouw visie voor Schiedam
         </CardDescription>
       </CardHeader>
       
-      <CardContent className="space-y-3">
+      <CardContent className="space-y-2 sm:space-y-3 px-4 sm:px-6">
         {answers.map((answer, index) => {
           const isSelected = selectedAnswer === answer.id;
           const isDisabled = isTransitioning && !isSelected;
@@ -47,7 +47,7 @@ export function QuestionCard({
               <motion.button
                 onClick={() => onAnswerSelect(answer.id)}
                 disabled={isDisabled}
-                className={`w-full justify-between p-6 h-auto text-left rounded-2xl transition-all duration-300 ${
+                className={`w-full justify-between p-4 sm:p-6 h-auto text-left rounded-2xl transition-all duration-300 ${
                   isSelected
                     ? 'text-white border-2 border-transparent shadow-2xl'
                     : 'bg-white/90 backdrop-blur-xl border-2 border-black/20 hover:border-black/40 hover:bg-white'
@@ -58,7 +58,7 @@ export function QuestionCard({
                 whileHover={{ scale: isDisabled ? 1 : 1.02 }}
                 whileTap={{ scale: isDisabled ? 1 : 0.98 }}
               >
-                <span className="text-lg font-bold">
+                <span className="text-base sm:text-lg font-bold">
                   {answer.answer_text}
                 </span>
                 
@@ -68,7 +68,7 @@ export function QuestionCard({
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Check className="w-6 h-6" />
+                    <Check className="w-5 h-5 sm:w-6 sm:h-6" />
                   </motion.div>
                 )}
               </motion.button>
@@ -77,8 +77,8 @@ export function QuestionCard({
         })}
       </CardContent>
       
-      <div className="px-6 pb-6">
-        <p className="text-sm text-center font-medium" style={{ color: '#30302e' }}>
+      <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+        <p className="text-xs sm:text-sm text-center font-medium" style={{ color: '#30302e' }}>
           Jouw antwoorden worden gebruikt om een gepersonaliseerde meme te maken
         </p>
       </div>
