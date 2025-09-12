@@ -76,7 +76,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-full mx-4 sm:mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl">
+      <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] mx-2 sm:mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl overflow-y-auto">
         <DialogHeader className="px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-3xl flex items-center justify-center shadow-2xl" style={{ backgroundColor: '#30302e' }}>
@@ -95,21 +95,23 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
         {/* Meme Preview */}
         <motion.div 
-          className="flex justify-center my-6 sm:my-8 px-4"
+          className="flex justify-center my-4 sm:my-6 px-2 sm:px-4"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <MemeCanvas 
-            quizState={quizState} 
-            className="shadow-2xl border-2 sm:border-4 border-black/20 rounded-2xl sm:rounded-3xl max-w-full"
-            id="meme-canvas"
-          />
+          <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
+            <MemeCanvas 
+              quizState={quizState} 
+              className="shadow-2xl border-2 sm:border-4 border-black/20 rounded-2xl sm:rounded-3xl w-full h-auto"
+              id="meme-canvas"
+            />
+          </div>
         </motion.div>
 
         {/* Action Buttons */}
-        <div className="space-y-4 sm:space-y-6 px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div className="space-y-3 sm:space-y-4 px-2 sm:px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
             <motion.button
               onClick={handleDownload}
               disabled={isGenerating}
@@ -147,8 +149,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         </div>
 
         {/* Social Media Instructions */}
-        <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-6 sm:mt-8 shadow-lg mx-4 sm:mx-6">
-          <CardContent className="p-4 sm:p-6">
+        <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-4 sm:mt-6 shadow-lg mx-2 sm:mx-4">
+          <CardContent className="p-3 sm:p-4">
             <h3 className="font-bold mb-3 text-lg sm:text-xl" style={{ color: '#30302e' }}>Deel jouw visie!</h3>
             <p className="mb-4 text-base sm:text-lg" style={{ color: '#30302e' }}>
               <i>Gebruik <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span></i>
