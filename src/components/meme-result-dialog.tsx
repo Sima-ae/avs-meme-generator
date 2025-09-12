@@ -60,12 +60,12 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       
       if (navigator.share && navigator.canShare({ files: [file] })) {
         await navigator.share({
-          title: 'My AllesVoorSchiedam Meme',
-          text: 'Check out my personalized meme! #AllesVoorSchiedam',
+          title: 'Mijn AllesVoorSchiedam Meme',
+          text: 'Bekijk mijn gepersonaliseerde meme! #AllesVoorSchiedam',
           files: [file]
         });
       } else {
-        await navigator.clipboard.writeText('Check out my personalized meme! #AllesVoorSchiedam');
+        await navigator.clipboard.writeText('Bekijk mijn gepersonaliseerde meme! #AllesVoorSchiedam');
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }
@@ -84,10 +84,10 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
             </div>
             <div>
               <DialogTitle className="text-4xl font-black" style={{ color: '#30302e' }}>
-                Your Meme is Ready!
+                Jouw Meme is Klaar!
               </DialogTitle>
               <DialogDescription className="text-xl" style={{ color: '#30302e' }}>
-                Congratulations, {quizState.userName}!
+                Gefeliciteerd, {quizState.userName}!
               </DialogDescription>
             </div>
           </div>
@@ -119,7 +119,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               whileTap={{ scale: isGenerating ? 1 : 0.98 }}
             >
               <Download className="w-5 h-5 mr-2" />
-              {isGenerating ? 'Generating...' : 'Download PNG'}
+              {isGenerating ? 'Genereren...' : 'Download PNG'}
             </motion.button>
             
             <motion.button
@@ -130,7 +130,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               whileTap={{ scale: 0.98 }}
             >
               {copied ? <Check className="w-5 h-5 mr-2" /> : <Share2 className="w-5 h-5 mr-2" />}
-              {copied ? 'Copied!' : 'Share on Social Media'}
+              {copied ? 'Gekopieerd!' : 'Deel op Sociale Media'}
             </motion.button>
           </div>
 
@@ -142,20 +142,20 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
             whileTap={{ scale: 0.98 }}
           >
             <RotateCcw className="w-5 h-5 mr-2" />
-            Create New Quiz
+            Nieuwe Quiz Maken
           </motion.button>
         </div>
 
         {/* Social Media Instructions */}
         <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-8 shadow-lg">
           <CardContent className="p-6">
-            <h3 className="font-bold mb-3 text-xl" style={{ color: '#30302e' }}>Share your vision!</h3>
+            <h3 className="font-bold mb-3 text-xl" style={{ color: '#30302e' }}>Deel jouw visie!</h3>
             <p className="mb-4 text-lg" style={{ color: '#30302e' }}>
-              Use the hashtag <span className="font-mono text-white px-3 py-1 rounded-lg font-bold" style={{ backgroundColor: '#30302e' }}>#AllesVoorSchiedam</span> 
-              and tag @AllesVoorSchiedam for more reach!
+              Gebruik de hashtag <span className="font-mono text-white px-3 py-1 rounded-lg font-bold" style={{ backgroundColor: '#30302e' }}>#AllesVoorSchiedam</span> 
+              en tag @AllesVoorSchiedam voor meer bereik!
             </p>
             <p className="text-sm" style={{ color: '#30302e' }}>
-              💡 Tip: Share on Instagram, Twitter, Facebook or LinkedIn
+              💡 Tip: Deel op Instagram, Twitter, Facebook of LinkedIn
             </p>
           </CardContent>
         </Card>

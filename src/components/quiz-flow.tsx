@@ -79,7 +79,7 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-4">
               <div className="text-sm font-medium" style={{ color: '#30302e' }}>
-                Question {quizState.currentQuestionIndex + 1} of {quizQuestions.length}
+                Vraag {quizState.currentQuestionIndex + 1} van {quizQuestions.length}
               </div>
             </div>
             <div className="flex items-center space-x-4">
@@ -104,7 +104,7 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium" style={{ color: '#30302e' }}>Progress</span>
+            <span className="text-sm font-medium" style={{ color: '#30302e' }}>Voortgang</span>
             <span className="text-sm font-medium" style={{ color: '#30302e' }}>{Math.round(progress)}%</span>
           </div>
           <Progress 
@@ -151,14 +151,14 @@ export function QuizFlow({ quizState, setQuizState, onComplete }: QuizFlowProps)
               whileTap={{ scale: 0.98 }}
             >
               <ArrowLeft className="w-4 h-4" />
-              Previous
+              Vorige
             </motion.button>
           ) : (
             <div></div>
           )}
           
           <div className="text-sm font-medium" style={{ color: '#30302e' }}>
-            {isLastQuestion ? 'Last question!' : `${quizQuestions.length - quizState.currentQuestionIndex - 1} questions remaining`}
+            {isLastQuestion ? 'Laatste vraag!' : `${quizQuestions.length - quizState.currentQuestionIndex - 1} vragen over`}
           </div>
         </motion.div>
       </main>

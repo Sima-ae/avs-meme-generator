@@ -183,7 +183,7 @@ export default function Home() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        Start Quiz
+                        Begin Quiz
                       </motion.button>
                     </div>
                   </div>
@@ -223,7 +223,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg">
-                <span className="text-sm font-medium" style={{ color: '#30302e' }}>✨ Powered by TripleZero AI</span>
+                <span className="text-sm font-medium" style={{ color: '#30302e' }}>✨ Aangedreven door TripleZero AI</span>
               </div>
               
             </motion.div>

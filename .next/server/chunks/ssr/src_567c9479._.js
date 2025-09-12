@@ -176,7 +176,7 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
                         style: {
                             color: '#30302e'
                         },
-                        children: "Choose the answer that best fits your vision for Schiedam"
+                        children: "Kies het antwoord dat het beste past bij jouw visie voor Schiedam"
                     }, void 0, false, {
                         fileName: "[project]/src/components/question-card.tsx",
                         lineNumber: 30,
@@ -276,7 +276,7 @@ function QuestionCard({ question, answers, onAnswerSelect, selectedAnswer, isTra
                     style: {
                         color: '#30302e'
                     },
-                    children: "Your answer will be used to generate a personalized meme"
+                    children: "Jouw antwoord wordt gebruikt om een gepersonaliseerde meme te maken"
                 }, void 0, false, {
                     fileName: "[project]/src/components/question-card.tsx",
                     lineNumber: 81,
@@ -521,9 +521,9 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                                         color: '#30302e'
                                     },
                                     children: [
-                                        "Question ",
+                                        "Vraag ",
                                         quizState.currentQuestionIndex + 1,
-                                        " of ",
+                                        " van ",
                                         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$quizData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["quizQuestions"].length
                                     ]
                                 }, void 0, true, {
@@ -596,7 +596,7 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                                     style: {
                                         color: '#30302e'
                                     },
-                                    children: "Progress"
+                                    children: "Voortgang"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/quiz-flow.tsx",
                                     lineNumber: 107,
@@ -714,7 +714,7 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                                         lineNumber: 153,
                                         columnNumber: 15
                                     }, this),
-                                    "Previous"
+                                    "Vorige"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/quiz-flow.tsx",
@@ -730,7 +730,7 @@ function QuizFlow({ quizState, setQuizState, onComplete }) {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: isLastQuestion ? 'Last question!' : `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$quizData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["quizQuestions"].length - quizState.currentQuestionIndex - 1} questions remaining`
+                                children: isLastQuestion ? 'Laatste vraag!' : `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$quizData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["quizQuestions"].length - quizState.currentQuestionIndex - 1} vragen over`
                             }, void 0, false, {
                                 fileName: "[project]/src/components/quiz-flow.tsx",
                                 lineNumber: 160,
@@ -1146,14 +1146,14 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                 ]
             })) {
                 await navigator.share({
-                    title: 'My AllesVoorSchiedam Meme',
-                    text: 'Check out my personalized meme! #AllesVoorSchiedam',
+                    title: 'Mijn AllesVoorSchiedam Meme',
+                    text: 'Bekijk mijn gepersonaliseerde meme! #AllesVoorSchiedam',
                     files: [
                         file
                     ]
                 });
             } else {
-                await navigator.clipboard.writeText('Check out my personalized meme! #AllesVoorSchiedam');
+                await navigator.clipboard.writeText('Bekijk mijn gepersonaliseerde meme! #AllesVoorSchiedam');
                 setCopied(true);
                 setTimeout(()=>setCopied(false), 2000);
             }
@@ -1195,7 +1195,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                         style: {
                                             color: '#30302e'
                                         },
-                                        children: "Your Meme is Ready!"
+                                        children: "Jouw Meme is Klaar!"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/meme-result-dialog.tsx",
                                         lineNumber: 86,
@@ -1207,7 +1207,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             color: '#30302e'
                                         },
                                         children: [
-                                            "Congratulations, ",
+                                            "Gefeliciteerd, ",
                                             quizState.userName,
                                             "!"
                                         ]
@@ -1287,7 +1287,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             lineNumber: 121,
                                             columnNumber: 15
                                         }, this),
-                                        isGenerating ? 'Generating...' : 'Download PNG'
+                                        isGenerating ? 'Genereren...' : 'Download PNG'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
@@ -1320,7 +1320,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             lineNumber: 132,
                                             columnNumber: 62
                                         }, this),
-                                        copied ? 'Copied!' : 'Share on Social Media'
+                                        copied ? 'Gekopieerd!' : 'Deel op Sociale Media'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
@@ -1353,7 +1353,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     lineNumber: 144,
                                     columnNumber: 13
                                 }, this),
-                                "Create New Quiz"
+                                "Nieuwe Quiz Maken"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
@@ -1376,7 +1376,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "Share your vision!"
+                                children: "Deel jouw visie!"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
                                 lineNumber: 152,
@@ -1388,7 +1388,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     color: '#30302e'
                                 },
                                 children: [
-                                    "Use the hashtag ",
+                                    "Gebruik de hashtag ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "font-mono text-white px-3 py-1 rounded-lg font-bold",
                                         style: {
@@ -1398,9 +1398,9 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/meme-result-dialog.tsx",
                                         lineNumber: 154,
-                                        columnNumber: 31
+                                        columnNumber: 34
                                     }, this),
-                                    "and tag @AllesVoorSchiedam for more reach!"
+                                    "en tag @AllesVoorSchiedam voor meer bereik!"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
@@ -1412,7 +1412,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                 style: {
                                     color: '#30302e'
                                 },
-                                children: "💡 Tip: Share on Instagram, Twitter, Facebook or LinkedIn"
+                                children: "💡 Tip: Deel op Instagram, Twitter, Facebook of LinkedIn"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
                                 lineNumber: 157,
@@ -1817,7 +1817,7 @@ function Home() {
                                                             whileTap: {
                                                                 scale: 0.98
                                                             },
-                                                            children: "Start Quiz"
+                                                            children: "Begin Quiz"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.tsx",
                                                             lineNumber: 178,
@@ -1953,7 +1953,7 @@ function Home() {
                                         style: {
                                             color: '#30302e'
                                         },
-                                        children: "✨ Powered by TripleZero AI"
+                                        children: "✨ Aangedreven door TripleZero AI"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
                                         lineNumber: 226,

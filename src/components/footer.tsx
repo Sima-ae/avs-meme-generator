@@ -27,24 +27,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-black/10">
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-xl font-bold mb-2" style={{ color: '#30302e' }}>Persoonlijk</h3>
-              <p className="text-lg" style={{ color: '#30302e' }}>Met jouw naam en antwoorden</p>
-            </div>
-            <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-black/10">
-              <div className="text-4xl mb-4">⚡</div>
-              <h3 className="text-xl font-bold mb-2" style={{ color: '#30302e' }}>Snel</h3>
-              <p className="text-lg" style={{ color: '#30302e' }}>In minder dan 2 minuten klaar</p>
-            </div>
-            <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-black/10">
-              <div className="text-4xl mb-4">📱</div>
-              <h3 className="text-xl font-bold mb-2" style={{ color: '#30302e' }}>Deelbaar</h3>
-              <p className="text-lg" style={{ color: '#30302e' }}>Perfect voor sociale media</p>
-            </div>
-          </div>
+          
 
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-8 mb-12">
@@ -66,7 +49,7 @@ export default function Footer() {
               © 2025 Alles voor Schiedam. Alle rechten voorbehouden.
             </p>
             <p className="text-sm mt-2" style={{ color: '#30302e' }}>
-              Gemaakt met ❤️ voor Schiedam
+              Ontwikkeling & Beveiliging door TripleZero iT
             </p>
           </div>
         </div>
