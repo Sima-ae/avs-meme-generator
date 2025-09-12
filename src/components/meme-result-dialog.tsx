@@ -76,7 +76,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-[95vw] max-h-[85vh] mx-2 sm:mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl overflow-y-auto my-4">
+      <DialogContent className="max-w-4xl w-[95vw] max-h-[85vh] mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl overflow-y-auto my-4">
         <DialogHeader className="px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-3xl flex items-center justify-center shadow-2xl" style={{ backgroundColor: '#30302e' }}>

@@ -1096,36 +1096,38 @@ function MemeCanvas(param) {
         className: "relative overflow-hidden text-center bg-avs-white border-2 border-avs-black/20 w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-[3/2] ".concat(className),
         style: {
             borderRadius: '16px',
-            background: template.background
+            backgroundColor: '#fdee34'
         },
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 flex justify-between items-center",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "bg-avs-black text-avs-white px-2 sm:px-3 py-1 rounded-lg font-bold text-xs sm:text-sm",
-                        children: "Alles voor Schiedam"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/meme-canvas.tsx",
-                        lineNumber: 94,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "w-6 h-6 sm:w-8 sm:h-8 bg-avs-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center text-sm sm:text-lg",
-                        children: template.icon
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/meme-canvas.tsx",
-                        lineNumber: 97,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
+                className: "absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none",
+                style: {
+                    backgroundImage: 'url(/images/Achtergrond.png)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                }
+            }, void 0, false, {
                 fileName: "[project]/src/components/meme-canvas.tsx",
                 lineNumber: 93,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8",
+                className: "absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-10",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "bg-avs-black text-avs-white px-2 sm:px-3 py-1 rounded-lg font-bold text-xs sm:text-sm",
+                    children: "Alles voor Schiedam"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/meme-canvas.tsx",
+                    lineNumber: 103,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/meme-canvas.tsx",
+                lineNumber: 102,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8 z-10",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-avs-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-avs-black/10 w-full max-w-xs sm:max-w-sm",
                     children: [
@@ -1134,37 +1136,37 @@ function MemeCanvas(param) {
                             children: quizState.userName
                         }, void 0, false, {
                             fileName: "[project]/src/components/meme-canvas.tsx",
-                            lineNumber: 105,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-sm sm:text-base lg:text-xl text-avs-black/80 font-medium break-words leading-tight",
+                            className: "text-xs sm:text-sm lg:text-base text-avs-black/80 font-medium break-words leading-tight",
                             children: primaryAnswer.result_text
                         }, void 0, false, {
                             fileName: "[project]/src/components/meme-canvas.tsx",
-                            lineNumber: 108,
+                            lineNumber: 114,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/meme-canvas.tsx",
-                    lineNumber: 104,
+                    lineNumber: 110,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/meme-canvas.tsx",
-                lineNumber: 103,
+                lineNumber: 109,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4 flex justify-between items-center",
+                className: "absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4 flex justify-between items-center z-10",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-xs sm:text-sm text-avs-black/70 font-medium truncate",
                         children: "www.allesvoorschiedam.nl"
                     }, void 0, false, {
                         fileName: "[project]/src/components/meme-canvas.tsx",
-                        lineNumber: 116,
+                        lineNumber: 122,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1172,13 +1174,13 @@ function MemeCanvas(param) {
                         children: "#AllesVoorSchiedam"
                     }, void 0, false, {
                         fileName: "[project]/src/components/meme-canvas.tsx",
-                        lineNumber: 119,
+                        lineNumber: 125,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/meme-canvas.tsx",
-                lineNumber: 115,
+                lineNumber: 121,
                 columnNumber: 7
             }, this)
         ]
@@ -1289,7 +1291,7 @@ function MemeResultDialog(param) {
         open: isOpen,
         onOpenChange: onClose,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogContent"], {
-            className: "max-w-4xl w-[95vw] max-h-[85vh] mx-2 sm:mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl overflow-y-auto my-4",
+            className: "max-w-4xl w-[95vw] max-h-[85vh] mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl overflow-y-auto my-4",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogHeader"], {
                     className: "px-4 sm:px-6",
