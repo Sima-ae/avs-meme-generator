@@ -157,7 +157,7 @@ export default function SignInPage() {
               )}
               <Button
                 type="submit"
-                className="w-full h-12 text-base font-semibold"
+                className="w-full h-12 text-base font-semibold text-white"
                 disabled={isLoading}
                 style={{ backgroundColor: '#30302e' }}
               >
@@ -172,10 +172,20 @@ export default function SignInPage() {
               </Button>
             </form>
             <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-center text-sm text-gray-600 mb-4">
+                Heb je nog geen account?
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => router.push('/auth/register')}
+                className="w-full h-10"
+              >
+                ← Account aanmaken
+              </Button>
               <Button
                 variant="outline"
                 onClick={() => router.push('/')}
-                className="w-full h-10"
+                className="w-full h-10 mt-2"
               >
                 ← Terug naar home
               </Button>

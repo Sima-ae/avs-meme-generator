@@ -83,7 +83,7 @@ export default function RegisterPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-100">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-50 to-yellow-100">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -117,7 +117,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-50 to-yellow-100">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="w-full h-full" style={{
@@ -138,7 +138,7 @@ export default function RegisterPage() {
         <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
           <CardHeader className="text-center pb-8">
             <div className="mb-4">
-              <div className="w-16 h-16 mx-auto bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
                 <span className="text-2xl">👤</span>
               </div>
             </div>
@@ -163,7 +163,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   required
                   placeholder="Voer je volledige naam in"
-                  className="h-12 text-base border-2 focus:border-blue-500 transition-colors"
+                  className="h-12 text-base border-2 focus:border-yellow-500 transition-colors"
                 />
               </div>
               <div className="space-y-2">
@@ -178,7 +178,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   required
                   placeholder="Voer je email adres in"
-                  className="h-12 text-base border-2 focus:border-blue-500 transition-colors"
+                  className="h-12 text-base border-2 focus:border-yellow-500 transition-colors"
                 />
               </div>
               <div className="space-y-2">
@@ -193,7 +193,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   required
                   placeholder="Minimaal 6 karakters"
-                  className="h-12 text-base border-2 focus:border-blue-500 transition-colors"
+                  className="h-12 text-base border-2 focus:border-yellow-500 transition-colors"
                 />
               </div>
               <div className="space-y-2">
@@ -208,7 +208,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   required
                   placeholder="Bevestig je wachtwoord"
-                  className="h-12 text-base border-2 focus:border-blue-500 transition-colors"
+                  className="h-12 text-base border-2 focus:border-yellow-500 transition-colors"
                 />
               </div>
               {error && (
@@ -222,7 +222,7 @@ export default function RegisterPage() {
               )}
               <Button
                 type="submit"
-                className="w-full h-12 text-base font-semibold"
+                className="w-full h-12 text-base font-semibold text-white"
                 disabled={isLoading}
                 style={{ backgroundColor: '#30302e' }}
               >

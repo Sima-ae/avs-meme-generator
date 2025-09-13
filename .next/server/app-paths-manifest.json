@@ -4,6 +4,7 @@
   "/api/admin/users/route": "app/api/admin/users/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/api/prikbord/route": "app/api/prikbord/route.js",
+  "/auth/register/page": "app/auth/register/page.js",
   "/auth/signin/page": "app/auth/signin/page.js",
   "/page": "app/page.js",
   "/prikbord/page": "app/prikbord/page.js"
