@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -85,13 +86,21 @@ export default function Footer() {
 
           {/* Logo */}
           <div className="flex flex-col items-center mb-4">
-            <Image 
-              src="/images/Weblogo-AvS-centered.png" 
-              alt="Alles voor Schiedam Logo" 
-              width={306} 
-              height={90} 
-              className="object-contain mb-2"
-            />
+            <Link href="/">
+              <motion.div
+                className="cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Image 
+                  src="/images/Weblogo-AvS-centered.png" 
+                  alt="Alles voor Schiedam Logo" 
+                  width={306} 
+                  height={90} 
+                  className="object-contain mb-2"
+                />
+              </motion.div>
+            </Link>
           </div>
 
           {/* Links */}

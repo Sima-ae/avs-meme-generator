@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import { Menu, X, User, LogOut } from 'lucide-react';
@@ -48,19 +49,21 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <motion.div 
-            className="flex items-center"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Image 
-              src="/images/Weblogo-AvS.png" 
-              alt="Alles voor Schiedam Logo" 
-              width={204} 
-              height={60} 
-              className="object-contain"
-            />
-          </motion.div>
+          <Link href="/">
+            <motion.div 
+              className="flex items-center cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Image 
+                src="/images/Weblogo-AvS.png" 
+                alt="Alles voor Schiedam Logo" 
+                width={204} 
+                height={60} 
+                className="object-contain"
+              />
+            </motion.div>
+          </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
