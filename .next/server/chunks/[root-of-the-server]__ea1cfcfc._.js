@@ -170,12 +170,12 @@ async function GET() {
 }
 async function POST(request) {
     try {
-        const { imageUrl, title, userId } = await request.json();
-        const x = Math.random() * 300 + 50;
-        const y = Math.random() * 200 + 50;
+        const { imageUrl, title, userId, x, y } = await request.json();
+        const positionX = x || Math.round(Math.random() * 300 + 50);
+        const positionY = y || Math.round(Math.random() * 200 + 50);
         const { rows } = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$postgres$2f$dist$2f$chunk$2d$7IR77QAQ$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__["sql"]`
       INSERT INTO prikbord_memes (user_id, image_url, title, position_x, position_y)
-      VALUES (${userId}, ${imageUrl}, ${title || 'Meme Kaart'}, ${x}, ${y})
+      VALUES (${userId}, ${imageUrl}, ${title || 'Meme Kaart'}, ${positionX}, ${positionY})
       RETURNING id, image_url, title, position_x, position_y, user_id
     `;
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({

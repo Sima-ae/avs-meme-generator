@@ -19,14 +19,14 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const { imageUrl, title, userId } = await request.json();
+    const { imageUrl, title, userId, x, y } = await request.json();
     
-    const x = Math.random() * 300 + 50;
-    const y = Math.random() * 200 + 50;
+    const positionX = x || Math.round(Math.random() * 300 + 50);
+    const positionY = y || Math.round(Math.random() * 200 + 50);
     
     const { rows } = await sql`
       INSERT INTO prikbord_memes (user_id, image_url, title, position_x, position_y)
-      VALUES (${userId}, ${imageUrl}, ${title || 'Meme Kaart'}, ${x}, ${y})
+      VALUES (${userId}, ${imageUrl}, ${title || 'Meme Kaart'}, ${positionX}, ${positionY})
       RETURNING id, image_url, title, position_x, position_y, user_id
     `;
     

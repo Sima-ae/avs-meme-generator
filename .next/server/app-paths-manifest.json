@@ -1,5 +1,7 @@
 {
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/api/prikbord/route": "app/api/prikbord/route.js",
+  "/page": "app/page.js",
   "/prikbord/page": "app/prikbord/page.js",
   "/simple-test/page": "app/simple-test/page.js",
   "/test-prikbord/page": "app/test-prikbord/page.js",

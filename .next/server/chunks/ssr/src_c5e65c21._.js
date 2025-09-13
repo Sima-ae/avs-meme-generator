@@ -112,7 +112,6 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/react/index.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/input.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/upload.js [app-ssr] (ecmascript) <export default as Upload>");
@@ -126,10 +125,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 ;
 ;
 ;
-;
 function PrikbordPage() {
     const { data: session, status } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSession"])();
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const [stickyNotes, setStickyNotes] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isFullscreen, setIsFullscreen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [uploadUrl, setUploadUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
@@ -139,18 +136,18 @@ function PrikbordPage() {
         y: 0
     });
     const [selectedImage, setSelectedImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const whiteboardRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const fileInputRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    // Load memes from database on mount
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        console.log('useEffect triggered');
-        loadMemes();
+        loadMemesFromDatabase();
     }, []);
-    const loadMemes = async ()=>{
+    const loadMemesFromDatabase = async ()=>{
         try {
-            console.log('Loading memes...');
+            console.log('Fetching memes from /api/prikbord...');
             const response = await fetch('/api/prikbord');
             const result = await response.json();
+            console.log('API response:', result);
             if (result.success) {
                 const memes = result.data.map((row)=>({
                         id: row.id,
@@ -160,7 +157,10 @@ function PrikbordPage() {
                         title: row.title,
                         userId: row.user_id
                     }));
+                console.log('Loaded memes:', memes);
                 setStickyNotes(memes);
+            } else {
+                console.error('Error loading memes:', result.error);
             }
         } catch (error) {
             console.error('Error loading memes:', error);
@@ -168,6 +168,10 @@ function PrikbordPage() {
     };
     const addStickyNote = async (imageUrl, title)=>{
         try {
+            console.log('Adding sticky note:', {
+                imageUrl,
+                title
+            });
             const response = await fetch('/api/prikbord', {
                 method: 'POST',
                 headers: {
@@ -176,12 +180,13 @@ function PrikbordPage() {
                 body: JSON.stringify({
                     imageUrl,
                     title: title || 'Uploaded Meme',
-                    x: Math.random() * 400 + 50,
-                    y: Math.random() * 300 + 50,
+                    x: Math.round(Math.random() * 400 + 50),
+                    y: Math.round(Math.random() * 300 + 50),
                     userId: session?.user?.id || 2
                 })
             });
             const result = await response.json();
+            console.log('Add response:', result);
             if (result.success) {
                 const newNote = {
                     id: result.data.id,
@@ -195,6 +200,9 @@ function PrikbordPage() {
                         ...prev,
                         newNote
                     ]);
+                console.log('Sticky note added successfully');
+            } else {
+                console.error('Error adding meme:', result.error);
             }
         } catch (error) {
             console.error('Error adding meme:', error);
@@ -202,6 +210,7 @@ function PrikbordPage() {
     };
     const handleUrlUpload = ()=>{
         if (uploadUrl.trim()) {
+            console.log('Uploading URL:', uploadUrl);
             addStickyNote(uploadUrl.trim());
             setUploadUrl('');
         }
@@ -209,31 +218,104 @@ function PrikbordPage() {
     const handleFileUpload = (event)=>{
         const file = event.target.files?.[0];
         if (file) {
+            console.log('File selected:', file.name);
             const reader = new FileReader();
             reader.onload = (e)=>{
                 const imageUrl = e.target?.result;
+                console.log('File read, uploading...');
                 addStickyNote(imageUrl, file.name);
             };
             reader.readAsDataURL(file);
         }
     };
-    if (isLoading) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "min-h-screen flex items-center justify-center",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-lg",
-                children: "Laden..."
-            }, void 0, false, {
-                fileName: "[project]/src/app/prikbord/page.tsx",
-                lineNumber: 116,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
-            fileName: "[project]/src/app/prikbord/page.tsx",
-            lineNumber: 115,
-            columnNumber: 7
-        }, this);
-    }
+    const removeStickyNote = async (id)=>{
+        if (!session?.user?.id || session.user.role !== 'admin') return;
+        try {
+            console.log('Removing sticky note:', id);
+            const response = await fetch(`/api/prikbord?id=${id}`, {
+                method: 'DELETE'
+            });
+            const result = await response.json();
+            console.log('Remove response:', result);
+            if (result.success) {
+                setStickyNotes((prev)=>prev.filter((note)=>note.id !== id));
+                console.log('Sticky note removed successfully');
+            } else {
+                console.error('Error removing meme:', result.error);
+            }
+        } catch (error) {
+            console.error('Error removing meme:', error);
+        }
+    };
+    const handleMouseDown = (e, id)=>{
+        if (!session?.user?.id || session.user.role !== 'admin') return;
+        e.preventDefault();
+        const note = stickyNotes.find((n)=>n.id === id);
+        if (note) {
+            setIsDragging(id);
+            setDragOffset({
+                x: e.clientX - note.x,
+                y: e.clientY - note.y
+            });
+        }
+    };
+    const handleMouseMove = (e)=>{
+        if (isDragging === null) return;
+        const note = stickyNotes.find((n)=>n.id === isDragging);
+        if (note) {
+            setStickyNotes((prev)=>prev.map((n)=>n.id === isDragging ? {
+                        ...n,
+                        x: e.clientX - dragOffset.x,
+                        y: e.clientY - dragOffset.y
+                    } : n));
+        }
+    };
+    const handleMouseUp = async ()=>{
+        if (isDragging === null) return;
+        const note = stickyNotes.find((n)=>n.id === isDragging);
+        if (note) {
+            try {
+                console.log('Updating position for note:', isDragging, {
+                    x: note.x,
+                    y: note.y
+                });
+                const response = await fetch('/api/prikbord', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: isDragging,
+                        x: note.x,
+                        y: note.y
+                    })
+                });
+                const result = await response.json();
+                console.log('Position update response:', result);
+                if (!result.success) {
+                    console.error('Error updating position:', result.error);
+                }
+            } catch (error) {
+                console.error('Error updating position:', error);
+            }
+        }
+        setIsDragging(null);
+    };
+    const handleImageClick = (imageUrl)=>{
+        setSelectedImage(imageUrl);
+    };
+    const closeImagePopup = ()=>{
+        setSelectedImage(null);
+    };
+    const toggleFullscreen = ()=>{
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+            setIsFullscreen(true);
+        } else {
+            document.exitFullscreen();
+            setIsFullscreen(false);
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: `min-h-screen bg-gray-100 transition-all duration-300 ${isFullscreen ? 'fixed inset-0 z-50' : ''}`,
         children: [
@@ -247,7 +329,7 @@ function PrikbordPage() {
                             children: "Prikbord - Memes"
                         }, void 0, false, {
                             fileName: "[project]/src/app/prikbord/page.tsx",
-                            lineNumber: 126,
+                            lineNumber: 229,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -266,7 +348,7 @@ function PrikbordPage() {
                                                     className: "w-64"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/prikbord/page.tsx",
-                                                    lineNumber: 131,
+                                                    lineNumber: 234,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -276,13 +358,13 @@ function PrikbordPage() {
                                                     children: "URL Toevoegen"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/prikbord/page.tsx",
-                                                    lineNumber: 138,
+                                                    lineNumber: 241,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/prikbord/page.tsx",
-                                            lineNumber: 130,
+                                            lineNumber: 233,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -294,69 +376,94 @@ function PrikbordPage() {
                                                     className: "w-4 h-4 mr-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/prikbord/page.tsx",
-                                                    lineNumber: 151,
+                                                    lineNumber: 254,
                                                     columnNumber: 19
                                                 }, this),
                                                 "PNG Uploaden"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/prikbord/page.tsx",
-                                            lineNumber: 146,
+                                            lineNumber: 249,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                                    onClick: ()=>{
-                                        if (!document.fullscreenElement) {
-                                            document.documentElement.requestFullscreen();
-                                            setIsFullscreen(true);
-                                        } else {
-                                            document.exitFullscreen();
-                                            setIsFullscreen(false);
-                                        }
-                                    },
+                                    onClick: toggleFullscreen,
                                     variant: "outline",
                                     size: "sm",
                                     children: isFullscreen ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$minimize$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Minimize2$3e$__["Minimize2"], {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/prikbord/page.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 264,
                                         columnNumber: 31
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$maximize$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Maximize2$3e$__["Maximize2"], {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/prikbord/page.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 264,
                                         columnNumber: 67
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/prikbord/page.tsx",
-                                    lineNumber: 156,
+                                    lineNumber: 259,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/prikbord/page.tsx",
-                            lineNumber: 127,
+                            lineNumber: 230,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/prikbord/page.tsx",
-                    lineNumber: 125,
+                    lineNumber: 228,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/prikbord/page.tsx",
-                lineNumber: 124,
+                lineNumber: 227,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 ref: whiteboardRef,
                 className: "relative w-full h-[calc(100vh-80px)] bg-white overflow-hidden",
-                children: stickyNotes.map((note)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                onMouseMove: handleMouseMove,
+                onMouseUp: handleMouseUp,
+                children: stickyNotes.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "absolute inset-0 flex items-center justify-center",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center text-gray-500",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-lg font-medium",
+                                children: "Geen memes gevonden"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/prikbord/page.tsx",
+                                lineNumber: 280,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-sm mt-2",
+                                children: session?.user?.role === 'admin' ? 'Upload een meme om te beginnen' : 'Er zijn nog geen memes geüpload'
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/prikbord/page.tsx",
+                                lineNumber: 281,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/app/prikbord/page.tsx",
+                        lineNumber: 279,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/src/app/prikbord/page.tsx",
+                    lineNumber: 278,
+                    columnNumber: 11
+                }, this) : stickyNotes.map((note)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute cursor-move",
                         style: {
                             left: note.x,
@@ -364,6 +471,7 @@ function PrikbordPage() {
                             transform: isDragging === note.id ? 'scale(1.05)' : 'scale(1)',
                             transition: isDragging === note.id ? 'none' : 'transform 0.2s ease'
                         },
+                        onMouseDown: (e)=>handleMouseDown(e, note.id),
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "relative w-48 h-48",
                             children: [
@@ -374,17 +482,17 @@ function PrikbordPage() {
                                     draggable: false,
                                     onClick: (e)=>{
                                         e.stopPropagation();
-                                        setSelectedImage(note.imageUrl);
+                                        handleImageClick(note.imageUrl);
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/prikbord/page.tsx",
-                                    lineNumber: 192,
-                                    columnNumber: 15
+                                    lineNumber: 303,
+                                    columnNumber: 17
                                 }, this),
                                 session?.user?.role === 'admin' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                                     onClick: (e)=>{
                                         e.stopPropagation();
-                                    // Add remove functionality here
+                                        removeStickyNote(note.id);
                                     },
                                     size: "sm",
                                     variant: "destructive",
@@ -393,28 +501,28 @@ function PrikbordPage() {
                                         className: "w-3 h-3"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/prikbord/page.tsx",
-                                        lineNumber: 212,
-                                        columnNumber: 19
+                                        lineNumber: 323,
+                                        columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/prikbord/page.tsx",
-                                    lineNumber: 203,
-                                    columnNumber: 17
+                                    lineNumber: 314,
+                                    columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/prikbord/page.tsx",
-                            lineNumber: 191,
-                            columnNumber: 13
+                            lineNumber: 302,
+                            columnNumber: 15
                         }, this)
                     }, note.id, false, {
                         fileName: "[project]/src/app/prikbord/page.tsx",
-                        lineNumber: 181,
-                        columnNumber: 11
+                        lineNumber: 291,
+                        columnNumber: 13
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/prikbord/page.tsx",
-                lineNumber: 176,
+                lineNumber: 271,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -425,12 +533,12 @@ function PrikbordPage() {
                 className: "hidden"
             }, void 0, false, {
                 fileName: "[project]/src/app/prikbord/page.tsx",
-                lineNumber: 221,
+                lineNumber: 333,
                 columnNumber: 7
             }, this),
             selectedImage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm",
-                onClick: ()=>setSelectedImage(null),
+                onClick: closeImagePopup,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "relative max-w-4xl max-h-full",
                     onClick: (e)=>e.stopPropagation(),
@@ -441,11 +549,11 @@ function PrikbordPage() {
                             className: "max-w-full max-h-full object-contain"
                         }, void 0, false, {
                             fileName: "[project]/src/app/prikbord/page.tsx",
-                            lineNumber: 239,
+                            lineNumber: 351,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                            onClick: ()=>setSelectedImage(null),
+                            onClick: closeImagePopup,
                             size: "sm",
                             variant: "destructive",
                             className: "absolute -top-2 -right-2 w-8 h-8 p-0 rounded-full shadow-lg",
@@ -453,29 +561,29 @@ function PrikbordPage() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/prikbord/page.tsx",
-                                lineNumber: 250,
+                                lineNumber: 362,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/prikbord/page.tsx",
-                            lineNumber: 244,
+                            lineNumber: 356,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/prikbord/page.tsx",
-                    lineNumber: 235,
+                    lineNumber: 347,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/prikbord/page.tsx",
-                lineNumber: 231,
+                lineNumber: 343,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/prikbord/page.tsx",
-        lineNumber: 122,
+        lineNumber: 225,
         columnNumber: 5
     }, this);
 }
