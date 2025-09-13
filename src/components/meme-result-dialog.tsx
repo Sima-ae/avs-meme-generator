@@ -83,13 +83,17 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
     if (autoUploaded) return; // Don't upload multiple times
     
     try {
+      console.log('Starting auto-upload process...');
+      
       // Wait for the meme element to be rendered
       const memeElement = document.getElementById('meme-canvas');
       if (!memeElement) {
-        console.log('Meme element not found, retrying...');
-        setTimeout(() => generateAndUploadMeme(), 500);
+        console.log('Meme element not found, retrying in 1 second...');
+        setTimeout(() => generateAndUploadMeme(), 1000);
         return;
       }
+
+      console.log('Meme element found, capturing image...');
 
       // Use html-to-image to capture the actual rendered meme
       const dataUrl = await toPng(memeElement, {
@@ -97,6 +101,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         pixelRatio: 2, // Higher resolution
         backgroundColor: 'transparent'
       });
+
+      console.log('Image captured, converting to blob...');
 
       // Convert data URL to blob
       const response = await fetch(dataUrl);
@@ -109,6 +115,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       formData.append('title', `Meme van ${quizState.userName}`);
       formData.append('userId', session?.user?.id || '2');
 
+      console.log('Uploading to API...', { filename, userId: session?.user?.id || '2' });
+
       // Upload to API
       const uploadResponse = await fetch('/api/upload-meme', {
         method: 'POST',
@@ -116,11 +124,15 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       });
 
       const result = await uploadResponse.json();
+      console.log('Upload result:', result);
       
       if (result.success) {
         setAutoUploaded(true);
         setUploaded(true);
         setTimeout(() => setUploaded(false), 3000);
+        console.log('✅ Meme successfully auto-uploaded!');
+      } else {
+        console.error('❌ Upload failed:', result.error);
       }
       
     } catch (error) {
@@ -131,10 +143,11 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
   // Auto-upload when dialog opens
   useEffect(() => {
     if (isOpen && !autoUploaded) {
-      // Small delay to ensure the meme canvas is rendered
+      console.log('Dialog opened, starting auto-upload timer...');
+      // Longer delay to ensure the meme canvas is fully rendered
       const timer = setTimeout(() => {
         generateAndUploadMeme();
-      }, 1000);
+      }, 2000);
       
       return () => clearTimeout(timer);
     }
