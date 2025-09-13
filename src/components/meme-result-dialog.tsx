@@ -97,8 +97,11 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.fillStyle = '#ffffff';
       ctx!.font = 'bold 14px Arial';
       ctx!.textAlign = 'center';
-      ctx!.textBaseline = 'middle';
-      ctx!.fillText(headerText, headerX + headerWidth / 2, headerY + headerHeight / 2);
+      ctx!.textBaseline = 'alphabetic';
+      // Calculate text position for perfect centering
+      const textX = headerX + headerWidth / 2;
+      const textY = headerY + headerHeight / 2 + 5; // Adjust for font baseline
+      ctx!.fillText(headerText, textX, textY);
       
       // Draw main content box with rounded corners
       const contentX = memeX + 40;
@@ -208,8 +211,11 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.fillStyle = '#ffffff';
       ctx!.font = 'bold 14px Arial';
       ctx!.textAlign = 'center';
-      ctx!.textBaseline = 'middle';
-      ctx!.fillText(headerText, headerX + headerWidth / 2, headerY + headerHeight / 2);
+      ctx!.textBaseline = 'alphabetic';
+      // Calculate text position for perfect centering
+      const textX = headerX + headerWidth / 2;
+      const textY = headerY + headerHeight / 2 + 5; // Adjust for font baseline
+      ctx!.fillText(headerText, textX, textY);
       
       // Draw main content box with rounded corners
       const contentX = memeX + 40;
