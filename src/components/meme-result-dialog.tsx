@@ -94,14 +94,19 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.fillStyle = '#30302e';
       drawRoundedRect(ctx!, headerX, headerY, headerWidth, headerHeight, 8);
       ctx!.fill();
-      ctx!.fillStyle = '#ffffff';
+      
+      // Save context state and set text properties
+      ctx!.save();
       ctx!.font = 'bold 14px Arial';
       ctx!.textAlign = 'center';
-      ctx!.textBaseline = 'alphabetic';
+      ctx!.textBaseline = 'middle';
+      ctx!.fillStyle = '#ffffff';
+      
       // Calculate text position for perfect centering
       const textX = headerX + headerWidth / 2;
-      const textY = headerY + headerHeight / 2 + 5; // Adjust for font baseline
+      const textY = headerY + headerHeight / 2;
       ctx!.fillText(headerText, textX, textY);
+      ctx!.restore();
       
       // Draw main content box with rounded corners
       const contentX = memeX + 40;
@@ -208,14 +213,19 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.fillStyle = '#30302e';
       drawRoundedRect(ctx!, headerX, headerY, headerWidth, headerHeight, 8);
       ctx!.fill();
-      ctx!.fillStyle = '#ffffff';
+      
+      // Save context state and set text properties
+      ctx!.save();
       ctx!.font = 'bold 14px Arial';
       ctx!.textAlign = 'center';
-      ctx!.textBaseline = 'alphabetic';
+      ctx!.textBaseline = 'middle';
+      ctx!.fillStyle = '#ffffff';
+      
       // Calculate text position for perfect centering
       const textX = headerX + headerWidth / 2;
-      const textY = headerY + headerHeight / 2 + 5; // Adjust for font baseline
+      const textY = headerY + headerHeight / 2;
       ctx!.fillText(headerText, textX, textY);
+      ctx!.restore();
       
       // Draw main content box with rounded corners
       const contentX = memeX + 40;
