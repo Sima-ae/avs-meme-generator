@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { AuthSessionProvider } from "@/components/providers/session-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,11 +37,13 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={`${inter.variable} font-sans antialiased`}>
-        <Header />
-        <main className="pt-20 pb-0">
-          {children}
-        </main>
-        <Footer />
+        <AuthSessionProvider>
+          <Header />
+          <main className="pt-20 pb-0">
+            {children}
+          </main>
+          <Footer />
+        </AuthSessionProvider>
       </body>
     </html>
   );
