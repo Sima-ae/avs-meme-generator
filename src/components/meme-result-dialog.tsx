@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Card, CardContent } from '@/components/ui/card';
 import { MemeCanvas } from '@/components/meme-canvas';
 import { QuizState } from '@/types/quiz';
+import { quizAnswers } from '@/data/quizData';
 
 interface MemeResultDialogProps {
   isOpen: boolean;
@@ -27,86 +28,85 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
     setIsGenerating(true);
     try {
-      // Preload and convert background image to data URL first
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
+      // Load background image
+      const backgroundImg = new Image();
+      backgroundImg.crossOrigin = 'anonymous';
       
-      const backgroundDataUrl = await new Promise<string>((resolve, reject) => {
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx?.drawImage(img, 0, 0);
-          resolve(canvas.toDataURL('image/png'));
-        };
-        img.onerror = reject;
-        img.src = '/images/Achtergrond.png';
+      await new Promise((resolve, reject) => {
+        backgroundImg.onload = resolve;
+        backgroundImg.onerror = reject;
+        backgroundImg.src = '/images/Achtergrond.png';
       });
 
-      // Create a wrapper div with transparent background
-      const wrapper = document.createElement('div');
-      wrapper.style.backgroundColor = 'transparent';
-      wrapper.style.padding = '40px';
-      wrapper.style.display = 'flex';
-      wrapper.style.justifyContent = 'center';
-      wrapper.style.alignItems = 'center';
-      wrapper.style.width = '600px';
-      wrapper.style.height = '600px';
-      wrapper.style.position = 'relative';
+      // Create canvas for manual rendering
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 600;
+      canvas.height = 600;
       
-      // Clone the meme element and make it larger
-      const clonedMeme = memeElement.cloneNode(true) as HTMLElement;
-      clonedMeme.style.width = '520px';
-      clonedMeme.style.height = '347px'; // 3:2 aspect ratio
-      clonedMeme.style.maxWidth = 'none';
-      clonedMeme.style.maxHeight = 'none';
+      // Fill with transparent background
+      ctx!.fillStyle = 'transparent';
+      ctx!.fillRect(0, 0, 600, 600);
       
-      // Replace the background image src with data URL and ensure it's visible
-      const backgroundImg = clonedMeme.querySelector('img[src="/images/Achtergrond.png"]') as HTMLImageElement;
-      if (backgroundImg) {
-        backgroundImg.src = backgroundDataUrl;
-        backgroundImg.style.display = 'block';
-        backgroundImg.style.visibility = 'visible';
-        backgroundImg.style.opacity = '0.3';
-        backgroundImg.style.position = 'absolute';
-        backgroundImg.style.top = '0';
-        backgroundImg.style.left = '0';
-        backgroundImg.style.width = '100%';
-        backgroundImg.style.height = '100%';
-        backgroundImg.style.objectFit = 'cover';
-        backgroundImg.style.zIndex = '1';
-        
-        // Wait for the image to load
-        await new Promise((resolve) => {
-          if (backgroundImg.complete) {
-            resolve(true);
-          } else {
-            backgroundImg.onload = () => resolve(true);
-            backgroundImg.onerror = () => resolve(true);
-          }
-        });
-      }
+      // Calculate meme position (centered)
+      const memeWidth = 520;
+      const memeHeight = 347;
+      const memeX = (600 - memeWidth) / 2;
+      const memeY = (600 - memeHeight) / 2;
       
-      wrapper.appendChild(clonedMeme);
+      // Draw yellow background
+      ctx!.fillStyle = '#fdee34';
+      ctx!.fillRect(memeX, memeY, memeWidth, memeHeight);
       
-      // Temporarily add to DOM
-      document.body.appendChild(wrapper);
+      // Draw background image overlay
+      ctx!.globalAlpha = 0.3;
+      ctx!.drawImage(backgroundImg, memeX, memeY, memeWidth, memeHeight);
+      ctx!.globalAlpha = 1;
       
-      // Wait a bit for the image to render (longer delay for mobile)
-      await new Promise(resolve => setTimeout(resolve, 500));
-
-      const dataUrl = await toPng(wrapper, {
-        quality: 1.0,
-        pixelRatio: 2,
-        backgroundColor: 'transparent',
-        includeQueryParams: true,
-        skipFonts: false,
-        preferredFontFormat: 'woff2'
-      });
+      // Draw header badge
+      const headerText = 'Alles voor Schiedam';
+      ctx!.fillStyle = '#30302e';
+      ctx!.fillRect(memeX + 20, memeY + 20, 200, 30);
+      ctx!.fillStyle = '#ffffff';
+      ctx!.font = 'bold 14px Arial';
+      ctx!.textAlign = 'center';
+      ctx!.fillText(headerText, memeX + 120, memeY + 40);
       
-      // Clean up
-      document.body.removeChild(wrapper);
+      // Draw main content box
+      const contentX = memeX + 40;
+      const contentY = memeY + 80;
+      const contentWidth = memeWidth - 80;
+      const contentHeight = 120;
+      
+      ctx!.fillStyle = '#ffffff';
+      ctx!.fillRect(contentX, contentY, contentWidth, contentHeight);
+      
+      // Draw user name
+      ctx!.fillStyle = '#30302e';
+      ctx!.font = 'bold 24px Arial';
+      ctx!.textAlign = 'center';
+      ctx!.fillText(quizState.userName, contentX + contentWidth/2, contentY + 40);
+      
+      // Draw result text
+      const selectedAnswers = Object.entries(quizState.answers).map(([, answerId]) => {
+        const answer = quizAnswers.find(a => a.id === answerId);
+        return answer;
+      }).filter(Boolean);
+      const primaryAnswer = selectedAnswers[0];
+      const resultText = primaryAnswer?.result_text || 'Kiest voor Schiedam';
+      ctx!.font = '14px Arial';
+      ctx!.fillText(resultText, contentX + contentWidth/2, contentY + 70);
+      
+      // Draw footer elements
+      ctx!.font = '12px Arial';
+      ctx!.textAlign = 'left';
+      ctx!.fillText('www.allesvoorschiedam.nl', memeX + 20, memeY + memeHeight - 20);
+      
+      ctx!.textAlign = 'right';
+      ctx!.fillText('#AllesVoorSchiedam', memeX + memeWidth - 20, memeY + memeHeight - 20);
+      
+      // Convert to data URL and download
+      const dataUrl = canvas.toDataURL('image/png');
       
       const link = document.createElement('a');
       link.download = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.png`;
@@ -125,86 +125,85 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
     setIsGenerating(true);
     try {
-      // Preload and convert background image to data URL first
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
+      // Load background image
+      const backgroundImg = new Image();
+      backgroundImg.crossOrigin = 'anonymous';
       
-      const backgroundDataUrl = await new Promise<string>((resolve, reject) => {
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx?.drawImage(img, 0, 0);
-          resolve(canvas.toDataURL('image/png'));
-        };
-        img.onerror = reject;
-        img.src = '/images/Achtergrond.png';
+      await new Promise((resolve, reject) => {
+        backgroundImg.onload = resolve;
+        backgroundImg.onerror = reject;
+        backgroundImg.src = '/images/Achtergrond.png';
       });
 
-      // Create a wrapper div with white background
-      const wrapper = document.createElement('div');
-      wrapper.style.backgroundColor = '#ffffff';
-      wrapper.style.padding = '40px';
-      wrapper.style.display = 'flex';
-      wrapper.style.justifyContent = 'center';
-      wrapper.style.alignItems = 'center';
-      wrapper.style.width = '600px';
-      wrapper.style.height = '600px';
-      wrapper.style.position = 'relative';
+      // Create canvas for manual rendering
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 600;
+      canvas.height = 600;
       
-      // Clone the meme element and make it larger
-      const clonedMeme = memeElement.cloneNode(true) as HTMLElement;
-      clonedMeme.style.width = '520px';
-      clonedMeme.style.height = '347px'; // 3:2 aspect ratio
-      clonedMeme.style.maxWidth = 'none';
-      clonedMeme.style.maxHeight = 'none';
+      // Fill with white background
+      ctx!.fillStyle = '#ffffff';
+      ctx!.fillRect(0, 0, 600, 600);
       
-      // Replace the background image src with data URL and ensure it's visible
-      const backgroundImg = clonedMeme.querySelector('img[src="/images/Achtergrond.png"]') as HTMLImageElement;
-      if (backgroundImg) {
-        backgroundImg.src = backgroundDataUrl;
-        backgroundImg.style.display = 'block';
-        backgroundImg.style.visibility = 'visible';
-        backgroundImg.style.opacity = '0.3';
-        backgroundImg.style.position = 'absolute';
-        backgroundImg.style.top = '0';
-        backgroundImg.style.left = '0';
-        backgroundImg.style.width = '100%';
-        backgroundImg.style.height = '100%';
-        backgroundImg.style.objectFit = 'cover';
-        backgroundImg.style.zIndex = '1';
-        
-        // Wait for the image to load
-        await new Promise((resolve) => {
-          if (backgroundImg.complete) {
-            resolve(true);
-          } else {
-            backgroundImg.onload = () => resolve(true);
-            backgroundImg.onerror = () => resolve(true);
-          }
-        });
-      }
+      // Calculate meme position (centered)
+      const memeWidth = 520;
+      const memeHeight = 347;
+      const memeX = (600 - memeWidth) / 2;
+      const memeY = (600 - memeHeight) / 2;
       
-      wrapper.appendChild(clonedMeme);
+      // Draw yellow background
+      ctx!.fillStyle = '#fdee34';
+      ctx!.fillRect(memeX, memeY, memeWidth, memeHeight);
       
-      // Temporarily add to DOM
-      document.body.appendChild(wrapper);
+      // Draw background image overlay
+      ctx!.globalAlpha = 0.3;
+      ctx!.drawImage(backgroundImg, memeX, memeY, memeWidth, memeHeight);
+      ctx!.globalAlpha = 1;
       
-      // Wait a bit for the image to render (longer delay for mobile)
-      await new Promise(resolve => setTimeout(resolve, 500));
-
-      const dataUrl = await toJpeg(wrapper, {
-        quality: 1.0,
-        pixelRatio: 2,
-        backgroundColor: '#ffffff',
-        includeQueryParams: true,
-        skipFonts: false,
-        preferredFontFormat: 'woff2'
-      });
+      // Draw header badge
+      const headerText = 'Alles voor Schiedam';
+      ctx!.fillStyle = '#30302e';
+      ctx!.fillRect(memeX + 20, memeY + 20, 200, 30);
+      ctx!.fillStyle = '#ffffff';
+      ctx!.font = 'bold 14px Arial';
+      ctx!.textAlign = 'center';
+      ctx!.fillText(headerText, memeX + 120, memeY + 40);
       
-      // Clean up
-      document.body.removeChild(wrapper);
+      // Draw main content box
+      const contentX = memeX + 40;
+      const contentY = memeY + 80;
+      const contentWidth = memeWidth - 80;
+      const contentHeight = 120;
+      
+      ctx!.fillStyle = '#ffffff';
+      ctx!.fillRect(contentX, contentY, contentWidth, contentHeight);
+      
+      // Draw user name
+      ctx!.fillStyle = '#30302e';
+      ctx!.font = 'bold 24px Arial';
+      ctx!.textAlign = 'center';
+      ctx!.fillText(quizState.userName, contentX + contentWidth/2, contentY + 40);
+      
+      // Draw result text
+      const selectedAnswers = Object.entries(quizState.answers).map(([, answerId]) => {
+        const answer = quizAnswers.find(a => a.id === answerId);
+        return answer;
+      }).filter(Boolean);
+      const primaryAnswer = selectedAnswers[0];
+      const resultText = primaryAnswer?.result_text || 'Kiest voor Schiedam';
+      ctx!.font = '14px Arial';
+      ctx!.fillText(resultText, contentX + contentWidth/2, contentY + 70);
+      
+      // Draw footer elements
+      ctx!.font = '12px Arial';
+      ctx!.textAlign = 'left';
+      ctx!.fillText('www.allesvoorschiedam.nl', memeX + 20, memeY + memeHeight - 20);
+      
+      ctx!.textAlign = 'right';
+      ctx!.fillText('#AllesVoorSchiedam', memeX + memeWidth - 20, memeY + memeHeight - 20);
+      
+      // Convert to data URL and download
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
       
       const link = document.createElement('a');
       link.download = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.jpg`;
