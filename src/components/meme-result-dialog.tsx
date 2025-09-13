@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { toPng } from 'html-to-image';
+import { toPng, toJpeg } from 'html-to-image';
 import { Download, Share2, RotateCcw, Check, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -21,12 +21,34 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
   const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const handleDownload = async () => {
+  const handleDownloadPNG = async () => {
     const memeElement = document.getElementById('meme-canvas');
     if (!memeElement) return;
 
     setIsGenerating(true);
     try {
+      // Create a wrapper div with transparent background
+      const wrapper = document.createElement('div');
+      wrapper.style.backgroundColor = 'transparent';
+      wrapper.style.padding = '40px';
+      wrapper.style.display = 'flex';
+      wrapper.style.justifyContent = 'center';
+      wrapper.style.alignItems = 'center';
+      wrapper.style.width = '600px';
+      wrapper.style.height = '600px';
+      wrapper.style.position = 'relative';
+      
+      // Clone the meme element and make it larger
+      const clonedMeme = memeElement.cloneNode(true) as HTMLElement;
+      clonedMeme.style.width = '520px';
+      clonedMeme.style.height = '347px'; // 3:2 aspect ratio
+      clonedMeme.style.maxWidth = 'none';
+      clonedMeme.style.maxHeight = 'none';
+      wrapper.appendChild(clonedMeme);
+      
+      // Temporarily add to DOM
+      document.body.appendChild(wrapper);
+      
       // Convert background image to data URL
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
@@ -44,21 +66,92 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         img.src = '/images/Achtergrond.png';
       });
 
-      const dataUrl = await toPng(memeElement, {
+      const dataUrl = await toPng(wrapper, {
         quality: 1.0,
         pixelRatio: 2,
-        backgroundColor: '#fdee34',
+        backgroundColor: 'transparent',
         includeQueryParams: true,
         skipFonts: false,
         preferredFontFormat: 'woff2'
       });
+      
+      // Clean up
+      document.body.removeChild(wrapper);
       
       const link = document.createElement('a');
       link.download = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.png`;
       link.href = dataUrl;
       link.click();
     } catch (error) {
-      console.error('Error generating image:', error);
+      console.error('Error generating PNG:', error);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const handleDownloadJPG = async () => {
+    const memeElement = document.getElementById('meme-canvas');
+    if (!memeElement) return;
+
+    setIsGenerating(true);
+    try {
+      // Create a wrapper div with white background
+      const wrapper = document.createElement('div');
+      wrapper.style.backgroundColor = '#ffffff';
+      wrapper.style.padding = '40px';
+      wrapper.style.display = 'flex';
+      wrapper.style.justifyContent = 'center';
+      wrapper.style.alignItems = 'center';
+      wrapper.style.width = '600px';
+      wrapper.style.height = '600px';
+      wrapper.style.position = 'relative';
+      
+      // Clone the meme element and make it larger
+      const clonedMeme = memeElement.cloneNode(true) as HTMLElement;
+      clonedMeme.style.width = '520px';
+      clonedMeme.style.height = '347px'; // 3:2 aspect ratio
+      clonedMeme.style.maxWidth = 'none';
+      clonedMeme.style.maxHeight = 'none';
+      wrapper.appendChild(clonedMeme);
+      
+      // Temporarily add to DOM
+      document.body.appendChild(wrapper);
+      
+      // Convert background image to data URL
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      
+      await new Promise((resolve, reject) => {
+        img.onload = () => {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx?.drawImage(img, 0, 0);
+          resolve(canvas.toDataURL('image/png'));
+        };
+        img.onerror = reject;
+        img.src = '/images/Achtergrond.png';
+      });
+
+      const dataUrl = await toJpeg(wrapper, {
+        quality: 1.0,
+        pixelRatio: 2,
+        backgroundColor: '#ffffff',
+        includeQueryParams: true,
+        skipFonts: false,
+        preferredFontFormat: 'woff2'
+      });
+      
+      // Clean up
+      document.body.removeChild(wrapper);
+      
+      const link = document.createElement('a');
+      link.download = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+      link.href = dataUrl;
+      link.click();
+    } catch (error) {
+      console.error('Error generating JPG:', error);
     } finally {
       setIsGenerating(false);
     }
@@ -89,7 +182,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       const dataUrl = await toPng(memeElement, {
         quality: 1.0,
         pixelRatio: 2,
-        backgroundColor: '#fdee34',
+        backgroundColor: 'transparent',
         includeQueryParams: true,
         skipFonts: false,
         preferredFontFormat: 'woff2'
@@ -116,7 +209,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-[95vw] max-h-[85vh] mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl overflow-y-auto my-4">
+      <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] mx-auto bg-white/95 backdrop-blur-2xl border border-black/20 shadow-2xl overflow-y-auto my-2">
         <DialogHeader className="px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-3xl flex items-center justify-center shadow-2xl" style={{ backgroundColor: '#30302e' }}>
@@ -150,10 +243,10 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         </motion.div>
 
         {/* Action Buttons */}
-        <div className="space-y-3 sm:space-y-4 px-2 sm:px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+        <div className="space-y-2 sm:space-y-3 px-2 sm:px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <motion.button
-              onClick={handleDownload}
+              onClick={handleDownloadJPG}
               disabled={isGenerating}
               className="text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-2xl disabled:cursor-not-allowed text-sm sm:text-base"
               style={{ backgroundColor: '#30302e' }}
@@ -161,9 +254,23 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               whileTap={{ scale: isGenerating ? 1 : 0.98 }}
             >
               <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              {isGenerating ? 'Genereren...' : 'Download'}
+              {isGenerating ? 'Genereren...' : 'Download JPG (Wit)'}
             </motion.button>
             
+            <motion.button
+              onClick={handleDownloadPNG}
+              disabled={isGenerating}
+              className="text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-2xl disabled:cursor-not-allowed text-sm sm:text-base"
+              style={{ backgroundColor: '#30302e' }}
+              whileHover={{ scale: isGenerating ? 1 : 1.02 }}
+              whileTap={{ scale: isGenerating ? 1 : 0.98 }}
+            >
+              <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+              {isGenerating ? 'Genereren...' : 'Download PNG (Transparant)'}
+            </motion.button>
+          </div>
+          
+          <div className="flex justify-center gap-2 sm:gap-3">
             <motion.button
               onClick={handleShare}
               className="bg-white/90 backdrop-blur-xl border border-black/20 font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg text-sm sm:text-base"
@@ -174,30 +281,31 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               {copied ? <Check className="w-4 h-4 sm:w-5 sm:h-5 mr-2" /> : <Share2 className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />}
               {copied ? 'Gekopieerd!' : 'Delen op Social Media'}
             </motion.button>
+            
+            <motion.button
+              onClick={onReset}
+              className="bg-white/90 backdrop-blur-xl border border-black/20 font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg text-sm sm:text-base"
+              style={{ color: '#30302e' }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+              Opnieuw
+            </motion.button>
           </div>
-
-          <motion.button
-            onClick={onReset}
-            className="w-full bg-white/90 backdrop-blur-xl border border-black/20 font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg text-sm sm:text-base"
-            style={{ color: '#30302e' }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-            Opnieuw
-          </motion.button>
         </div>
 
         {/* Social Media Instructions */}
-        <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-4 sm:mt-6 shadow-lg mx-2 sm:mx-4">
-          <CardContent className="p-3 sm:p-4">
-            <h3 className="font-bold mb-3 text-lg sm:text-xl" style={{ color: '#30302e' }}>Deel jouw visie!</h3>
-            <p className="mb-4 text-base sm:text-lg" style={{ color: '#30302e' }}>
+        <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-2 sm:mt-3 shadow-lg mx-2 sm:mx-4">
+          <CardContent className="p-2 sm:p-3">
+            <p className="text-xs sm:text-sm text-center" style={{ color: '#30302e' }}>
+              💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok en/of X
+            </p>
+            <br />
+            <p className="mb-2 text-sm sm:text-base text-center" style={{ color: '#30302e' }}>
               <i>Gebruik <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span></i>
             </p>
-            <p className="text-xs sm:text-sm" style={{ color: '#30302e' }}>
-              💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok of X
-            </p>
+            
           </CardContent>
         </Card>
       </DialogContent>

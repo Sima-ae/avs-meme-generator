@@ -197,7 +197,7 @@ export default function Home() {
 
       <br />
       <br />
-      <br />
+      
 
       {/* TripleZero AI Button */}
       <div className="flex justify-center items-center relative z-10">
