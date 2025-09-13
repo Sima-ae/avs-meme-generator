@@ -86,12 +86,12 @@ export default function Footer() {
 
           {/* Logo */}
           <div className="flex flex-col items-center mb-4">
-            <Link href="/">
-              <motion.div
-                className="cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
+            <motion.div
+              className="cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href="/">
                 <Image 
                   src="/images/Weblogo-AvS-centered.png" 
                   alt="Alles voor Schiedam Logo" 
@@ -99,8 +99,8 @@ export default function Footer() {
                   height={90} 
                   className="object-contain mb-2"
                 />
-              </motion.div>
-            </Link>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Links */}
@@ -120,7 +120,7 @@ export default function Footer() {
           {/* Bottom Text */}
           <div className="border-t border-black/20 pt-4">
             <p className="text-base font-medium" style={{ color: '#30302e' }}>
-            Alles voor Schiedam © {new Date().getFullYear()}
+            Alles voor Schiedam © 2024
             </p>
             <p className="text-sm mt-1" style={{ color: '#30302e' }}>
               <i>Beveiligd en ontwikkeld door: <a href="https://000-it.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline transition-all duration-300">TripleZero iT</a></i>

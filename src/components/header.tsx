@@ -49,12 +49,12 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link href="/">
-            <motion.div 
-              className="flex items-center cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-            >
+          <motion.div 
+            className="flex items-center cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link href="/">
               <Image 
                 src="/images/Weblogo-AvS.png" 
                 alt="Alles voor Schiedam Logo" 
@@ -62,8 +62,8 @@ export default function Header() {
                 height={60} 
                 className="object-contain"
               />
-            </motion.div>
-          </Link>
+            </Link>
+          </motion.div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
