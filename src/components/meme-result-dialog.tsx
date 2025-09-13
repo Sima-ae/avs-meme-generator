@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { toPng, toJpeg } from 'html-to-image';
 import { Download, Share2, RotateCcw, Check, Sparkles, Upload } from 'lucide-react';
@@ -23,6 +23,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
   const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
   const [uploaded, setUploaded] = useState(false);
+  const [autoUploaded, setAutoUploaded] = useState(false);
   const { data: session } = useSession();
 
   // Helper function for rounded rectangles
@@ -42,8 +43,6 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
   // Function to upload meme to prikbord
   const uploadMemeToPrikbord = async (canvas: HTMLCanvasElement, filename: string) => {
-    if (!session?.user?.id) return;
-
     try {
       // Convert canvas to blob
       const blob = await new Promise<Blob>((resolve) => {
@@ -56,7 +55,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       const formData = new FormData();
       formData.append('file', blob, filename);
       formData.append('title', `Meme van ${quizState.userName}`);
-      formData.append('userId', session.user.id);
+      // Use session user ID if available, otherwise use anonymous user ID (2)
+      formData.append('userId', session?.user?.id || '2');
 
       // Upload to API
       const response = await fetch('/api/upload-meme', {
@@ -69,11 +69,176 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       if (result.success) {
         setUploaded(true);
         setTimeout(() => setUploaded(false), 3000);
+        return true;
       }
+      return false;
     } catch (error) {
       console.error('Error uploading meme:', error);
+      return false;
     }
   };
+
+  // Function to generate meme canvas and upload automatically
+  const generateAndUploadMeme = async () => {
+    if (autoUploaded) return; // Don't upload multiple times
+    
+    try {
+      // Load background image
+      const backgroundImg = new Image();
+      backgroundImg.crossOrigin = 'anonymous';
+      
+      await new Promise((resolve, reject) => {
+        backgroundImg.onload = resolve;
+        backgroundImg.onerror = reject;
+        backgroundImg.src = '/images/Achtergrond.png';
+      });
+
+      // Create canvas for manual rendering with higher resolution
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const scale = 2; // Higher resolution for better quality
+      canvas.width = 600 * scale;
+      canvas.height = 600 * scale;
+      ctx!.scale(scale, scale);
+      
+      // Fill with transparent background
+      ctx!.fillStyle = 'transparent';
+      ctx!.fillRect(0, 0, 600, 600);
+      
+      // Calculate meme position (centered)
+      const memeWidth = 520;
+      const memeHeight = 347;
+      const memeX = (600 - memeWidth) / 2;
+      const memeY = (600 - memeHeight) / 2;
+      
+      // Draw yellow background with rounded corners
+      ctx!.fillStyle = '#fdee34';
+      drawRoundedRect(ctx!, memeX, memeY, memeWidth, memeHeight, 16);
+      ctx!.fill();
+      
+      // Draw background image overlay with rounded corners
+      ctx!.save();
+      drawRoundedRect(ctx!, memeX, memeY, memeWidth, memeHeight, 16);
+      ctx!.clip();
+      ctx!.globalAlpha = 0.3;
+      ctx!.drawImage(backgroundImg, memeX, memeY, memeWidth, memeHeight);
+      ctx!.restore();
+      
+      // Get the selected answers
+      const selectedAnswers = Object.entries(quizState.answers).map(([, answerId]) => {
+        const answer = quizAnswers.find(a => a.id === answerId);
+        return answer;
+      }).filter(Boolean);
+      
+      const primaryAnswer = selectedAnswers[0];
+      if (!primaryAnswer) return;
+      
+      // Draw header badge with rounded corners (centered on card)
+      const headerText = 'Alles voor Schiedam';
+      const headerWidth = 200;
+      const headerHeight = 40;
+      const headerX = memeX + (memeWidth - headerWidth) / 2;
+      const headerY = memeY + 20;
+      
+      ctx!.fillStyle = '#30302e';
+      drawRoundedRect(ctx!, headerX, headerY, headerWidth, headerHeight, 8);
+      ctx!.fill();
+      
+      // Draw header text
+      ctx!.fillStyle = 'white';
+      ctx!.font = 'bold 16px Arial';
+      ctx!.textAlign = 'center';
+      ctx!.textBaseline = 'middle';
+      ctx!.fillText(headerText, headerX + headerWidth / 2, headerY + headerHeight / 2);
+      
+      // Draw main content area
+      const contentX = memeX + 40;
+      const contentY = headerY + headerHeight + 20;
+      const contentWidth = memeWidth - 80;
+      const contentHeight = memeHeight - headerHeight - 80;
+      
+      // Draw white background for content
+      ctx!.fillStyle = 'white';
+      drawRoundedRect(ctx!, contentX, contentY, contentWidth, contentHeight, 12);
+      ctx!.fill();
+      
+      // Draw user name
+      ctx!.fillStyle = '#30302e';
+      ctx!.font = 'bold 24px Arial';
+      ctx!.textAlign = 'center';
+      ctx!.textBaseline = 'top';
+      ctx!.fillText(quizState.userName, contentX + contentWidth / 2, contentY + 20);
+      
+      // Draw result text (centered)
+      ctx!.font = '16px Arial';
+      ctx!.textAlign = 'center';
+      ctx!.textBaseline = 'top';
+      
+      // Split text into lines if too long
+      const words = primaryAnswer.result_text.split(' ');
+      const lines = [];
+      let currentLine = '';
+      
+      for (const word of words) {
+        const testLine = currentLine + (currentLine ? ' ' : '') + word;
+        const metrics = ctx!.measureText(testLine);
+        
+        if (metrics.width > contentWidth - 40) {
+          if (currentLine) {
+            lines.push(currentLine);
+            currentLine = word;
+          } else {
+            lines.push(word);
+          }
+        } else {
+          currentLine = testLine;
+        }
+      }
+      if (currentLine) {
+        lines.push(currentLine);
+      }
+      
+      // Draw lines centered vertically
+      const lineHeight = 20;
+      const totalHeight = lines.length * lineHeight;
+      const startY = contentY + (contentHeight - totalHeight) / 2;
+      
+      lines.forEach((line, index) => {
+        ctx!.fillText(line, contentX + contentWidth / 2, startY + index * lineHeight);
+      });
+      
+      // Draw footer elements
+      ctx!.font = '12px Arial';
+      ctx!.textAlign = 'left';
+      ctx!.fillText('www.allesvoorschiedam.nl', memeX + 20, memeY + memeHeight - 20);
+      
+      ctx!.textAlign = 'right';
+      ctx!.fillText('#AllesVoorSchiedam', memeX + memeWidth - 20, memeY + memeHeight - 20);
+      
+      // Generate filename and upload
+      const filename = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.png`;
+      const success = await uploadMemeToPrikbord(canvas, filename);
+      
+      if (success) {
+        setAutoUploaded(true);
+      }
+      
+    } catch (error) {
+      console.error('Error auto-uploading meme:', error);
+    }
+  };
+
+  // Auto-upload when dialog opens
+  useEffect(() => {
+    if (isOpen && !autoUploaded) {
+      // Small delay to ensure the meme canvas is rendered
+      const timer = setTimeout(() => {
+        generateAndUploadMeme();
+      }, 1000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, autoUploaded]);
 
   const handleDownloadPNG = async () => {
     const memeElement = document.getElementById('meme-canvas');
@@ -479,7 +644,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         {/* Social Media Instructions */}
         <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-2 sm:mt-3 shadow-lg mx-2 sm:mx-4">
           <CardContent className="p-2 sm:p-3">
-            {uploaded && (
+            {(uploaded || autoUploaded) && (
               <div className="text-center mb-3 p-2 bg-green-100 rounded-lg border border-green-300">
                 <p className="text-sm font-semibold text-green-800">
                   ✅ Meme succesvol geüpload naar het Prikbord!
@@ -493,11 +658,9 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
             <p className="mb-2 text-sm sm:text-base text-center" style={{ color: '#30302e' }}>
               <i>Gebruik <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span></i>
             </p>
-            {session && (
-              <p className="text-xs text-center text-gray-600 mt-2">
-                Je meme wordt automatisch opgeslagen op het Prikbord
-              </p>
-            )}
+            <p className="text-xs text-center text-gray-600 mt-2">
+              Je meme wordt automatisch opgeslagen op het Prikbord
+            </p>
           </CardContent>
         </Card>
       </DialogContent>
