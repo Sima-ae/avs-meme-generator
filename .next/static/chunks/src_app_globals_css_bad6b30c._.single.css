@@ -848,6 +848,10 @@ body {
   border-radius: .75rem;
 }
 
+.rounded {
+  border-radius: .25rem;
+}
+
 .border {
   border-width: 1px;
 }

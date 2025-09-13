@@ -22,6 +22,21 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
   const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  // Helper function for rounded rectangles
+  const drawRoundedRect = (ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, radius: number) => {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+  };
+
   const handleDownloadPNG = async () => {
     const memeElement = document.getElementById('meme-canvas');
     if (!memeElement) return;
@@ -38,11 +53,13 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         backgroundImg.src = '/images/Achtergrond.png';
       });
 
-      // Create canvas for manual rendering
+      // Create canvas for manual rendering with higher resolution
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = 600;
-      canvas.height = 600;
+      const scale = 2; // Higher resolution for better quality
+      canvas.width = 600 * scale;
+      canvas.height = 600 * scale;
+      ctx!.scale(scale, scale);
       
       // Fill with transparent background
       ctx!.fillStyle = 'transparent';
@@ -54,32 +71,38 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       const memeX = (600 - memeWidth) / 2;
       const memeY = (600 - memeHeight) / 2;
       
-      // Draw yellow background
+      // Draw yellow background with rounded corners
       ctx!.fillStyle = '#fdee34';
-      ctx!.fillRect(memeX, memeY, memeWidth, memeHeight);
+      drawRoundedRect(ctx!, memeX, memeY, memeWidth, memeHeight, 16);
+      ctx!.fill();
       
-      // Draw background image overlay
+      // Draw background image overlay with rounded corners
+      ctx!.save();
+      drawRoundedRect(ctx!, memeX, memeY, memeWidth, memeHeight, 16);
+      ctx!.clip();
       ctx!.globalAlpha = 0.3;
       ctx!.drawImage(backgroundImg, memeX, memeY, memeWidth, memeHeight);
-      ctx!.globalAlpha = 1;
+      ctx!.restore();
       
-      // Draw header badge
+      // Draw header badge with rounded corners
       const headerText = 'Alles voor Schiedam';
       ctx!.fillStyle = '#30302e';
-      ctx!.fillRect(memeX + 20, memeY + 20, 200, 30);
+      drawRoundedRect(ctx!, memeX + 20, memeY + 20, 200, 30, 8);
+      ctx!.fill();
       ctx!.fillStyle = '#ffffff';
       ctx!.font = 'bold 14px Arial';
       ctx!.textAlign = 'center';
       ctx!.fillText(headerText, memeX + 120, memeY + 40);
       
-      // Draw main content box
+      // Draw main content box with rounded corners
       const contentX = memeX + 40;
       const contentY = memeY + 80;
       const contentWidth = memeWidth - 80;
       const contentHeight = 120;
       
       ctx!.fillStyle = '#ffffff';
-      ctx!.fillRect(contentX, contentY, contentWidth, contentHeight);
+      drawRoundedRect(ctx!, contentX, contentY, contentWidth, contentHeight, 16);
+      ctx!.fill();
       
       // Draw user name
       ctx!.fillStyle = '#30302e';
@@ -135,11 +158,13 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         backgroundImg.src = '/images/Achtergrond.png';
       });
 
-      // Create canvas for manual rendering
+      // Create canvas for manual rendering with higher resolution
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = 600;
-      canvas.height = 600;
+      const scale = 2; // Higher resolution for better quality
+      canvas.width = 600 * scale;
+      canvas.height = 600 * scale;
+      ctx!.scale(scale, scale);
       
       // Fill with white background
       ctx!.fillStyle = '#ffffff';
@@ -151,32 +176,38 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       const memeX = (600 - memeWidth) / 2;
       const memeY = (600 - memeHeight) / 2;
       
-      // Draw yellow background
+      // Draw yellow background with rounded corners
       ctx!.fillStyle = '#fdee34';
-      ctx!.fillRect(memeX, memeY, memeWidth, memeHeight);
+      drawRoundedRect(ctx!, memeX, memeY, memeWidth, memeHeight, 16);
+      ctx!.fill();
       
-      // Draw background image overlay
+      // Draw background image overlay with rounded corners
+      ctx!.save();
+      drawRoundedRect(ctx!, memeX, memeY, memeWidth, memeHeight, 16);
+      ctx!.clip();
       ctx!.globalAlpha = 0.3;
       ctx!.drawImage(backgroundImg, memeX, memeY, memeWidth, memeHeight);
-      ctx!.globalAlpha = 1;
+      ctx!.restore();
       
-      // Draw header badge
+      // Draw header badge with rounded corners
       const headerText = 'Alles voor Schiedam';
       ctx!.fillStyle = '#30302e';
-      ctx!.fillRect(memeX + 20, memeY + 20, 200, 30);
+      drawRoundedRect(ctx!, memeX + 20, memeY + 20, 200, 30, 8);
+      ctx!.fill();
       ctx!.fillStyle = '#ffffff';
       ctx!.font = 'bold 14px Arial';
       ctx!.textAlign = 'center';
       ctx!.fillText(headerText, memeX + 120, memeY + 40);
       
-      // Draw main content box
+      // Draw main content box with rounded corners
       const contentX = memeX + 40;
       const contentY = memeY + 80;
       const contentWidth = memeWidth - 80;
       const contentHeight = 120;
       
       ctx!.fillStyle = '#ffffff';
-      ctx!.fillRect(contentX, contentY, contentWidth, contentHeight);
+      drawRoundedRect(ctx!, contentX, contentY, contentWidth, contentHeight, 16);
+      ctx!.fill();
       
       // Draw user name
       ctx!.fillStyle = '#30302e';
