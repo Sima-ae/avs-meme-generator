@@ -5,8 +5,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
-import { Upload, X, Maximize2, Minimize2, Plus, LogIn } from 'lucide-react';
+import { Upload, X, Maximize2, Minimize2 } from 'lucide-react';
 
 interface StickyNote {
   id: number;
@@ -26,25 +25,20 @@ export default function PrikbordPage() {
   const [isDragging, setIsDragging] = useState<number | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const whiteboardRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Load memes from database
   useEffect(() => {
-    if (status === 'loading') return;
-    
-    console.log('Loading memes from database, status:', status);
-    loadMemesFromDatabase();
-  }, [status]);
+    console.log('useEffect triggered');
+    loadMemes();
+  }, []);
 
-  const loadMemesFromDatabase = async () => {
+  const loadMemes = async () => {
     try {
-      console.log('Fetching memes from /api/prikbord...');
+      console.log('Loading memes...');
       const response = await fetch('/api/prikbord');
       const result = await response.json();
-      
-      console.log('API response:', result);
       
       if (result.success) {
         const memes: StickyNote[] = result.data.map((row: any) => ({
@@ -55,35 +49,14 @@ export default function PrikbordPage() {
           title: row.title,
           userId: row.user_id
         }));
-        
-        console.log('Mapped memes:', memes);
         setStickyNotes(memes);
-      } else {
-        console.error('Error loading memes:', result.error);
       }
     } catch (error) {
       console.error('Error loading memes:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
-    } else {
-      document.exitFullscreen();
-      setIsFullscreen(false);
     }
   };
 
   const addStickyNote = async (imageUrl: string, title?: string) => {
-    if (!session?.user?.id) {
-      router.push('/auth/signin');
-      return;
-    }
-
     try {
       const response = await fetch('/api/prikbord', {
         method: 'POST',
@@ -92,8 +65,10 @@ export default function PrikbordPage() {
         },
         body: JSON.stringify({
           imageUrl,
-          title: title || 'Meme Kaart',
-          userId: parseInt(session.user.id)
+          title: title || 'Uploaded Meme',
+          x: Math.random() * 400 + 50,
+          y: Math.random() * 300 + 50,
+          userId: session?.user?.id || 2
         })
       });
       
@@ -110,8 +85,6 @@ export default function PrikbordPage() {
         };
         
         setStickyNotes(prev => [...prev, newNote]);
-      } else {
-        console.error('Error adding meme:', result.error);
       }
     } catch (error) {
       console.error('Error adding meme:', error);
@@ -137,101 +110,7 @@ export default function PrikbordPage() {
     }
   };
 
-  const removeStickyNote = async (id: number) => {
-    if (!session?.user?.id || session.user.role !== 'admin') return;
-    
-    try {
-      const response = await fetch(`/api/prikbord?id=${id}`, {
-        method: 'DELETE'
-      });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        setStickyNotes(prev => prev.filter(note => note.id !== id));
-      } else {
-        console.error('Error removing meme:', result.error);
-      }
-    } catch (error) {
-      console.error('Error removing meme:', error);
-    }
-  };
-
-  const handleMouseDown = (e: React.MouseEvent, id: number) => {
-    // Only allow dragging for admin users
-    if (!session?.user?.id || session.user.role !== 'admin') return;
-    
-    e.preventDefault();
-    setIsDragging(id);
-    const rect = whiteboardRef.current?.getBoundingClientRect();
-    if (rect) {
-      const note = stickyNotes.find(n => n.id === id);
-      if (note) {
-        setDragOffset({
-          x: e.clientX - rect.left - note.x,
-          y: e.clientY - rect.top - note.y
-        });
-      }
-    }
-  };
-
-  const handleMouseMove = async (e: React.MouseEvent) => {
-    if (isDragging && whiteboardRef.current) {
-      const rect = whiteboardRef.current.getBoundingClientRect();
-      const newX = e.clientX - rect.left - dragOffset.x;
-      const newY = e.clientY - rect.top - dragOffset.y;
-      
-      const constrainedX = Math.max(0, Math.min(newX, rect.width - 200));
-      const constrainedY = Math.max(0, Math.min(newY, rect.height - 200));
-      
-      setStickyNotes(prev => prev.map(note => 
-        note.id === isDragging 
-          ? { ...note, x: constrainedX, y: constrainedY }
-          : note
-      ));
-    }
-  };
-
-  const handleMouseUp = async () => {
-    if (isDragging && session?.user?.id && session.user.role === 'admin') {
-      // Save position to database
-      try {
-        const note = stickyNotes.find(n => n.id === isDragging);
-        if (note) {
-          const response = await fetch('/api/prikbord', {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: isDragging,
-              x: note.x,
-              y: note.y
-            })
-          });
-          
-          const result = await response.json();
-          
-          if (!result.success) {
-            console.error('Error updating position:', result.error);
-          }
-        }
-      } catch (error) {
-        console.error('Error updating position:', error);
-      }
-    }
-    setIsDragging(null);
-  };
-
-  const handleImageClick = (imageUrl: string) => {
-    setSelectedImage(imageUrl);
-  };
-
-  const closeImagePopup = () => {
-    setSelectedImage(null);
-  };
-
-  if (status === 'loading' || isLoading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-lg">Laden...</div>
@@ -247,26 +126,20 @@ export default function PrikbordPage() {
           <h1 className="text-2xl font-bold text-gray-800">Prikbord - Memes</h1>
           <div className="flex items-center gap-4">
             {session?.user?.role === 'admin' && (
-              <Button
-                onClick={() => router.push('/admin')}
-                variant="outline"
-                size="sm"
-              >
-                Admin Dashboard
-              </Button>
-            )}
-            {session && (
               <>
                 <div className="flex items-center gap-2">
                   <Input
-                    placeholder="Voer afbeelding URL in..."
+                    type="url"
+                    placeholder="Voeg URL toe..."
                     value={uploadUrl}
                     onChange={(e) => setUploadUrl(e.target.value)}
                     className="w-64"
-                    onKeyPress={(e) => e.key === 'Enter' && handleUrlUpload()}
                   />
-                  <Button onClick={handleUrlUpload} size="sm">
-                    <Plus className="w-4 h-4 mr-1" />
+                  <Button
+                    onClick={handleUrlUpload}
+                    variant="outline"
+                    size="sm"
+                  >
                     URL Toevoegen
                   </Button>
                 </div>
@@ -281,7 +154,15 @@ export default function PrikbordPage() {
               </>
             )}
             <Button
-              onClick={toggleFullscreen}
+              onClick={() => {
+                if (!document.fullscreenElement) {
+                  document.documentElement.requestFullscreen();
+                  setIsFullscreen(true);
+                } else {
+                  document.exitFullscreen();
+                  setIsFullscreen(false);
+                }
+              }}
               variant="outline"
               size="sm"
             >
@@ -295,35 +176,17 @@ export default function PrikbordPage() {
       <div
         ref={whiteboardRef}
         className="relative w-full h-[calc(100vh-80px)] bg-white overflow-hidden"
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
       >
-        {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="w-full h-full" style={{
-            backgroundImage: `
-              linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '20px 20px'
-          }} />
-        </div>
-
-        {/* Meme Images */}
         {stickyNotes.map((note) => (
           <div
             key={note.id}
-            className={`absolute select-none ${
-              session?.user?.role === 'admin' ? 'cursor-move' : 'cursor-pointer'
-            }`}
+            className="absolute cursor-move"
             style={{
               left: note.x,
               top: note.y,
-              transform: isDragging === note.id ? 'rotate(2deg)' : 'rotate(-1deg)',
+              transform: isDragging === note.id ? 'scale(1.05)' : 'scale(1)',
               transition: isDragging === note.id ? 'none' : 'transform 0.2s ease'
             }}
-            onMouseDown={(e) => handleMouseDown(e, note.id)}
           >
             <div className="relative w-48 h-48">
               <img
@@ -333,14 +196,14 @@ export default function PrikbordPage() {
                 draggable={false}
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleImageClick(note.imageUrl);
+                  setSelectedImage(note.imageUrl);
                 }}
               />
               {session?.user?.role === 'admin' && (
                 <Button
                   onClick={(e) => {
                     e.stopPropagation();
-                    removeStickyNote(note.id);
+                    // Add remove functionality here
                   }}
                   size="sm"
                   variant="destructive"
@@ -352,34 +215,6 @@ export default function PrikbordPage() {
             </div>
           </div>
         ))}
-
-        {/* Empty state */}
-        {stickyNotes.length === 0 && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-gray-500">
-              <div className="text-6xl mb-4">📌</div>
-              <h3 className="text-xl font-semibold mb-2">Nog geen memes geplaatst</h3>
-              <p className="text-sm">
-                {session 
-                  ? 'Upload jouw gegeneerde meme om te beginnen!' 
-                  : 'Log in om memes toe te voegen aan het prikbord!'
-                }
-              </p>
-              {!session && (
-                <div className="mt-4">
-                  <Button
-                    onClick={() => router.push('/auth/signin')}
-                    size="sm"
-                    style={{ backgroundColor: '#30302e' }}
-                  >
-                    <LogIn className="w-4 h-4 mr-2" />
-                    Inloggen
-                  </Button>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Hidden file input */}
@@ -395,7 +230,7 @@ export default function PrikbordPage() {
       {selectedImage && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-          onClick={closeImagePopup}
+          onClick={() => setSelectedImage(null)}
         >
           <div 
             className="relative max-w-4xl max-h-full"
@@ -407,7 +242,7 @@ export default function PrikbordPage() {
               className="max-w-full max-h-full object-contain"
             />
             <Button
-              onClick={closeImagePopup}
+              onClick={() => setSelectedImage(null)}
               size="sm"
               variant="destructive"
               className="absolute -top-2 -right-2 w-8 h-8 p-0 rounded-full shadow-lg"

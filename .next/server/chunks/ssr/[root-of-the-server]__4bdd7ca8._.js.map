@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 11, "column": 0}, "map": {"version":3,"sources":["file:///Users/pro/Desktop/REPOS%20CURSOR/avs-meme-generator/src/app/test-simple/page.tsx"],"sourcesContent":["export default function TestSimplePage() {\n  return (\n    <div className=\"min-h-screen flex items-center justify-center\">\n      <h1 className=\"text-2xl font-bold\">Simple Test Page</h1>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAG,WAAU;sBAAqB;;;;;;;;;;;AAGzC","debugId":null}}]
+}
