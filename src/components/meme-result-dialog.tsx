@@ -53,11 +53,13 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         backgroundImg.src = '/images/Achtergrond.png';
       });
 
-      // Create canvas for manual rendering
+      // Create canvas for manual rendering with higher resolution
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = 600;
-      canvas.height = 600;
+      const scale = 2; // Higher resolution for better quality
+      canvas.width = 600 * scale;
+      canvas.height = 600 * scale;
+      ctx!.scale(scale, scale);
       
       // Fill with transparent background
       ctx!.fillStyle = 'transparent';
@@ -96,15 +98,18 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       // Save context state and set text properties
       ctx!.save();
       ctx!.font = 'bold 14px Arial';
-      ctx!.textAlign = 'center';
-      ctx!.textBaseline = 'middle';
       ctx!.fillStyle = '#ffffff';
       
-      // Calculate text position for perfect centering
-      const textX = headerX + headerWidth / 2;
-      const textY = headerY + headerHeight / 2;
+      // Measure text for manual centering
+      const textMetrics = ctx!.measureText(headerText);
+      const textWidth = textMetrics.width;
+      const textHeight = 14; // Approximate text height
       
-      // Draw text with explicit centering
+      // Calculate text position for perfect centering
+      const textX = headerX + (headerWidth - textWidth) / 2;
+      const textY = headerY + headerHeight / 2 + textHeight / 4; // Adjust for baseline
+      
+      // Draw text with manual centering
       ctx!.fillText(headerText, textX, textY);
       ctx!.restore();
       
@@ -172,11 +177,13 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         backgroundImg.src = '/images/Achtergrond.png';
       });
 
-      // Create canvas for manual rendering
+      // Create canvas for manual rendering with higher resolution
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = 600;
-      canvas.height = 600;
+      const scale = 2; // Higher resolution for better quality
+      canvas.width = 600 * scale;
+      canvas.height = 600 * scale;
+      ctx!.scale(scale, scale);
       
       // Fill with white background
       ctx!.fillStyle = '#ffffff';
@@ -215,15 +222,18 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       // Save context state and set text properties
       ctx!.save();
       ctx!.font = 'bold 14px Arial';
-      ctx!.textAlign = 'center';
-      ctx!.textBaseline = 'middle';
       ctx!.fillStyle = '#ffffff';
       
-      // Calculate text position for perfect centering
-      const textX = headerX + headerWidth / 2;
-      const textY = headerY + headerHeight / 2;
+      // Measure text for manual centering
+      const textMetrics = ctx!.measureText(headerText);
+      const textWidth = textMetrics.width;
+      const textHeight = 14; // Approximate text height
       
-      // Draw text with explicit centering
+      // Calculate text position for perfect centering
+      const textX = headerX + (headerWidth - textWidth) / 2;
+      const textY = headerY + headerHeight / 2 + textHeight / 4; // Adjust for baseline
+      
+      // Draw text with manual centering
       ctx!.fillText(headerText, textX, textY);
       ctx!.restore();
       
