@@ -1096,6 +1096,11 @@ body {
   border-color: rgba(250, 204, 21, var(--tw-border-opacity, 1));
 }
 
+.border-yellow-300 {
+  --tw-border-opacity: 1;
+  border-color: rgba(253, 224, 71, var(--tw-border-opacity, 1));
+}
+
 .border-t-transparent {
   border-top-color: rgba(0, 0, 0, 0);
 }
@@ -1236,6 +1241,11 @@ body {
 .bg-yellow-50 {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 252, 232, var(--tw-bg-opacity, 1));
+}
+
+.bg-yellow-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(254, 249, 195, var(--tw-bg-opacity, 1));
 }
 
 .bg-gradient-to-br {
@@ -1642,6 +1652,11 @@ body {
 .text-yellow-500 {
   --tw-text-opacity: 1;
   color: rgba(234, 179, 8, var(--tw-text-opacity, 1));
+}
+
+.text-yellow-800 {
+  --tw-text-opacity: 1;
+  color: rgba(133, 77, 14, var(--tw-text-opacity, 1));
 }
 
 .underline {

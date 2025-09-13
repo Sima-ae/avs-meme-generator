@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { toPng, toJpeg } from 'html-to-image';
-import { Download, Share2, RotateCcw, Check, Sparkles, Upload } from 'lucide-react';
+import { Download, Share2, RotateCcw, Check, Sparkles, Upload, Edit3, Save } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { MemeCanvas } from '@/components/meme-canvas';
 import { QuizState } from '@/types/quiz';
 import { quizAnswers } from '@/data/quizData';
@@ -24,7 +26,23 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
   const [copied, setCopied] = useState(false);
   const [uploaded, setUploaded] = useState(false);
   const [autoUploaded, setAutoUploaded] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedUserName, setEditedUserName] = useState('');
+  const [editedResultText, setEditedResultText] = useState('');
   const { data: session } = useSession();
+
+  // Initialize edited text when dialog opens
+  useEffect(() => {
+    if (isOpen) {
+      setEditedUserName(quizState.userName);
+      const selectedAnswers = Object.entries(quizState.answers).map(([, answerId]) => {
+        const answer = quizAnswers.find(a => a.id === answerId);
+        return answer;
+      }).filter(Boolean);
+      const primaryAnswer = selectedAnswers[0];
+      setEditedResultText(primaryAnswer?.result_text || 'Kiest voor Schiedam');
+    }
+  }, [isOpen, quizState]);
 
   // Helper function for rounded rectangles
   const drawRoundedRect = (ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, radius: number) => {
@@ -140,7 +158,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         return;
       }
       
-      console.log('Drawing meme content for:', quizState.userName, primaryAnswer.result_text);
+      console.log('Drawing meme content for:', editedUserName, editedResultText);
       
       // Draw header badge with rounded corners (centered on card)
       const headerText = 'Alles voor Schiedam';
@@ -176,7 +194,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.font = 'bold 24px Arial';
       ctx!.textAlign = 'center';
       ctx!.textBaseline = 'top';
-      ctx!.fillText(quizState.userName, contentX + contentWidth / 2, contentY + 20);
+      ctx!.fillText(editedUserName, contentX + contentWidth / 2, contentY + 20);
       
       // Draw result text (centered)
       ctx!.font = '16px Arial';
@@ -184,7 +202,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.textBaseline = 'top';
       
       // Split text into lines if too long
-      const words = primaryAnswer.result_text.split(' ');
+      const words = editedResultText.split(' ');
       const lines = [];
       let currentLine = '';
       
@@ -227,7 +245,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       console.log('Canvas rendered, converting to blob...');
 
       // Generate filename and upload
-      const filename = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.png`;
+      const filename = `alles-voor-schiedam-${editedUserName.toLowerCase().replace(/\s+/g, '-')}.png`;
       const success = await uploadMemeToPrikbord(canvas, filename);
       
       if (success) {
@@ -244,20 +262,19 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
     }
   };
 
-  // Auto-upload when dialog opens
-  useEffect(() => {
-    console.log('useEffect triggered - isOpen:', isOpen, 'autoUploaded:', autoUploaded);
-    if (isOpen && !autoUploaded) {
-      console.log('Dialog opened, starting auto-upload timer...');
-      // Longer delay to ensure the meme canvas is fully rendered
-      const timer = setTimeout(() => {
-        console.log('Timer fired, calling generateAndUploadMeme...');
-        generateAndUploadMeme();
-      }, 2000);
-      
-      return () => clearTimeout(timer);
+  // No automatic upload - user must approve first
+
+  // Function to approve and upload meme to prikbord
+  const handleApproveAndUpload = async () => {
+    setIsGenerating(true);
+    try {
+      await generateAndUploadMeme();
+    } catch (error) {
+      console.error('Error approving and uploading meme:', error);
+    } finally {
+      setIsGenerating(false);
     }
-  }, [isOpen, autoUploaded]);
+  };
 
   const handleDownloadPNG = async () => {
     const memeElement = document.getElementById('meme-canvas');
@@ -349,17 +366,11 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.fillStyle = '#30302e';
       ctx!.font = 'bold 24px Arial';
       ctx!.textAlign = 'center';
-      ctx!.fillText(quizState.userName, contentX + contentWidth/2, contentY + 40);
+      ctx!.fillText(editedUserName, contentX + contentWidth/2, contentY + 40);
       
       // Draw result text
-      const selectedAnswers = Object.entries(quizState.answers).map(([, answerId]) => {
-        const answer = quizAnswers.find(a => a.id === answerId);
-        return answer;
-      }).filter(Boolean);
-      const primaryAnswer = selectedAnswers[0];
-      const resultText = primaryAnswer?.result_text || 'Kiest voor Schiedam';
       ctx!.font = '14px Arial';
-      ctx!.fillText(resultText, contentX + contentWidth/2, contentY + 70);
+      ctx!.fillText(editedResultText, contentX + contentWidth/2, contentY + 70);
       
       // Draw footer elements
       ctx!.font = '12px Arial';
@@ -372,7 +383,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       // Convert to data URL and download
       const dataUrl = canvas.toDataURL('image/png');
       
-      const filename = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.png`;
+      const filename = `alles-voor-schiedam-${editedUserName.toLowerCase().replace(/\s+/g, '-')}.png`;
       
       const link = document.createElement('a');
       link.download = filename;
@@ -478,17 +489,11 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.fillStyle = '#30302e';
       ctx!.font = 'bold 24px Arial';
       ctx!.textAlign = 'center';
-      ctx!.fillText(quizState.userName, contentX + contentWidth/2, contentY + 40);
+      ctx!.fillText(editedUserName, contentX + contentWidth/2, contentY + 40);
       
       // Draw result text
-      const selectedAnswers = Object.entries(quizState.answers).map(([, answerId]) => {
-        const answer = quizAnswers.find(a => a.id === answerId);
-        return answer;
-      }).filter(Boolean);
-      const primaryAnswer = selectedAnswers[0];
-      const resultText = primaryAnswer?.result_text || 'Kiest voor Schiedam';
       ctx!.font = '14px Arial';
-      ctx!.fillText(resultText, contentX + contentWidth/2, contentY + 70);
+      ctx!.fillText(editedResultText, contentX + contentWidth/2, contentY + 70);
       
       // Draw footer elements
       ctx!.font = '12px Arial';
@@ -501,7 +506,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       // Convert to data URL and download
       const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
       
-      const filename = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+      const filename = `alles-voor-schiedam-${editedUserName.toLowerCase().replace(/\s+/g, '-')}.jpg`;
       
       const link = document.createElement('a');
       link.download = filename;
@@ -591,6 +596,72 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
           </div>
         </DialogHeader>
 
+        {/* Text Editor */}
+        {isEditing && (
+          <motion.div 
+            className="bg-white/90 backdrop-blur-xl border border-black/20 rounded-2xl p-4 sm:p-6 mx-2 sm:mx-4 mb-4 sm:mb-6 shadow-lg"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#30302e' }}>
+              Pas je meme aan
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="user-name" className="text-sm font-medium" style={{ color: '#30302e' }}>
+                  Je naam
+                </Label>
+                <Input
+                  id="user-name"
+                  value={editedUserName}
+                  onChange={(e) => setEditedUserName(e.target.value)}
+                  className="mt-1"
+                  placeholder="Voer je naam in"
+                />
+              </div>
+              <div>
+                <Label htmlFor="result-text" className="text-sm font-medium" style={{ color: '#30302e' }}>
+                  Meme tekst
+                </Label>
+                <Input
+                  id="result-text"
+                  value={editedResultText}
+                  onChange={(e) => setEditedResultText(e.target.value)}
+                  className="mt-1"
+                  placeholder="Voer je meme tekst in"
+                />
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => setIsEditing(false)}
+                  className="flex-1"
+                  style={{ backgroundColor: '#30302e' }}
+                >
+                  <Save className="w-4 h-4 mr-2" />
+                  Opslaan
+                </Button>
+                <Button
+                  onClick={() => {
+                    setEditedUserName(quizState.userName);
+                    const selectedAnswers = Object.entries(quizState.answers).map(([, answerId]) => {
+                      const answer = quizAnswers.find(a => a.id === answerId);
+                      return answer;
+                    }).filter(Boolean);
+                    const primaryAnswer = selectedAnswers[0];
+                    setEditedResultText(primaryAnswer?.result_text || 'Kiest voor Schiedam');
+                    setIsEditing(false);
+                  }}
+                  variant="outline"
+                  className="flex-1"
+                >
+                  Reset
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Meme Preview */}
         <motion.div 
           className="flex justify-center my-4 sm:my-6 px-2 sm:px-4"
@@ -601,6 +672,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
           <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
             <MemeCanvas 
               quizState={quizState} 
+              customUserName={editedUserName}
+              customResultText={editedResultText}
               className="shadow-2xl border-2 sm:border-4 border-black/20 rounded-2xl sm:rounded-3xl w-full h-auto"
               id="meme-canvas"
             />
@@ -609,6 +682,35 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
         {/* Action Buttons */}
         <div className="space-y-2 sm:space-y-3 px-2 sm:px-4">
+          {/* Edit and Approve Buttons */}
+          <div className="flex gap-2">
+            <motion.button
+              onClick={() => setIsEditing(!isEditing)}
+              className="bg-white/90 backdrop-blur-xl border border-black/20 font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg text-sm sm:text-base flex-1"
+              style={{ color: '#30302e' }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Edit3 className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+              {isEditing ? 'Bewerking sluiten' : 'Tekst bewerken'}
+            </motion.button>
+            
+            {!uploaded && (
+              <motion.button
+                onClick={handleApproveAndUpload}
+                disabled={isGenerating}
+                className="text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-2xl transition-all duration-300 flex items-center justify-center shadow-2xl disabled:cursor-not-allowed text-sm sm:text-base flex-1"
+                style={{ backgroundColor: '#fdee34', color: '#30302e' }}
+                whileHover={{ scale: isGenerating ? 1 : 1.02 }}
+                whileTap={{ scale: isGenerating ? 1 : 0.98 }}
+              >
+                <Upload className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                {isGenerating ? 'Uploaden...' : 'Goedkeuren & Uploaden'}
+              </motion.button>
+            )}
+          </div>
+
+          {/* Download Buttons */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <motion.button
               onClick={handleDownloadJPG}
@@ -630,8 +732,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               whileHover={{ scale: isGenerating ? 1 : 1.02 }}
               whileTap={{ scale: isGenerating ? 1 : 0.98 }}
             >
-              {uploaded ? <Upload className="w-4 h-4 sm:w-5 sm:h-5 mr-2" /> : <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />}
-              {isGenerating ? 'Genereren...' : uploaded ? 'Geüpload naar Prikbord!' : 'Download PNG (Transparant)'}
+              <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+              {isGenerating ? 'Genereren...' : 'Download PNG (Transparant)'}
             </motion.button>
           </div>
           
@@ -663,10 +765,17 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         {/* Social Media Instructions */}
         <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-2 sm:mt-3 shadow-lg mx-2 sm:mx-4">
           <CardContent className="p-2 sm:p-3">
-            {(uploaded || autoUploaded) && (
+            {uploaded && (
               <div className="text-center mb-3 p-2 bg-green-100 rounded-lg border border-green-300">
                 <p className="text-sm font-semibold text-green-800">
                   ✅ Meme succesvol geüpload naar het Prikbord!
+                </p>
+              </div>
+            )}
+            {!uploaded && (
+              <div className="text-center mb-3 p-2 bg-yellow-100 rounded-lg border border-yellow-300">
+                <p className="text-sm font-semibold text-yellow-800">
+                  ⚠️ Klik op "Goedkeuren & Uploaden" om je meme op te slaan op het Prikbord
                 </p>
               </div>
             )}
@@ -678,7 +787,7 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               <i>Gebruik <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span></i>
             </p>
             <p className="text-xs text-center text-gray-600 mt-2">
-              Je meme wordt automatisch opgeslagen op het Prikbord
+              {uploaded ? 'Je meme is opgeslagen op het Prikbord' : 'Bewerk je tekst en upload naar het Prikbord'}
             </p>
           </CardContent>
         </Card>

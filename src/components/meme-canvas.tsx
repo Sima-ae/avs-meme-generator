@@ -8,9 +8,11 @@ interface MemeCanvasProps {
   quizState: QuizState;
   className?: string;
   id?: string;
+  customUserName?: string;
+  customResultText?: string;
 }
 
-export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
+export function MemeCanvas({ quizState, className = '', id, customUserName, customResultText }: MemeCanvasProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   // Get the selected answers
@@ -127,10 +129,10 @@ export function MemeCanvas({ quizState, className = '', id }: MemeCanvasProps) {
       <div className="flex flex-col justify-center items-center h-full px-4 sm:px-6 lg:px-8 z-10">
         <div className="bg-avs-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-avs-black/10 w-full max-w-xs sm:max-w-sm">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-avs-black mb-2 sm:mb-4 break-words">
-            {quizState.userName}
+            {customUserName || quizState.userName}
           </h1>
           <p className="text-xs sm:text-sm lg:text-base text-avs-black/80 font-medium break-words leading-tight">
-            {primaryAnswer.result_text}
+            {customResultText || primaryAnswer.result_text}
           </p>
         </div>
       </div>
