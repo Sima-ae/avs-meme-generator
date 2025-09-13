@@ -1154,13 +1154,11 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                 backgroundImg.onerror = reject;
                 backgroundImg.src = '/images/Achtergrond.png';
             });
-            // Create canvas for manual rendering with higher resolution
+            // Create canvas for manual rendering
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            const scale = 2; // Higher resolution for better quality
-            canvas.width = 600 * scale;
-            canvas.height = 600 * scale;
-            ctx.scale(scale, scale);
+            canvas.width = 600;
+            canvas.height = 600;
             // Fill with transparent background
             ctx.fillStyle = 'transparent';
             ctx.fillRect(0, 0, 600, 600);
@@ -1198,6 +1196,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
             // Calculate text position for perfect centering
             const textX = headerX + headerWidth / 2;
             const textY = headerY + headerHeight / 2;
+            // Draw text with explicit centering
             ctx.fillText(headerText, textX, textY);
             ctx.restore();
             // Draw main content box with rounded corners
@@ -1253,13 +1252,11 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                 backgroundImg.onerror = reject;
                 backgroundImg.src = '/images/Achtergrond.png';
             });
-            // Create canvas for manual rendering with higher resolution
+            // Create canvas for manual rendering
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            const scale = 2; // Higher resolution for better quality
-            canvas.width = 600 * scale;
-            canvas.height = 600 * scale;
-            ctx.scale(scale, scale);
+            canvas.width = 600;
+            canvas.height = 600;
             // Fill with white background
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, 600, 600);
@@ -1297,6 +1294,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
             // Calculate text position for perfect centering
             const textX = headerX + headerWidth / 2;
             const textY = headerY + headerHeight / 2;
+            // Draw text with explicit centering
             ctx.fillText(headerText, textX, textY);
             ctx.restore();
             // Draw main content box with rounded corners
