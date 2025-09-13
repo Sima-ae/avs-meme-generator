@@ -27,6 +27,23 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
     setIsGenerating(true);
     try {
+      // Preload and convert background image to data URL first
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      
+      const backgroundDataUrl = await new Promise<string>((resolve, reject) => {
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx?.drawImage(img, 0, 0);
+          resolve(canvas.toDataURL('image/png'));
+        };
+        img.onerror = reject;
+        img.src = '/images/Achtergrond.png';
+      });
+
       // Create a wrapper div with transparent background
       const wrapper = document.createElement('div');
       wrapper.style.backgroundColor = 'transparent';
@@ -44,27 +61,20 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       clonedMeme.style.height = '347px'; // 3:2 aspect ratio
       clonedMeme.style.maxWidth = 'none';
       clonedMeme.style.maxHeight = 'none';
+      
+      // Replace the background image src with data URL
+      const backgroundImg = clonedMeme.querySelector('img[src="/images/Achtergrond.png"]') as HTMLImageElement;
+      if (backgroundImg) {
+        backgroundImg.src = backgroundDataUrl;
+      }
+      
       wrapper.appendChild(clonedMeme);
       
       // Temporarily add to DOM
       document.body.appendChild(wrapper);
       
-      // Convert background image to data URL
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      
-      await new Promise((resolve, reject) => {
-        img.onload = () => {
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx?.drawImage(img, 0, 0);
-          resolve(canvas.toDataURL('image/png'));
-        };
-        img.onerror = reject;
-        img.src = '/images/Achtergrond.png';
-      });
+      // Wait a bit for the image to render
+      await new Promise(resolve => setTimeout(resolve, 100));
 
       const dataUrl = await toPng(wrapper, {
         quality: 1.0,
@@ -95,6 +105,23 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
     setIsGenerating(true);
     try {
+      // Preload and convert background image to data URL first
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      
+      const backgroundDataUrl = await new Promise<string>((resolve, reject) => {
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx?.drawImage(img, 0, 0);
+          resolve(canvas.toDataURL('image/png'));
+        };
+        img.onerror = reject;
+        img.src = '/images/Achtergrond.png';
+      });
+
       // Create a wrapper div with white background
       const wrapper = document.createElement('div');
       wrapper.style.backgroundColor = '#ffffff';
@@ -112,27 +139,20 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       clonedMeme.style.height = '347px'; // 3:2 aspect ratio
       clonedMeme.style.maxWidth = 'none';
       clonedMeme.style.maxHeight = 'none';
+      
+      // Replace the background image src with data URL
+      const backgroundImg = clonedMeme.querySelector('img[src="/images/Achtergrond.png"]') as HTMLImageElement;
+      if (backgroundImg) {
+        backgroundImg.src = backgroundDataUrl;
+      }
+      
       wrapper.appendChild(clonedMeme);
       
       // Temporarily add to DOM
       document.body.appendChild(wrapper);
       
-      // Convert background image to data URL
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      
-      await new Promise((resolve, reject) => {
-        img.onload = () => {
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx?.drawImage(img, 0, 0);
-          resolve(canvas.toDataURL('image/png'));
-        };
-        img.onerror = reject;
-        img.src = '/images/Achtergrond.png';
-      });
+      // Wait a bit for the image to render
+      await new Promise(resolve => setTimeout(resolve, 100));
 
       const dataUrl = await toJpeg(wrapper, {
         quality: 1.0,
