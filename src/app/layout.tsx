@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Alles voor Schiedam Meme Generator 2025",
   description: "Maak persoonlijke memes over jouw visie voor Schiedam. Beantwoord een paar vragen en krijg je eigen meme om te delen op sociale media.",
-  keywords: ["Schiedam", "meme", "generator", "Alles voor Schiedam", "politiek", "stemmen", "Nederland"],
+  keywords: ["Schiedam", "meme", "generator", "Alles voor Schiedam", "politiek", "stemmen", "Nederland", "gemeenteraad", "verkiezingen"],
   authors: [{ name: "Alles voor Schiedam" }],
   openGraph: {
     title: "Alles voor Schiedam Meme Generator 2025",

@@ -37,10 +37,10 @@ export default function Header() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {['Informatie', 'Hoe werkt het?'].map((item, index) => (
+            {['Informatie', 'Hoe werkt het?', 'Prikbord'].map((item, index) => (
               <motion.a
                 key={item}
-                href="#"
+                href={item === 'Prikbord' ? '/prikbord' : '#'}
                 className="text-lg font-medium transition-colors duration-300 hover:scale-105"
                 style={{ color: '#30302e' }}
                 whileHover={{ scale: 1.05 }}
@@ -89,10 +89,10 @@ export default function Header() {
             className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-2xl border-b border-black/20 shadow-lg"
           >
             <div className="px-4 py-6 space-y-4">
-              {['Informatie', 'Hoe werkt het?'].map((item, index) => (
+              {['Informatie', 'Hoe werkt het?', 'Prikbord'].map((item, index) => (
                 <motion.a
                   key={item}
-                  href="#"
+                  href={item === 'Prikbord' ? '/prikbord' : '#'}
                   className="block text-lg font-medium transition-colors duration-300 hover:scale-105 py-2"
                   style={{ color: '#30302e' }}
                   whileHover={{ scale: 1.02 }}

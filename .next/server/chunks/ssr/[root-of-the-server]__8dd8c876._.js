@@ -127,7 +127,9 @@ const metadata = {
         "Alles voor Schiedam",
         "politiek",
         "stemmen",
-        "Nederland"
+        "Nederland",
+        "gemeenteraad",
+        "verkiezingen"
     ],
     authors: [
         {
