@@ -34,13 +34,17 @@ export default function PrikbordPage() {
   useEffect(() => {
     if (status === 'loading') return;
     
+    console.log('Loading memes from database, status:', status);
     loadMemesFromDatabase();
   }, [status]);
 
   const loadMemesFromDatabase = async () => {
     try {
+      console.log('Fetching memes from /api/prikbord...');
       const response = await fetch('/api/prikbord');
       const result = await response.json();
+      
+      console.log('API response:', result);
       
       if (result.success) {
         const memes: StickyNote[] = result.data.map((row: any) => ({
@@ -52,6 +56,7 @@ export default function PrikbordPage() {
           userId: row.user_id
         }));
         
+        console.log('Mapped memes:', memes);
         setStickyNotes(memes);
       } else {
         console.error('Error loading memes:', result.error);
@@ -233,7 +238,6 @@ export default function PrikbordPage() {
       </div>
     );
   }
-
 
   return (
     <div className={`min-h-screen bg-gray-100 transition-all duration-300 ${isFullscreen ? 'fixed inset-0 z-50' : ''}`}>

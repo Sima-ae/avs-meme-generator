@@ -246,10 +246,12 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
 
   // Auto-upload when dialog opens
   useEffect(() => {
+    console.log('useEffect triggered - isOpen:', isOpen, 'autoUploaded:', autoUploaded);
     if (isOpen && !autoUploaded) {
       console.log('Dialog opened, starting auto-upload timer...');
       // Longer delay to ensure the meme canvas is fully rendered
       const timer = setTimeout(() => {
+        console.log('Timer fired, calling generateAndUploadMeme...');
         generateAndUploadMeme();
       }, 2000);
       
