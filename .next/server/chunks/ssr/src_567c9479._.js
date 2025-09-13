@@ -1184,48 +1184,131 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
         if (autoUploaded) return; // Don't upload multiple times
         try {
             console.log('Starting auto-upload process...');
-            // Wait for the meme element to be rendered
-            const memeElement = document.getElementById('meme-canvas');
-            if (!memeElement) {
-                console.log('Meme element not found, retrying in 1 second...');
-                setTimeout(()=>generateAndUploadMeme(), 1000);
+            // Load background image
+            const backgroundImg = new Image();
+            backgroundImg.crossOrigin = 'anonymous';
+            await new Promise((resolve, reject)=>{
+                backgroundImg.onload = resolve;
+                backgroundImg.onerror = reject;
+                backgroundImg.src = '/images/Achtergrond.png';
+            });
+            console.log('Background image loaded, creating canvas...');
+            // Create canvas for manual rendering with higher resolution
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const scale = 2; // Higher resolution for better quality
+            canvas.width = 600 * scale;
+            canvas.height = 600 * scale;
+            ctx.scale(scale, scale);
+            // Fill with transparent background
+            ctx.fillStyle = 'transparent';
+            ctx.fillRect(0, 0, 600, 600);
+            // Calculate meme position (centered)
+            const memeWidth = 520;
+            const memeHeight = 347;
+            const memeX = (600 - memeWidth) / 2;
+            const memeY = (600 - memeHeight) / 2;
+            // Draw yellow background with rounded corners
+            ctx.fillStyle = '#fdee34';
+            drawRoundedRect(ctx, memeX, memeY, memeWidth, memeHeight, 16);
+            ctx.fill();
+            // Draw background image overlay with rounded corners
+            ctx.save();
+            drawRoundedRect(ctx, memeX, memeY, memeWidth, memeHeight, 16);
+            ctx.clip();
+            ctx.globalAlpha = 0.3;
+            ctx.drawImage(backgroundImg, memeX, memeY, memeWidth, memeHeight);
+            ctx.restore();
+            // Get the selected answers
+            const selectedAnswers = Object.entries(quizState.answers).map(([, answerId])=>{
+                const answer = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$quizData$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["quizAnswers"].find((a)=>a.id === answerId);
+                return answer;
+            }).filter(Boolean);
+            const primaryAnswer = selectedAnswers[0];
+            if (!primaryAnswer) {
+                console.log('No primary answer found');
                 return;
             }
-            console.log('Meme element found, capturing image...');
-            // Use html-to-image to capture the actual rendered meme
-            const dataUrl = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$html$2d$to$2d$image$2f$es$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toPng"])(memeElement, {
-                quality: 1.0,
-                pixelRatio: 2,
-                backgroundColor: 'transparent'
+            console.log('Drawing meme content for:', quizState.userName, primaryAnswer.result_text);
+            // Draw header badge with rounded corners (centered on card)
+            const headerText = 'Alles voor Schiedam';
+            const headerWidth = 200;
+            const headerHeight = 40;
+            const headerX = memeX + (memeWidth - headerWidth) / 2;
+            const headerY = memeY + 20;
+            ctx.fillStyle = '#30302e';
+            drawRoundedRect(ctx, headerX, headerY, headerWidth, headerHeight, 8);
+            ctx.fill();
+            // Draw header text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 16px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(headerText, headerX + headerWidth / 2, headerY + headerHeight / 2);
+            // Draw main content area
+            const contentX = memeX + 40;
+            const contentY = headerY + headerHeight + 20;
+            const contentWidth = memeWidth - 80;
+            const contentHeight = memeHeight - headerHeight - 80;
+            // Draw white background for content
+            ctx.fillStyle = 'white';
+            drawRoundedRect(ctx, contentX, contentY, contentWidth, contentHeight, 12);
+            ctx.fill();
+            // Draw user name
+            ctx.fillStyle = '#30302e';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+            ctx.fillText(quizState.userName, contentX + contentWidth / 2, contentY + 20);
+            // Draw result text (centered)
+            ctx.font = '16px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+            // Split text into lines if too long
+            const words = primaryAnswer.result_text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words){
+                const testLine = currentLine + (currentLine ? ' ' : '') + word;
+                const metrics = ctx.measureText(testLine);
+                if (metrics.width > contentWidth - 40) {
+                    if (currentLine) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        lines.push(word);
+                    }
+                } else {
+                    currentLine = testLine;
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine);
+            }
+            // Draw lines centered vertically
+            const lineHeight = 20;
+            const totalHeight = lines.length * lineHeight;
+            const startY = contentY + (contentHeight - totalHeight) / 2;
+            lines.forEach((line, index)=>{
+                ctx.fillText(line, contentX + contentWidth / 2, startY + index * lineHeight);
             });
-            console.log('Image captured, converting to blob...');
-            // Convert data URL to blob
-            const response = await fetch(dataUrl);
-            const blob = await response.blob();
-            // Create form data
-            const formData = new FormData();
+            // Draw footer elements
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText('www.allesvoorschiedam.nl', memeX + 20, memeY + memeHeight - 20);
+            ctx.textAlign = 'right';
+            ctx.fillText('#AllesVoorSchiedam', memeX + memeWidth - 20, memeY + memeHeight - 20);
+            console.log('Canvas rendered, converting to blob...');
+            // Generate filename and upload
             const filename = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.png`;
-            formData.append('file', blob, filename);
-            formData.append('title', `Meme van ${quizState.userName}`);
-            formData.append('userId', session?.user?.id || '2');
-            console.log('Uploading to API...', {
-                filename,
-                userId: session?.user?.id || '2'
-            });
-            // Upload to API
-            const uploadResponse = await fetch('/api/upload-meme', {
-                method: 'POST',
-                body: formData
-            });
-            const result = await uploadResponse.json();
-            console.log('Upload result:', result);
-            if (result.success) {
+            const success = await uploadMemeToPrikbord(canvas, filename);
+            if (success) {
                 setAutoUploaded(true);
                 setUploaded(true);
                 setTimeout(()=>setUploaded(false), 3000);
                 console.log('✅ Meme successfully auto-uploaded!');
             } else {
-                console.error('❌ Upload failed:', result.error);
+                console.error('❌ Upload failed');
             }
         } catch (error) {
             console.error('Error auto-uploading meme:', error);
@@ -1534,12 +1617,12 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     className: "w-6 h-6 sm:w-8 sm:h-8 text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 475,
+                                    lineNumber: 579,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 474,
+                                lineNumber: 578,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1556,7 +1639,7 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                        lineNumber: 478,
+                                        lineNumber: 582,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogTitle"], {
@@ -1567,24 +1650,24 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                         children: "Jouw Meme is klaar!"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                        lineNumber: 481,
+                                        lineNumber: 585,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 477,
+                                lineNumber: 581,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                        lineNumber: 473,
+                        lineNumber: 577,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 472,
+                    lineNumber: 576,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1608,17 +1691,17 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                             id: "meme-canvas"
                         }, void 0, false, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                            lineNumber: 496,
+                            lineNumber: 600,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                        lineNumber: 495,
+                        lineNumber: 599,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 489,
+                    lineNumber: 593,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1645,14 +1728,14 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 515,
+                                            lineNumber: 619,
                                             columnNumber: 15
                                         }, this),
                                         isGenerating ? 'Genereren...' : 'Download JPG (Wit)'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 507,
+                                    lineNumber: 611,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -1673,26 +1756,26 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 527,
+                                            lineNumber: 631,
                                             columnNumber: 27
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__["Download"], {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 527,
+                                            lineNumber: 631,
                                             columnNumber: 79
                                         }, this),
                                         isGenerating ? 'Genereren...' : uploaded ? 'Geüpload naar Prikbord!' : 'Download PNG (Transparant)'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 519,
+                                    lineNumber: 623,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                            lineNumber: 506,
+                            lineNumber: 610,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1715,20 +1798,20 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 540,
+                                            lineNumber: 644,
                                             columnNumber: 25
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$share$2d$2$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Share2$3e$__["Share2"], {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 540,
+                                            lineNumber: 644,
                                             columnNumber: 76
                                         }, this),
                                         copied ? 'Gekopieerd!' : 'Delen op Social Media'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 533,
+                                    lineNumber: 637,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -1748,26 +1831,26 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 551,
+                                            lineNumber: 655,
                                             columnNumber: 15
                                         }, this),
                                         "Opnieuw"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 544,
+                                    lineNumber: 648,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                            lineNumber: 532,
+                            lineNumber: 636,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 505,
+                    lineNumber: 609,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -1782,12 +1865,12 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                     children: "✅ Meme succesvol geüpload naar het Prikbord!"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 562,
+                                    lineNumber: 666,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 561,
+                                lineNumber: 665,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1798,12 +1881,12 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                 children: "💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok en/of X"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 567,
+                                lineNumber: 671,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 570,
+                                lineNumber: 674,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1822,18 +1905,18 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                             children: "#AllesVoorSchiedam"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 572,
+                                            lineNumber: 676,
                                             columnNumber: 26
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 572,
+                                    lineNumber: 676,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 571,
+                                lineNumber: 675,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1841,29 +1924,29 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
                                 children: "Je meme wordt automatisch opgeslagen op het Prikbord"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 574,
+                                lineNumber: 678,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                        lineNumber: 559,
+                        lineNumber: 663,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 558,
+                    lineNumber: 662,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/meme-result-dialog.tsx",
-            lineNumber: 471,
+            lineNumber: 575,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/meme-result-dialog.tsx",
-        lineNumber: 470,
+        lineNumber: 574,
         columnNumber: 5
     }, this);
 }
