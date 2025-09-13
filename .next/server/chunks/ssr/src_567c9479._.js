@@ -1180,12 +1180,12 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
             ctx.globalAlpha = 0.3;
             ctx.drawImage(backgroundImg, memeX, memeY, memeWidth, memeHeight);
             ctx.restore();
-            // Draw header badge with rounded corners
+            // Draw header badge with rounded corners (centered on card)
             const headerText = 'Alles voor Schiedam';
-            const headerX = memeX + 20;
-            const headerY = memeY + 20;
             const headerWidth = 200;
             const headerHeight = 30;
+            const headerX = memeX + (memeWidth - headerWidth) / 2; // Center horizontally
+            const headerY = memeY + 20;
             ctx.fillStyle = '#30302e';
             drawRoundedRect(ctx, headerX, headerY, headerWidth, headerHeight, 8);
             ctx.fill();
@@ -1282,12 +1282,12 @@ function MemeResultDialog({ isOpen, onClose, quizState, onReset }) {
             ctx.globalAlpha = 0.3;
             ctx.drawImage(backgroundImg, memeX, memeY, memeWidth, memeHeight);
             ctx.restore();
-            // Draw header badge with rounded corners
+            // Draw header badge with rounded corners (centered on card)
             const headerText = 'Alles voor Schiedam';
-            const headerX = memeX + 20;
-            const headerY = memeY + 20;
             const headerWidth = 200;
             const headerHeight = 30;
+            const headerX = memeX + (memeWidth - headerWidth) / 2; // Center horizontally
+            const headerY = memeY + 20;
             ctx.fillStyle = '#30302e';
             drawRoundedRect(ctx, headerX, headerY, headerWidth, headerHeight, 8);
             ctx.fill();
