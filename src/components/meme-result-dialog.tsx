@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { toPng, toJpeg } from 'html-to-image';
-import { Download, Share2, RotateCcw, Check, Sparkles } from 'lucide-react';
+import { Download, Share2, RotateCcw, Check, Sparkles, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Card, CardContent } from '@/components/ui/card';
 import { MemeCanvas } from '@/components/meme-canvas';
 import { QuizState } from '@/types/quiz';
 import { quizAnswers } from '@/data/quizData';
+import { useSession } from 'next-auth/react';
 
 interface MemeResultDialogProps {
   isOpen: boolean;
@@ -21,6 +22,8 @@ interface MemeResultDialogProps {
 export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeResultDialogProps) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+  const { data: session } = useSession();
 
   // Helper function for rounded rectangles
   const drawRoundedRect = (ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, radius: number) => {
@@ -35,6 +38,41 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
     ctx.lineTo(x, y + radius);
     ctx.quadraticCurveTo(x, y, x + radius, y);
     ctx.closePath();
+  };
+
+  // Function to upload meme to prikbord
+  const uploadMemeToPrikbord = async (canvas: HTMLCanvasElement, filename: string) => {
+    if (!session?.user?.id) return;
+
+    try {
+      // Convert canvas to blob
+      const blob = await new Promise<Blob>((resolve) => {
+        canvas.toBlob((blob) => {
+          if (blob) resolve(blob);
+        }, 'image/png');
+      });
+
+      // Create form data
+      const formData = new FormData();
+      formData.append('file', blob, filename);
+      formData.append('title', `Meme van ${quizState.userName}`);
+      formData.append('userId', session.user.id);
+
+      // Upload to API
+      const response = await fetch('/api/upload-meme', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setUploaded(true);
+        setTimeout(() => setUploaded(false), 3000);
+      }
+    } catch (error) {
+      console.error('Error uploading meme:', error);
+    }
   };
 
   const handleDownloadPNG = async () => {
@@ -150,10 +188,15 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       // Convert to data URL and download
       const dataUrl = canvas.toDataURL('image/png');
       
+      const filename = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.png`;
+      
       const link = document.createElement('a');
-      link.download = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.png`;
+      link.download = filename;
       link.href = dataUrl;
       link.click();
+
+      // Upload to prikbord
+      await uploadMemeToPrikbord(canvas, filename);
     } catch (error) {
       console.error('Error generating PNG:', error);
     } finally {
@@ -274,10 +317,20 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       // Convert to data URL and download
       const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
       
+      const filename = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+      
       const link = document.createElement('a');
-      link.download = `alles-voor-schiedam-${quizState.userName.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+      link.download = filename;
       link.href = dataUrl;
       link.click();
+
+      // Upload to prikbord (convert to PNG for consistency)
+      const pngCanvas = document.createElement('canvas');
+      const pngCtx = pngCanvas.getContext('2d');
+      pngCanvas.width = canvas.width;
+      pngCanvas.height = canvas.height;
+      pngCtx!.drawImage(canvas, 0, 0);
+      await uploadMemeToPrikbord(pngCanvas, filename.replace('.jpg', '.png'));
     } catch (error) {
       console.error('Error generating JPG:', error);
     } finally {
@@ -393,8 +446,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
               whileHover={{ scale: isGenerating ? 1 : 1.02 }}
               whileTap={{ scale: isGenerating ? 1 : 0.98 }}
             >
-              <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              {isGenerating ? 'Genereren...' : 'Download PNG (Transparant)'}
+              {uploaded ? <Upload className="w-4 h-4 sm:w-5 sm:h-5 mr-2" /> : <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />}
+              {isGenerating ? 'Genereren...' : uploaded ? 'Geüpload naar Prikbord!' : 'Download PNG (Transparant)'}
             </motion.button>
           </div>
           
@@ -426,6 +479,13 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
         {/* Social Media Instructions */}
         <Card className="bg-white/90 backdrop-blur-xl border border-black/20 mt-2 sm:mt-3 shadow-lg mx-2 sm:mx-4">
           <CardContent className="p-2 sm:p-3">
+            {uploaded && (
+              <div className="text-center mb-3 p-2 bg-green-100 rounded-lg border border-green-300">
+                <p className="text-sm font-semibold text-green-800">
+                  ✅ Meme succesvol geüpload naar het Prikbord!
+                </p>
+              </div>
+            )}
             <p className="text-xs sm:text-sm text-center" style={{ color: '#30302e' }}>
               💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok en/of X
             </p>
@@ -433,7 +493,11 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
             <p className="mb-2 text-sm sm:text-base text-center" style={{ color: '#30302e' }}>
               <i>Gebruik <span className="font-mono font-bold" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span></i>
             </p>
-            
+            {session && (
+              <p className="text-xs text-center text-gray-600 mt-2">
+                Je meme wordt automatisch opgeslagen op het Prikbord
+              </p>
+            )}
           </CardContent>
         </Card>
       </DialogContent>

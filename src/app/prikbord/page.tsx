@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Upload, X, Maximize2, Minimize2, Plus, LogIn } from 'lucide-react';
-import { sql } from '@vercel/postgres';
 
 interface StickyNote {
   id: number;
@@ -40,23 +39,23 @@ export default function PrikbordPage() {
 
   const loadMemesFromDatabase = async () => {
     try {
-      const { rows } = await sql`
-        SELECT id, image_url, title, position_x, position_y, user_id
-        FROM prikbord_memes 
-        WHERE is_active = true
-        ORDER BY created_at DESC
-      `;
+      const response = await fetch('/api/prikbord');
+      const result = await response.json();
       
-      const memes = rows.map(row => ({
-        id: row.id,
-        x: row.position_x,
-        y: row.position_y,
-        imageUrl: row.image_url,
-        title: row.title,
-        userId: row.user_id
-      }));
-      
-      setStickyNotes(memes);
+      if (result.success) {
+        const memes: StickyNote[] = result.data.map((row: any) => ({
+          id: row.id,
+          x: row.position_x,
+          y: row.position_y,
+          imageUrl: row.image_url,
+          title: row.title,
+          userId: row.user_id
+        }));
+        
+        setStickyNotes(memes);
+      } else {
+        console.error('Error loading memes:', result.error);
+      }
     } catch (error) {
       console.error('Error loading memes:', error);
     } finally {
@@ -81,25 +80,34 @@ export default function PrikbordPage() {
     }
 
     try {
-      const x = Math.random() * 300 + 50;
-      const y = Math.random() * 200 + 50;
+      const response = await fetch('/api/prikbord', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          imageUrl,
+          title: title || 'Meme Kaart',
+          userId: parseInt(session.user.id)
+        })
+      });
       
-      const { rows } = await sql`
-        INSERT INTO prikbord_memes (user_id, image_url, title, position_x, position_y)
-        VALUES (${parseInt(session.user.id)}, ${imageUrl}, ${title || 'Meme Kaart'}, ${x}, ${y})
-        RETURNING id, image_url, title, position_x, position_y, user_id
-      `;
+      const result = await response.json();
       
-      const newNote: StickyNote = {
-        id: rows[0].id,
-        x: rows[0].position_x,
-        y: rows[0].position_y,
-        imageUrl: rows[0].image_url,
-        title: rows[0].title,
-        userId: rows[0].user_id
-      };
-      
-      setStickyNotes(prev => [...prev, newNote]);
+      if (result.success) {
+        const newNote: StickyNote = {
+          id: result.data.id,
+          x: result.data.position_x,
+          y: result.data.position_y,
+          imageUrl: result.data.image_url,
+          title: result.data.title,
+          userId: result.data.user_id
+        };
+        
+        setStickyNotes(prev => [...prev, newNote]);
+      } else {
+        console.error('Error adding meme:', result.error);
+      }
     } catch (error) {
       console.error('Error adding meme:', error);
     }
@@ -128,8 +136,17 @@ export default function PrikbordPage() {
     if (!session?.user?.id || session.user.role !== 'admin') return;
     
     try {
-      await sql`DELETE FROM prikbord_memes WHERE id = ${id}`;
-      setStickyNotes(prev => prev.filter(note => note.id !== id));
+      const response = await fetch(`/api/prikbord?id=${id}`, {
+        method: 'DELETE'
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setStickyNotes(prev => prev.filter(note => note.id !== id));
+      } else {
+        console.error('Error removing meme:', result.error);
+      }
     } catch (error) {
       console.error('Error removing meme:', error);
     }
@@ -176,11 +193,23 @@ export default function PrikbordPage() {
       try {
         const note = stickyNotes.find(n => n.id === isDragging);
         if (note) {
-          await sql`
-            UPDATE prikbord_memes 
-            SET position_x = ${note.x}, position_y = ${note.y}
-            WHERE id = ${isDragging}
-          `;
+          const response = await fetch('/api/prikbord', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: isDragging,
+              x: note.x,
+              y: note.y
+            })
+          });
+          
+          const result = await response.json();
+          
+          if (!result.success) {
+            console.error('Error updating position:', result.error);
+          }
         }
       } catch (error) {
         console.error('Error updating position:', error);

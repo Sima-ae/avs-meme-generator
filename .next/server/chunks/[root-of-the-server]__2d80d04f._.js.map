@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 133, "column": 0}, "map": {"version":3,"sources":["file:///Users/pro/Desktop/REPOS%20CURSOR/avs-meme-generator/src/app/api/test-db/route.ts"],"sourcesContent":["import { sql } from '@vercel/postgres';\nimport { NextResponse } from 'next/server';\n\nexport async function GET() {\n  try {\n    const result = await sql`SELECT 1 as test`;\n    return NextResponse.json({ success: true, data: result.rows[0] });\n  } catch (error) {\n    console.error('Database test error:', error);\n    return NextResponse.json({ success: false, error: error.message }, { status: 500 });\n  }\n}\n"],"names":[],"mappings":";;;;AAAA;AAAA;AACA;;;AAEO,eAAe;IACpB,IAAI;QACF,MAAM,SAAS,MAAM,0LAAG,CAAC,gBAAgB,CAAC;QAC1C,OAAO,gJAAY,CAAC,IAAI,CAAC;YAAE,SAAS;YAAM,MAAM,OAAO,IAAI,CAAC,EAAE;QAAC;IACjE,EAAE,OAAO,OAAO;QACd,QAAQ,KAAK,CAAC,wBAAwB;QACtC,OAAO,gJAAY,CAAC,IAAI,CAAC;YAAE,SAAS;YAAO,OAAO,MAAM,OAAO;QAAC,GAAG;YAAE,QAAQ;QAAI;IACnF;AACF","debugId":null}}]
+}

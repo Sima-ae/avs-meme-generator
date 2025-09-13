@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { signIn, getSession } from 'next-auth/react';
+import { useState, useEffect } from 'react';
+import { signIn, getSession, getCsrfToken } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -13,31 +13,70 @@ export default function SignInPage() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [csrfToken, setCsrfToken] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    const getToken = async () => {
+      try {
+        const token = await getCsrfToken();
+        console.log('CSRF Token received:', token);
+        setCsrfToken(token || '');
+      } catch (error) {
+        console.error('Error getting CSRF token:', error);
+        setCsrfToken('');
+      }
+    };
+    getToken();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
 
+    console.log('Login attempt:', { email, password: '***', csrfToken });
+
     try {
       const result = await signIn('credentials', {
         email,
         password,
+        csrfToken,
         redirect: false,
       });
 
+      console.log('SignIn result:', result);
+
       if (result?.error) {
-        setError('Ongeldige inloggegevens');
-      } else {
+        console.error('Login error:', result.error);
+        if (result.error === 'CredentialsSignin') {
+          setError('Ongeldige inloggegevens. Controleer je email en wachtwoord.');
+          // Try to get a fresh CSRF token
+          try {
+            const freshToken = await getCsrfToken();
+            console.log('Fresh CSRF token:', freshToken);
+            setCsrfToken(freshToken || '');
+          } catch (tokenError) {
+            console.error('Error getting fresh CSRF token:', tokenError);
+          }
+        } else {
+          setError('Er is een fout opgetreden: ' + result.error);
+        }
+      } else if (result?.ok) {
+        console.log('Login successful');
         const session = await getSession();
+        console.log('Session:', session);
         if (session?.user?.role === 'admin') {
           router.push('/admin');
         } else {
           router.push('/prikbord');
         }
+      } else {
+        console.log('Login failed - no error or ok status');
+        setError('Er is een fout opgetreden');
       }
     } catch (error) {
+      console.error('Login error:', error);
       setError('Er is een fout opgetreden');
     } finally {
       setIsLoading(false);

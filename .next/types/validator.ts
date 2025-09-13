@@ -92,10 +92,46 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../src/app/api/admin/memes/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/admin/memes">> = Specific
+  const handler = {} as typeof import("../../src/app/api/admin/memes/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/api/admin/users/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/admin/users">> = Specific
+  const handler = {} as typeof import("../../src/app/api/admin/users/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/api/auth/[...nextauth]/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/[...nextauth]">> = Specific
   const handler = {} as typeof import("../../src/app/api/auth/[...nextauth]/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/api/prikbord/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/prikbord">> = Specific
+  const handler = {} as typeof import("../../src/app/api/prikbord/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/api/upload-meme/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/upload-meme">> = Specific
+  const handler = {} as typeof import("../../src/app/api/upload-meme/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
