@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/pro/Desktop/REPOS%20CURSOR/avs-meme-generator/src/app/test-simple/page.tsx"],"sourcesContent":["'use client';\n\nexport default function TestSimplePage() {\n  return (\n    <div className=\"p-8\">\n      <h1 className=\"text-2xl font-bold mb-4\">Simple Test Page</h1>\n      <p>This is a simple test page to check if client-side rendering works.</p>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;;AAEe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;;0BACb,8OAAC;gBAAG,WAAU;0BAA0B;;;;;;0BACxC,8OAAC;0BAAE;;;;;;;;;;;;AAGT","debugId":null}}]
-}

@@ -1,17 +1,13 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/admin/page": "app/admin/page.js",
   "/api/admin/memes/route": "app/api/admin/memes/route.js",
   "/api/admin/users/route": "app/api/admin/users/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/api/prikbord/route": "app/api/prikbord/route.js",
-  "/api/test-db/route": "app/api/test-db/route.js",
   "/api/upload-meme/route": "app/api/upload-meme/route.js",
+  "/admin/page": "app/admin/page.js",
+  "/auth/register/page": "app/auth/register/page.js",
   "/auth/signin/page": "app/auth/signin/page.js",
   "/page": "app/page.js",
-  "/prikbord-simple/page": "app/prikbord-simple/page.js",
-  "/prikbord/page": "app/prikbord/page.js",
-  "/test-api/page": "app/test-api/page.js",
-  "/test-fetch/page": "app/test-fetch/page.js",
-  "/test-simple/page": "app/test-simple/page.js"
+  "/prikbord/page": "app/prikbord/page.js"
 }

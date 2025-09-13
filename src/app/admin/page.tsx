@@ -26,6 +26,7 @@ interface PrikbordMeme {
   position_x: number;
   position_y: number;
   created_at: string;
+  user_name: string;
 }
 
 export default function AdminDashboard() {
