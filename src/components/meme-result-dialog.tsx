@@ -86,13 +86,19 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       
       // Draw header badge with rounded corners
       const headerText = 'Alles voor Schiedam';
+      const headerX = memeX + 20;
+      const headerY = memeY + 20;
+      const headerWidth = 200;
+      const headerHeight = 30;
+      
       ctx!.fillStyle = '#30302e';
-      drawRoundedRect(ctx!, memeX + 20, memeY + 20, 200, 30, 8);
+      drawRoundedRect(ctx!, headerX, headerY, headerWidth, headerHeight, 8);
       ctx!.fill();
       ctx!.fillStyle = '#ffffff';
       ctx!.font = 'bold 14px Arial';
       ctx!.textAlign = 'center';
-      ctx!.fillText(headerText, memeX + 120, memeY + 40);
+      ctx!.textBaseline = 'middle';
+      ctx!.fillText(headerText, headerX + headerWidth / 2, headerY + headerHeight / 2);
       
       // Draw main content box with rounded corners
       const contentX = memeX + 40;
@@ -191,13 +197,19 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       
       // Draw header badge with rounded corners
       const headerText = 'Alles voor Schiedam';
+      const headerX = memeX + 20;
+      const headerY = memeY + 20;
+      const headerWidth = 200;
+      const headerHeight = 30;
+      
       ctx!.fillStyle = '#30302e';
-      drawRoundedRect(ctx!, memeX + 20, memeY + 20, 200, 30, 8);
+      drawRoundedRect(ctx!, headerX, headerY, headerWidth, headerHeight, 8);
       ctx!.fill();
       ctx!.fillStyle = '#ffffff';
       ctx!.font = 'bold 14px Arial';
       ctx!.textAlign = 'center';
-      ctx!.fillText(headerText, memeX + 120, memeY + 40);
+      ctx!.textBaseline = 'middle';
+      ctx!.fillText(headerText, headerX + headerWidth / 2, headerY + headerHeight / 2);
       
       // Draw main content box with rounded corners
       const contentX = memeX + 40;

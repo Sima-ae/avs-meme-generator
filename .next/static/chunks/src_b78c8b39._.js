@@ -1315,13 +1315,18 @@ function MemeResultDialog(param) {
             ctx.restore();
             // Draw header badge with rounded corners
             const headerText = 'Alles voor Schiedam';
+            const headerX = memeX + 20;
+            const headerY = memeY + 20;
+            const headerWidth = 200;
+            const headerHeight = 30;
             ctx.fillStyle = '#30302e';
-            drawRoundedRect(ctx, memeX + 20, memeY + 20, 200, 30, 8);
+            drawRoundedRect(ctx, headerX, headerY, headerWidth, headerHeight, 8);
             ctx.fill();
             ctx.fillStyle = '#ffffff';
             ctx.font = 'bold 14px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText(headerText, memeX + 120, memeY + 40);
+            ctx.textBaseline = 'middle';
+            ctx.fillText(headerText, headerX + headerWidth / 2, headerY + headerHeight / 2);
             // Draw main content box with rounded corners
             const contentX = memeX + 40;
             const contentY = memeY + 80;
@@ -1404,13 +1409,18 @@ function MemeResultDialog(param) {
             ctx.restore();
             // Draw header badge with rounded corners
             const headerText = 'Alles voor Schiedam';
+            const headerX = memeX + 20;
+            const headerY = memeY + 20;
+            const headerWidth = 200;
+            const headerHeight = 30;
             ctx.fillStyle = '#30302e';
-            drawRoundedRect(ctx, memeX + 20, memeY + 20, 200, 30, 8);
+            drawRoundedRect(ctx, headerX, headerY, headerWidth, headerHeight, 8);
             ctx.fill();
             ctx.fillStyle = '#ffffff';
             ctx.font = 'bold 14px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText(headerText, memeX + 120, memeY + 40);
+            ctx.textBaseline = 'middle';
+            ctx.fillText(headerText, headerX + headerWidth / 2, headerY + headerHeight / 2);
             // Draw main content box with rounded corners
             const contentX = memeX + 40;
             const contentY = memeY + 80;
@@ -1526,12 +1536,12 @@ function MemeResultDialog(param) {
                                     className: "w-6 h-6 sm:w-8 sm:h-8 text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 306,
+                                    lineNumber: 318,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 305,
+                                lineNumber: 317,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1548,7 +1558,7 @@ function MemeResultDialog(param) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                        lineNumber: 309,
+                                        lineNumber: 321,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTitle"], {
@@ -1559,24 +1569,24 @@ function MemeResultDialog(param) {
                                         children: "Jouw Meme is klaar!"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                        lineNumber: 312,
+                                        lineNumber: 324,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 308,
+                                lineNumber: 320,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                        lineNumber: 304,
+                        lineNumber: 316,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 303,
+                    lineNumber: 315,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -1600,17 +1610,17 @@ function MemeResultDialog(param) {
                             id: "meme-canvas"
                         }, void 0, false, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                            lineNumber: 327,
+                            lineNumber: 339,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                        lineNumber: 326,
+                        lineNumber: 338,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 320,
+                    lineNumber: 332,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1637,14 +1647,14 @@ function MemeResultDialog(param) {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 346,
+                                            lineNumber: 358,
                                             columnNumber: 15
                                         }, this),
                                         isGenerating ? 'Genereren...' : 'Download JPG (Wit)'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 338,
+                                    lineNumber: 350,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -1665,20 +1675,20 @@ function MemeResultDialog(param) {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 358,
+                                            lineNumber: 370,
                                             columnNumber: 15
                                         }, this),
                                         isGenerating ? 'Genereren...' : 'Download PNG (Transparant)'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 350,
+                                    lineNumber: 362,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                            lineNumber: 337,
+                            lineNumber: 349,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1701,20 +1711,20 @@ function MemeResultDialog(param) {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 371,
+                                            lineNumber: 383,
                                             columnNumber: 25
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$share$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Share2$3e$__["Share2"], {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 371,
+                                            lineNumber: 383,
                                             columnNumber: 76
                                         }, this),
                                         copied ? 'Gekopieerd!' : 'Delen op Social Media'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 364,
+                                    lineNumber: 376,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -1734,26 +1744,26 @@ function MemeResultDialog(param) {
                                             className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 382,
+                                            lineNumber: 394,
                                             columnNumber: 15
                                         }, this),
                                         "Opnieuw"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 375,
+                                    lineNumber: 387,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                            lineNumber: 363,
+                            lineNumber: 375,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 336,
+                    lineNumber: 348,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1769,12 +1779,12 @@ function MemeResultDialog(param) {
                                 children: "💡 Tip: Deel op Facebook, Instagram, LinkedIn, TikTok en/of X"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 391,
+                                lineNumber: 403,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 394,
+                                lineNumber: 406,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1793,40 +1803,40 @@ function MemeResultDialog(param) {
                                             children: "#AllesVoorSchiedam"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                            lineNumber: 396,
+                                            lineNumber: 408,
                                             columnNumber: 26
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                    lineNumber: 396,
+                                    lineNumber: 408,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/meme-result-dialog.tsx",
-                                lineNumber: 395,
+                                lineNumber: 407,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/meme-result-dialog.tsx",
-                        lineNumber: 390,
+                        lineNumber: 402,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/meme-result-dialog.tsx",
-                    lineNumber: 389,
+                    lineNumber: 401,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/meme-result-dialog.tsx",
-            lineNumber: 302,
+            lineNumber: 314,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/meme-result-dialog.tsx",
-        lineNumber: 301,
+        lineNumber: 313,
         columnNumber: 5
     }, this);
 }
