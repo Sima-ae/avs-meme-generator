@@ -62,10 +62,30 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       clonedMeme.style.maxWidth = 'none';
       clonedMeme.style.maxHeight = 'none';
       
-      // Replace the background image src with data URL
+      // Replace the background image src with data URL and ensure it's visible
       const backgroundImg = clonedMeme.querySelector('img[src="/images/Achtergrond.png"]') as HTMLImageElement;
       if (backgroundImg) {
         backgroundImg.src = backgroundDataUrl;
+        backgroundImg.style.display = 'block';
+        backgroundImg.style.visibility = 'visible';
+        backgroundImg.style.opacity = '0.3';
+        backgroundImg.style.position = 'absolute';
+        backgroundImg.style.top = '0';
+        backgroundImg.style.left = '0';
+        backgroundImg.style.width = '100%';
+        backgroundImg.style.height = '100%';
+        backgroundImg.style.objectFit = 'cover';
+        backgroundImg.style.zIndex = '1';
+        
+        // Wait for the image to load
+        await new Promise((resolve) => {
+          if (backgroundImg.complete) {
+            resolve(true);
+          } else {
+            backgroundImg.onload = () => resolve(true);
+            backgroundImg.onerror = () => resolve(true);
+          }
+        });
       }
       
       wrapper.appendChild(clonedMeme);
@@ -73,8 +93,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       // Temporarily add to DOM
       document.body.appendChild(wrapper);
       
-      // Wait a bit for the image to render
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Wait a bit for the image to render (longer delay for mobile)
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       const dataUrl = await toPng(wrapper, {
         quality: 1.0,
@@ -140,10 +160,30 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       clonedMeme.style.maxWidth = 'none';
       clonedMeme.style.maxHeight = 'none';
       
-      // Replace the background image src with data URL
+      // Replace the background image src with data URL and ensure it's visible
       const backgroundImg = clonedMeme.querySelector('img[src="/images/Achtergrond.png"]') as HTMLImageElement;
       if (backgroundImg) {
         backgroundImg.src = backgroundDataUrl;
+        backgroundImg.style.display = 'block';
+        backgroundImg.style.visibility = 'visible';
+        backgroundImg.style.opacity = '0.3';
+        backgroundImg.style.position = 'absolute';
+        backgroundImg.style.top = '0';
+        backgroundImg.style.left = '0';
+        backgroundImg.style.width = '100%';
+        backgroundImg.style.height = '100%';
+        backgroundImg.style.objectFit = 'cover';
+        backgroundImg.style.zIndex = '1';
+        
+        // Wait for the image to load
+        await new Promise((resolve) => {
+          if (backgroundImg.complete) {
+            resolve(true);
+          } else {
+            backgroundImg.onload = () => resolve(true);
+            backgroundImg.onerror = () => resolve(true);
+          }
+        });
       }
       
       wrapper.appendChild(clonedMeme);
@@ -151,8 +191,8 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       // Temporarily add to DOM
       document.body.appendChild(wrapper);
       
-      // Wait a bit for the image to render
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Wait a bit for the image to render (longer delay for mobile)
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       const dataUrl = await toJpeg(wrapper, {
         quality: 1.0,
