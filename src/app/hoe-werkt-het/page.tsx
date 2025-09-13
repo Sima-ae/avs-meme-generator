@@ -37,41 +37,77 @@ export default function HoeWerktHetPage() {
         {/* Quick Overview */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8" style={{ color: '#30302e' }}>
-            In 3 Eenvoudige Stappen
+            In 6 Eenvoudige Stappen
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center p-6 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#30302e' }}>
-              <CardContent className="pt-6">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#30302e' }}>
-                  <span className="text-2xl font-bold text-white">1</span>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="text-center p-4 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#30302e' }}>
+              <CardContent className="pt-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: '#30302e' }}>
+                  <span className="text-lg font-bold text-white">1</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3" style={{ color: '#30302e' }}>Vul je gegevens in</h3>
-                <p style={{ color: '#30302e' }}>
+                <h3 className="text-lg font-semibold mb-2" style={{ color: '#30302e' }}>Vul je gegevens in</h3>
+                <p className="text-sm" style={{ color: '#30302e' }}>
                   Voer je naam in en beantwoord de vragen over je voorkeuren voor Schiedam.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center p-6 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#30302e' }}>
-              <CardContent className="pt-6">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#30302e' }}>
-                  <span className="text-2xl font-bold text-white">2</span>
+            <Card className="text-center p-4 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#30302e' }}>
+              <CardContent className="pt-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: '#30302e' }}>
+                  <span className="text-lg font-bold text-white">2</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3" style={{ color: '#30302e' }}>Genereer je meme</h3>
-                <p style={{ color: '#30302e' }}>
+                <h3 className="text-lg font-semibold mb-2" style={{ color: '#30302e' }}>Genereer je meme</h3>
+                <p className="text-sm" style={{ color: '#30302e' }}>
                   Ons systeem maakt automatisch een gepersonaliseerde meme voor je.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center p-6 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#30302e' }}>
-              <CardContent className="pt-6">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#30302e' }}>
-                  <span className="text-2xl font-bold text-white">3</span>
+            <Card className="text-center p-4 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#fdee34' }}>
+              <CardContent className="pt-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: '#fdee34' }}>
+                  <span className="text-lg font-bold" style={{ color: '#30302e' }}>3</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3" style={{ color: '#30302e' }}>Deel en geniet</h3>
-                <p style={{ color: '#30302e' }}>
-                  Download je meme en deel het op sociale media of het prikbord.
+                <h3 className="text-lg font-semibold mb-2" style={{ color: '#30302e' }}>Bewerk je tekst</h3>
+                <p className="text-sm" style={{ color: '#30302e' }}>
+                  Pas je naam en meme-tekst aan tot je tevreden bent.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center p-4 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#fdee34' }}>
+              <CardContent className="pt-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: '#fdee34' }}>
+                  <span className="text-lg font-bold" style={{ color: '#30302e' }}>4</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2" style={{ color: '#30302e' }}>Goedkeuren & Uploaden</h3>
+                <p className="text-sm" style={{ color: '#30302e' }}>
+                  Klik "Goedkeuren & Uploaden" om je meme op te slaan.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center p-4 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#30302e' }}>
+              <CardContent className="pt-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: '#30302e' }}>
+                  <span className="text-lg font-bold text-white">5</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2" style={{ color: '#30302e' }}>Download</h3>
+                <p className="text-sm" style={{ color: '#30302e' }}>
+                  Download je meme in PNG of JPG formaat voor hoge kwaliteit.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center p-4 border-2 bg-white/90 backdrop-blur-sm" style={{ borderColor: '#30302e' }}>
+              <CardContent className="pt-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style={{ backgroundColor: '#30302e' }}>
+                  <span className="text-lg font-bold text-white">6</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2" style={{ color: '#30302e' }}>Deel en geniet</h3>
+                <p className="text-sm" style={{ color: '#30302e' }}>
+                  Deel je meme op sociale media en bekijk het op het prikbord.
                 </p>
               </CardContent>
             </Card>
@@ -162,40 +198,128 @@ export default function HoeWerktHetPage() {
                     <li>• Hoge kwaliteit PNG-formaat (600x600 pixels)</li>
                     <li>• Professionele typografie en layout</li>
                     <li>• Geoptimaliseerd voor sociale media</li>
-                    <li>• Automatische upload naar het prikbord</li>
+                    <li>• Real-time preview van je meme</li>
                   </ul>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Step 4 */}
-            <Card className="border-l-4 bg-white/90 backdrop-blur-sm" style={{ borderLeftColor: '#30302e' }}>
+            {/* Step 4 - NEW: Text Editing */}
+            <Card className="border-l-4 bg-white/90 backdrop-blur-sm" style={{ borderLeftColor: '#fdee34' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-2xl" style={{ color: '#30302e' }}>
-                  <Share2 className="w-8 h-8" style={{ color: '#30302e' }} />
-                  Stap 4: Delen en Bekijken
+                  <Settings className="w-8 h-8" style={{ color: '#fdee34' }} />
+                  Stap 4: Tekst Bewerken & Aanpassen
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-lg" style={{ color: '#30302e' }}>
-                  Je meme wordt automatisch opgeslagen en gedeeld op ons prikbord, 
-                  waar iedereen het kan bekijken en waarderen.
+                  Je kunt nu je meme volledig aanpassen voordat je deze deelt. 
+                  Bewerk je naam en de meme-tekst tot je tevreden bent.
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-lg bg-white" style={{ borderColor: '#30302e', border: '1px solid' }}>
+                    <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Bewerkingsopties</h4>
+                    <ul className="space-y-1 text-sm" style={{ color: '#30302e' }}>
+                      <li>• Pas je naam aan</li>
+                      <li>• Wijzig de meme-tekst</li>
+                      <li>• Real-time preview</li>
+                      <li>• Reset naar origineel</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 rounded-lg bg-white" style={{ borderColor: '#30302e', border: '1px solid' }}>
+                    <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Gebruiksvriendelijk</h4>
+                    <ul className="space-y-1 text-sm" style={{ color: '#30302e' }}>
+                      <li>• Eenvoudige tekstvelden</li>
+                      <li>• Directe preview updates</li>
+                      <li>• Opslaan en reset functies</li>
+                      <li>• Professionele interface</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg bg-yellow-50 border border-yellow-200">
+                  <h4 className="font-semibold mb-2 text-yellow-800">💡 Pro Tip</h4>
+                  <p className="text-sm text-yellow-700">
+                    Gebruik de tekstbewerker om je meme persoonlijker te maken. 
+                    Je kunt je naam aanpassen of de boodschap verfijnen voordat je deze deelt!
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Step 5 - NEW: Approval & Upload */}
+            <Card className="border-l-4 bg-white/90 backdrop-blur-sm" style={{ borderLeftColor: '#fdee34' }}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-2xl" style={{ color: '#30302e' }}>
+                  <CheckCircle className="w-8 h-8" style={{ color: '#fdee34' }} />
+                  Stap 5: Goedkeuren & Uploaden
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-lg" style={{ color: '#30302e' }}>
+                  Je meme wordt alleen geüpload naar het prikbord 
+                  nadat je deze hebt goedgekeurd. Je hebt volledige controle over wanneer je content wordt gedeeld.
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-lg bg-white" style={{ borderColor: '#30302e', border: '1px solid' }}>
+                    <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Goedkeuringsproces</h4>
+                    <ul className="space-y-1 text-sm" style={{ color: '#30302e' }}>
+                      <li>• Bekijk je finale meme</li>
+                      <li>• Klik "Goedkeuren & Uploaden"</li>
+                      <li>• Meme wordt opgeslagen op prikbord</li>
+                      <li>• Direct beschikbaar voor anderen</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 rounded-lg bg-white" style={{ borderColor: '#30302e', border: '1px solid' }}>
+                    <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Privacy & Controle</h4>
+                    <ul className="space-y-1 text-sm" style={{ color: '#30302e' }}>
+                      <li>• Geen automatische upload</li>
+                      <li>• Jij bepaalt wanneer je deelt</li>
+                      <li>• Bewerk zo vaak als je wilt</li>
+                      <li>• Volledige transparantie</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg bg-green-50 border border-green-200">
+                  <h4 className="font-semibold mb-2 text-green-800">✅ Veiligheid</h4>
+                  <p className="text-sm text-green-700">
+                    Je meme wordt alleen geüpload naar het prikbord wanneer jij daar expliciet toestemming voor geeft. 
+                    Dit geeft je volledige controle over je content!
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Step 6 - Download & Share */}
+            <Card className="border-l-4 bg-white/90 backdrop-blur-sm" style={{ borderLeftColor: '#30302e' }}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-2xl" style={{ color: '#30302e' }}>
+                  <Share2 className="w-8 h-8" style={{ color: '#30302e' }} />
+                  Stap 6: Downloaden & Delen
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-lg" style={{ color: '#30302e' }}>
+                  Download je goedgekeurde meme in verschillende formaten en deel deze 
+                  op sociale media of bekijk het op het prikbord.
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-lg bg-white" style={{ borderColor: '#30302e', border: '1px solid' }}>
+                    <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Download Opties</h4>
+                    <ul className="space-y-1 text-sm" style={{ color: '#30302e' }}>
+                      <li>• PNG-formaat (transparant)</li>
+                      <li>• JPG-formaat (wit achtergrond)</li>
+                      <li>• Hoge kwaliteit (600x600px)</li>
+                      <li>• Geoptimaliseerd voor alle platforms</li>
+                    </ul>
+                  </div>
                   <div className="p-4 rounded-lg bg-white" style={{ borderColor: '#30302e', border: '1px solid' }}>
                     <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Prikbord Functies</h4>
                     <ul className="space-y-1 text-sm" style={{ color: '#30302e' }}>
                       <li>• Bekijk alle gemaakte memes</li>
                       <li>• Klik voor volledig scherm weergave</li>
                       <li>• Deel direct op sociale media</li>
-                    </ul>
-                  </div>
-                  <div className="p-4 rounded-lg bg-white" style={{ borderColor: '#30302e', border: '1px solid' }}>
-                    <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Download Opties</h4>
-                    <ul className="space-y-1 text-sm" style={{ color: '#30302e' }}>
-                      <li>• PNG-formaat voor hoge kwaliteit</li>
-                      <li>• Geoptimaliseerd voor alle platforms</li>
-                      <li>• Direct beschikbaar na generatie</li>
+                      <li>• Publiek zichtbaar voor iedereen</li>
                     </ul>
                   </div>
                 </div>
@@ -246,6 +370,110 @@ export default function HoeWerktHetPage() {
           </div>
         </div>
 
+        {/* Text Editing Features */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#30302e' }}>
+            🆕 Nieuwe Tekstbewerking Functies
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-white/90 backdrop-blur-sm border-2" style={{ borderColor: '#fdee34' }}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-xl" style={{ color: '#30302e' }}>
+                  <Settings className="w-6 h-6" style={{ color: '#fdee34' }} />
+                  Volledige Tekstcontrole
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p style={{ color: '#30302e' }}>
+                  Je hebt nu volledige controle over de tekst op je meme. Bewerk zowel je naam 
+                  als de meme-boodschap tot je volledig tevreden bent.
+                </p>
+                <div className="space-y-3">
+                  <div className="p-3 rounded-lg bg-yellow-50 border border-yellow-200">
+                    <h4 className="font-semibold text-yellow-800 mb-1">Naam Bewerken</h4>
+                    <p className="text-sm text-yellow-700">
+                      Pas je naam aan, gebruik een pseudoniem, of voeg extra tekst toe.
+                    </p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-yellow-50 border border-yellow-200">
+                    <h4 className="font-semibold text-yellow-800 mb-1">Meme Tekst Aanpassen</h4>
+                    <p className="text-sm text-yellow-700">
+                      Wijzig de boodschap, maak het persoonlijker, of verfijn de tekst.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/90 backdrop-blur-sm border-2" style={{ borderColor: '#fdee34' }}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-xl" style={{ color: '#30302e' }}>
+                  <Eye className="w-6 h-6" style={{ color: '#fdee34' }} />
+                  Real-time Preview
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p style={{ color: '#30302e' }}>
+                  Zie je wijzigingen direct in de preview. Geen verrassingen - je weet 
+                  precies hoe je finale meme eruit zal zien.
+                </p>
+                <div className="space-y-3">
+                  <div className="p-3 rounded-lg bg-green-50 border border-green-200">
+                    <h4 className="font-semibold text-green-800 mb-1">Live Updates</h4>
+                    <p className="text-sm text-green-700">
+                      De meme preview wordt direct bijgewerkt terwijl je typt.
+                    </p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-green-50 border border-green-200">
+                    <h4 className="font-semibold text-green-800 mb-1">Professionele Interface</h4>
+                    <p className="text-sm text-green-700">
+                      Eenvoudige tekstvelden met opslaan en reset functionaliteit.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="mt-8 bg-white/90 backdrop-blur-sm border-2" style={{ borderColor: '#30302e' }}>
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold mb-4 text-center" style={{ color: '#30302e' }}>
+                Hoe werkt de Tekstbewerker?
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mx-auto mb-3">
+                    <span className="text-lg font-bold" style={{ color: '#30302e' }}>1</span>
+                  </div>
+                  <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Klik "Tekst bewerken"</h4>
+                  <p className="text-sm" style={{ color: '#30302e' }}>
+                    Open de tekstbewerker om je meme aan te passen
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mx-auto mb-3">
+                    <span className="text-lg font-bold" style={{ color: '#30302e' }}>2</span>
+                  </div>
+                  <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Bewerk je tekst</h4>
+                  <p className="text-sm" style={{ color: '#30302e' }}>
+                    Pas je naam en meme-tekst aan en zie direct het resultaat
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mx-auto mb-3">
+                    <span className="text-lg font-bold" style={{ color: '#30302e' }}>3</span>
+                  </div>
+                  <h4 className="font-semibold mb-2" style={{ color: '#30302e' }}>Klik "Opslaan"</h4>
+                  <p className="text-sm" style={{ color: '#30302e' }}>
+                    Sla je wijzigingen op en ga verder met goedkeuren
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Technical Specifications */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#30302e' }}>
@@ -264,11 +492,15 @@ export default function HoeWerktHetPage() {
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5" style={{ color: '#30302e' }} />
-                      <span>Formaat: PNG met transparantie</span>
+                      <span>Formaten: PNG (transparant) + JPG (wit)</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5" style={{ color: '#30302e' }} />
-                      <span>Kwaliteit: Hoge resolutie</span>
+                      <span>Kwaliteit: Hoge resolutie (2x scale)</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5" style={{ color: '#30302e' }} />
+                      <span>Tekstbewerking: Volledig aanpasbaar</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5" style={{ color: '#30302e' }} />
@@ -282,7 +514,11 @@ export default function HoeWerktHetPage() {
                   <ul className="space-y-2" style={{ color: '#30302e' }}>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5" style={{ color: '#30302e' }} />
-                      <span>Responsive design</span>
+                      <span>Tekstbewerking & real-time preview</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5" style={{ color: '#30302e' }} />
+                      <span>Goedkeuringsworkflow</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5" style={{ color: '#30302e' }} />
@@ -294,7 +530,7 @@ export default function HoeWerktHetPage() {
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5" style={{ color: '#30302e' }} />
-                      <span>Automatische opslag</span>
+                      <span>Controleerbare opslag</span>
                     </li>
                   </ul>
                 </div>
