@@ -56,6 +56,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../src/app/algemene-voorwaarden/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/algemene-voorwaarden">> = Specific
+  const handler = {} as typeof import("../../src/app/algemene-voorwaarden/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/auth/register/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/auth/register">> = Specific
@@ -74,6 +83,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../src/app/cookiebeleid/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/cookiebeleid">> = Specific
+  const handler = {} as typeof import("../../src/app/cookiebeleid/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/hoe-werkt-het/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hoe-werkt-het">> = Specific
+  const handler = {} as typeof import("../../src/app/hoe-werkt-het/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/">> = Specific
@@ -87,6 +114,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/prikbord">> = Specific
   const handler = {} as typeof import("../../src/app/prikbord/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/privacybeleid/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/privacybeleid">> = Specific
+  const handler = {} as typeof import("../../src/app/privacybeleid/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

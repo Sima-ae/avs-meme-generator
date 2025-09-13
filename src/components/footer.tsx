@@ -105,16 +105,27 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-2 sm:gap-6 mb-6">
-            {['Algemene voorwaarden', 'Cookiebeleid', 'Privacybeleid'].map((item) => (
-              <a 
-                key={item} 
-                href="#" 
-                className="text-base font-medium transition-all duration-300 hover:scale-105 px-3 py-1 rounded-xl hover:bg-gray-100 text-center" 
-                style={{ color: '#30302e' }}
-              >
-                {item}
-              </a>
-            ))}
+            <Link 
+              href="/algemene-voorwaarden"
+              className="text-base font-medium transition-all duration-300 hover:scale-105 px-3 py-1 rounded-xl hover:bg-gray-100 text-center" 
+              style={{ color: '#30302e' }}
+            >
+              Algemene voorwaarden
+            </Link>
+            <Link 
+              href="/cookiebeleid"
+              className="text-base font-medium transition-all duration-300 hover:scale-105 px-3 py-1 rounded-xl hover:bg-gray-100 text-center" 
+              style={{ color: '#30302e' }}
+            >
+              Cookiebeleid
+            </Link>
+            <Link 
+              href="/privacybeleid"
+              className="text-base font-medium transition-all duration-300 hover:scale-105 px-3 py-1 rounded-xl hover:bg-gray-100 text-center" 
+              style={{ color: '#30302e' }}
+            >
+              Privacybeleid
+            </Link>
           </div>
 
           {/* Bottom Text */}

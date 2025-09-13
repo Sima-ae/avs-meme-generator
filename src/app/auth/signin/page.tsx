@@ -84,7 +84,7 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-50 to-yellow-100">
+    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#fdee34' }}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="w-full h-full" style={{
@@ -105,7 +105,7 @@ export default function SignInPage() {
         <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
           <CardHeader className="text-center pb-8">
             <div className="mb-4">
-              <div className="w-16 h-16 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style={{ backgroundColor: '#30302e' }}>
                 <span className="text-2xl">🔐</span>
               </div>
             </div>

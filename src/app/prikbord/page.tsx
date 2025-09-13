@@ -226,7 +226,7 @@ export default function PrikbordPage() {
       {/* Header */}
       <div className="bg-white shadow-sm border-b p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-800">Prikbord - Memes</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Prikbord</h1>
           <div className="flex items-center gap-4">
             {session?.user?.role === 'admin' && (
               <>

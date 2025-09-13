@@ -5,7 +5,7 @@
   "static/chunks/node_modules_next_1e2f78e2._.js",
   "static/chunks/node_modules_motion-dom_dist_es_da948acf._.js",
   "static/chunks/node_modules_framer-motion_dist_es_5b4aafa7._.js",
-  "static/chunks/node_modules_ba11a13b._.js",
+  "static/chunks/node_modules_468fe2a8._.js",
   "static/chunks/src_components_240bdecd._.js"
 ],
     source: "dynamic"
