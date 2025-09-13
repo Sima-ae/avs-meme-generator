@@ -113,11 +113,11 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.fillText(headerText, textX, textY);
       ctx!.restore();
       
-      // Draw main content box with rounded corners
-      const contentX = memeX + 40;
-      const contentY = memeY + 80;
+      // Draw main content box with rounded corners (centered on card)
       const contentWidth = memeWidth - 80;
-      const contentHeight = 120;
+      const contentHeight = 140; // Made taller
+      const contentX = memeX + (memeWidth - contentWidth) / 2; // Center horizontally
+      const contentY = memeY + (memeHeight - contentHeight) / 2; // Center vertically
       
       ctx!.fillStyle = '#ffffff';
       drawRoundedRect(ctx!, contentX, contentY, contentWidth, contentHeight, 16);
@@ -237,11 +237,11 @@ export function MemeResultDialog({ isOpen, onClose, quizState, onReset }: MemeRe
       ctx!.fillText(headerText, textX, textY);
       ctx!.restore();
       
-      // Draw main content box with rounded corners
-      const contentX = memeX + 40;
-      const contentY = memeY + 80;
+      // Draw main content box with rounded corners (centered on card)
       const contentWidth = memeWidth - 80;
-      const contentHeight = 120;
+      const contentHeight = 140; // Made taller
+      const contentX = memeX + (memeWidth - contentWidth) / 2; // Center horizontally
+      const contentY = memeY + (memeHeight - contentHeight) / 2; // Center vertically
       
       ctx!.fillStyle = '#ffffff';
       drawRoundedRect(ctx!, contentX, contentY, contentWidth, contentHeight, 16);
