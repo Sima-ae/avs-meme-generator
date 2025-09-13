@@ -107,6 +107,7 @@ export default function Home() {
                 <span className="text-sm font-medium" style={{ color: '#30302e' }}>#AllesVoorSchiedam</span>
               </div>
             </motion.div>
+            <br />
             
             <motion.p 
               className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed"
@@ -117,6 +118,7 @@ export default function Home() {
             >
               Beantwoord de vragen en maak een persoonlijke meme over Schiedam.
             </motion.p>
+            <br />
 
             {!showNameInput ? (
               <motion.div 
@@ -199,19 +201,7 @@ export default function Home() {
       <br />
       
 
-      {/* TripleZero AI Button */}
-      <div className="flex justify-center items-center relative z-10">
-        <motion.div 
-          className="flex flex-wrap justify-center gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <a href="https://000-it.com" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-xl border border-black/20 shadow-lg hover:scale-105 transition-all duration-300">
-            <span className="text-sm font-medium" style={{ color: '#30302e' }}>⚡ Aangedreven door TripleZero AI</span>
-          </a>
-        </motion.div>
-      </div>
+      
 
       <br />
       <br />
