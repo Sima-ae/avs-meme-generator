@@ -131,7 +131,7 @@ export default function Footer() {
           {/* Bottom Text */}
           <div className="border-t border-black/20 pt-4">
             <p className="text-base font-medium" style={{ color: '#30302e' }}>
-            Alles voor Schiedam © 2024
+            Alles voor Schiedam © 2025
             </p>
             <p className="text-sm mt-1" style={{ color: '#30302e' }}>
               <i>Beveiligd en ontwikkeld door: <a href="https://000-it.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline transition-all duration-300">TripleZero iT</a></i>
